@@ -79,9 +79,9 @@ function newExperience(){
 
 function newCategory(){
 
-    const experienceNumber = document.getElementsByClassName("experience").length;
+    const categoryNumber = document.getElementsByClassName("experience").length;
 
-    const experienceDiv = document.createElement("DIV");
+    const categoryDiv = document.createElement("DIV");
 
     const category = `
 
@@ -169,93 +169,21 @@ function newCategory(){
 
     `
 
-    experienceDiv.innerHTML = category;
+    categoryDiv.innerHTML = category;
 
-    experienceDiv.setAttribute("class", "experience")
+    categoryDiv.setAttribute("class", "skill-category")
 
-    let skillSection = document.getElementById("skills");
+    let skillSection = document.getElementById("skills-category-container");
 
-    skillSection.insertBefore(experienceDiv, skillSection.lastElementChild);
-
-
-    // document.getElementById(`Experience ${ experienceNumber + 1 }`).click();
-
-    // window.location.href = `Experience ${ experienceNumber + 1 }`
-
-}
-
-function newSkill(){
+    skillSection.insertBefore(categoryDiv, skillSection.lastElementChild);
 
 
-    const skillNumber = document.getElementsByClassName("experience").length;
-
-    const skillDiv = document.createElement("DIV");
-
-    const skill = `
-
-
-                                      <!-- selections -->
-                                      <div class="section-icon-selector">
-                                          <!--dropdown-->
-                                          <div class="drop-down">
-                                              <div class="drop-down-select-div" onclick="closeSection(this)">
-                                                  <span>Icons</span>
-                                                  <i class="fa-solid fa-angle-up"></i>
-                                              </div>
-                                              <div class="drop-down-options-div" class="hide">
-                                                  <i class="fa-solid fa-user options"></i>
-                                                  <i class="fa-solid fa-user options"></i>
-                                                  <i class="fa-solid fa-user options"></i>
-                                                  <i class="fa-solid fa-user options"></i>
-
-                                              </div>
-                                          </div>
-                                          <!--allow custom icon selection-->
-
-                                      </div>
-
-                                      <div class="title-to-border experience-input">
-                                          <span>Skill 1</span>
-                                          <input type="text" class="title-to-border-element"/>
-                                      </div>
-
-
-                                      <div class="delete-experience" onclick="deleteSkill(this)">
-                                          <i class="fa-solid fa-circle-minus"></i>
-                                          <span>Delete Skill</span>
-                                      </div>
-
-                                  </div>
-
-    `
-
-    skillDiv.innerHTML = skill;
-
-    skillDiv.setAttribute("class", "category-1-skill")
-
-    // create div to hold all skills
-    let skillsSection = document.createElement("DIV");
-    skillsSection.setAttribute("class", `category-1-skills`);
-
-
-
-    let skillSection = document.getElementById("category-1-skills");
-
-    skillSection.insertBefore(skillDiv, skillSection.lastElementChild);
-
-
-    // document.getElementById(`Experience ${ experienceNumber + 1 }`).click();
+    // document.getElementById(`Experience ${ categoryNumber + 1 }`).click();
 
     // window.location.href = `Experience ${ experienceNumber + 1 }`
 
 }
 
-function deleteSkill(element){
-
-    element.parentElement.remove();
-
-
-}
 
 function deleteExperience(element) {
 

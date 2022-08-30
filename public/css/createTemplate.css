@@ -133,28 +133,34 @@ body{
 
 }
 
-#add-experience, .experience, .delete-experience,
-#add-skill{
+.middle-width{
 
     margin: auto;
     width: 80%;
 }
 
-#add-experience > i,
-#add-skill > i{
+/*.add-section, .experience, .delete-section,
+#add-skill,
+.skill-skills-container{
+
+    margin: auto;
+    width: 80%;
+}*/
+
+.add-section > i{
 
     color: hsl(142, 90%, 61%);
 }
 
 
-.delete-experience > i{
+.delete-section > i{
 
     color: #ff4c4c;
 }
 
 
-.delete-experience:hover,
-#add-experience:hover,
+.delete-section:hover,
+.add-section:hover,
 .drop-down-select-div:hover,
 #add-skill:hover{
 
@@ -173,7 +179,7 @@ body{
 
 }
 
-.delete-experience, #add-experience,#add-skill,
+.delete-section, .add-section,
 .experience-title{
 
     padding: 5px;
@@ -217,15 +223,3 @@ textarea {
 
 }
 
-.skills{
-
-    width: 80%;
-    margin: auto;
-}
-
-.skill-category{
-
-    width: 80%;
-    margin: auto;
-
-}

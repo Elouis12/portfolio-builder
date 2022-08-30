@@ -95,9 +95,9 @@
                       <i class="fa-solid fa-angle-up"></i>
                   </div>
 
-                  <div id="experiences" class="info">
+                  <div id="experiences" class="middle-width">
 
-                      <div class="experience">
+                      <div class="experiences-container">
 
 <!--                          <a id="Experience 1" href="#Experience 1" ></a>-->
 
@@ -107,7 +107,7 @@
                           </div>
 
 
-                          <div id="experience-info-div">
+                          <div id="experience-info">
 
                               <!-- selections -->
                               <div class="section-icon-selector">
@@ -146,7 +146,7 @@
                                   <textarea class="title-to-border-element"></textarea>
                               </div>
 
-                              <div class="delete-experience" onclick="deleteExperience(this)">
+                              <div class="delete-section" onclick="deleteExperience(this)">
                                   <i class="fa-solid fa-circle-minus"></i>
                                   <span>Delete Experience</span>
                               </div>
@@ -156,7 +156,7 @@
                       </div>
 
 
-                      <div id="add-experience" onclick="newExperience()">
+                      <div class="add-section" onclick="newExperience()">
                           <i class="fa-solid fa-circle-plus"></i>
                           <span>Add Experience</span>
                       </div>
@@ -174,11 +174,11 @@
                       <i class="fa-solid fa-angle-up"></i>
                   </div>
 
-                  <div id="skills-category-container">
+                  <div id="category" class="middle-width">
 
 
                       <!-- CATEGORY -->
-                      <div class="skill-category">
+                      <div class="category-container">
 
                           <!-- SKILLS DROPDOWN -->
                           <div class="section-title" onclick="closeSection(this)">
@@ -188,7 +188,7 @@
 
 
                           <!-- HOLD ALL INFO FOR CATEGORY SO WE CAN HIDE ALL AT ONCE -->
-                          <div id="skill-info-div">
+                          <div id="category-info">
 
                               <!-- SELECTIONS -->
                               <div class="section-icon-selector">
@@ -215,10 +215,11 @@
                                   <input type="text" class="title-to-border-element"/>
                               </div>
 
-                              <!-- INDIVIDUAL SKILLS -->
-                              <div class="skill-skills-container">
 
-                                  <div class="skill-category">
+                              <!-- INDIVIDUAL SKILLS -->
+                              <div id="skill" class="middle-width">
+
+                                  <div class="skill-container">
 
                                       <!-- SKILLS DROPDOWN -->
                                       <div class="section-title" onclick="closeSection(this)">
@@ -226,8 +227,58 @@
                                           <i class="fa-solid fa-angle-up"></i>
                                       </div>
 
+                                      <div id="skill-info">
+
+                                          <!-- SELECTIONS -->
+                                          <div class="section-icon-selector">
+                                              <!--dropdown-->
+                                              <div class="drop-down">
+                                                  <div class="drop-down-select-div" onclick="closeSection(this)">
+                                                      <span>Icons</span>
+                                                      <i class="fa-solid fa-angle-up"></i>
+                                                  </div>
+                                                  <div class="drop-down-options-div" class="hide">
+                                                      <i class="fa-solid fa-user options"></i>
+                                                      <i class="fa-solid fa-user options"></i>
+                                                      <i class="fa-solid fa-user options"></i>
+                                                      <i class="fa-solid fa-user options"></i>
+
+                                                  </div>
+                                              </div>
+                                              <!--allow custom icon selection-->
+
+                                          </div>
+
+
+                                          <div class="title-to-border experience-input">
+                                              <span>Skill Name</span>
+                                              <input type="text" class="title-to-border-element"/>
+                                          </div>
+
+                                      </div>
+
+
+                                      <div class="delete-section middle-width" onclick="deleteExperience(this)">
+                                          <i class="fa-solid fa-circle-minus"></i>
+                                          <span>Delete Skill</span>
+                                      </div>
+
                                   </div>
 
+                              </div>
+
+
+
+                                <!-- ADD SKILL -->
+                              <div class="add-section middle-width" onclick="newExperience()">
+                                  <i class="fa-solid fa-circle-plus"></i>
+                                  <span>Add Skill</span>
+                              </div>
+
+                              <!-- DELETE CATEGORY -->
+                              <div class="delete-section middle-width" onclick="deleteExperience(this)">
+                                  <i class="fa-solid fa-circle-minus"></i>
+                                  <span>Delete Category</span>
                               </div>
 
 
@@ -237,7 +288,7 @@
                       </div>
 
 
-                      <div id="add-skill" onclick="newCategory()">
+                      <div class="add-section" onclick="newCategory()">
                           <i class="fa-solid fa-circle-plus"></i>
                           <span>Add Category</span>
                       </div>
