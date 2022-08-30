@@ -8,10 +8,12 @@
 
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/draganddrop.css" />
 
 
     <script src="js/dropdown.js"></script>
     <script src="js/file.js"></script>
+
 </head>
 <body>
 
@@ -55,7 +57,7 @@
                   </div>
 
                   <div class="info">
-                      <!-- selections -->
+                      <!-- SELECTIONS -->
                       <div class="section-icon-selector">
                           <!--dropdown-->
                           <div class="drop-down">
@@ -63,7 +65,7 @@
                                   <span>Icons</span>
                                   <i class="fa-solid fa-angle-up"></i>
                               </div>
-                              <div class="drop-down-options-div hide">
+                              <div class="drop-down-options-div" class="hide">
                                   <i class="fa-solid fa-user options"></i>
                                   <i class="fa-solid fa-user options"></i>
                                   <i class="fa-solid fa-user options"></i>
@@ -88,7 +90,7 @@
               </section>
 
               <!-- EXPERIENCE -->
-              <section>
+              <section class="section-container">
 
                   <div class="section-title" onclick="closeSection(this)">
                       <span>Experiences</span>
@@ -101,7 +103,7 @@
 
 <!--                          <a id="Experience 1" href="#Experience 1" ></a>-->
 
-                          <div class="experience-title" onclick="closeSection(this)">
+                          <div class="section-title" onclick="closeSection(this)">
                               <span>Experience 1</span>
                               <i class="fa-solid fa-angle-up"></i>
                           </div>
@@ -146,7 +148,7 @@
                                   <textarea class="title-to-border-element"></textarea>
                               </div>
 
-                              <div class="delete-section" onclick="deleteExperience(this)">
+                              <div class="delete-section middle-width" onclick="deleteSection(this)">
                                   <i class="fa-solid fa-circle-minus"></i>
                                   <span>Delete Experience</span>
                               </div>
@@ -166,8 +168,7 @@
               </section>
 
               <!-- SKILLS -->
-
-              <section>
+              <section class="section-container">
 
                   <div class="section-title" onclick="closeSection(this)">
                       <span>Skills</span>
@@ -255,28 +256,28 @@
                                               <input type="text" class="title-to-border-element"/>
                                           </div>
 
+
+                                          <div class="delete-section middle-width" onclick="deleteSection(this)">
+                                              <i class="fa-solid fa-circle-minus"></i>
+                                              <span>Delete Skill</span>
+                                          </div>
+
                                       </div>
 
+                                  </div>
 
-                                      <div class="delete-section middle-width" onclick="deleteExperience(this)">
-                                          <i class="fa-solid fa-circle-minus"></i>
-                                          <span>Delete Skill</span>
-                                      </div>
 
+                                  <!-- ADD SKILL -->
+                                  <div class="add-section" onclick="newSkill(this)">
+                                      <i class="fa-solid fa-circle-plus"></i>
+                                      <span>Add Skill</span>
                                   </div>
 
                               </div>
 
 
-
-                                <!-- ADD SKILL -->
-                              <div class="add-section middle-width" onclick="newExperience()">
-                                  <i class="fa-solid fa-circle-plus"></i>
-                                  <span>Add Skill</span>
-                              </div>
-
                               <!-- DELETE CATEGORY -->
-                              <div class="delete-section middle-width" onclick="deleteExperience(this)">
+                              <div class="delete-section middle-width" onclick="deleteSection(this)">
                                   <i class="fa-solid fa-circle-minus"></i>
                                   <span>Delete Category</span>
                               </div>
@@ -297,12 +298,89 @@
 
               </section>
 
+              <!-- PROJECTS -->
+
+              <section class="section-container">
+
+
+                  <div class="section-title" onclick="closeSection(this)">
+                      <span>Projects</span>
+                      <i class="fa-solid fa-angle-up"></i>
+                  </div>
+
+                  <div id="project" class="middle-width">
+
+
+                      <!-- CATEGORY -->
+                      <div class="project-container">
+
+                          <!-- SKILLS DROPDOWN -->
+                          <div class="section-title" onclick="closeSection(this)">
+                              <span>Project 1</span>
+                              <i class="fa-solid fa-angle-up"></i>
+                          </div>
+
+
+                          <!-- HOLD ALL INFO FOR CATEGORY SO WE CAN HIDE ALL AT ONCE -->
+                          <div id="project-info">
+
+                              <!-- DRAG AND DROP -->
+                              <div class="drag-container title-to-border experience-input">
+                                  <div id="drag-area" class="drag-area">
+                                      <div class="icon">
+                                          <i class="fas fa-cloud-upload-alt"></i>
+                                      </div>
+                                      <header>Drag & Drop to Upload File</header>
+                                      <span>OR</span>
+                                      <button onclick="initValues(this)">Browse File</button>
+                                      <input type="file" hidden>
+                                  </div>
+                              </div>
+
+                              <div class="title-to-border experience-input">
+                                  <span>Project Title</span>
+                                  <input type="text" class="title-to-border-element"/>
+                              </div>
+                              <div class="title-to-border experience-input">
+                                  <span>Project Link</span>
+                                  <input type="text" class="title-to-border-element"/>
+                              </div>
+                              <div class="title-to-border experience-input">
+                                  <span>Project Summary</span>
+                                  <textarea class="title-to-border-element"></textarea>
+                              </div>
+
+
+                              <!-- DELETE CATEGORY -->
+                              <div class="delete-section middle-width" onclick="deleteSection(this)">
+                                  <i class="fa-solid fa-circle-minus"></i>
+                                  <span>Delete Project</span>
+                              </div>
+
+                          </div>
+
+
+                      </div>
+
+                      <div class="add-section" onclick="newProject(this)">
+                          <i class="fa-solid fa-circle-plus"></i>
+                          <span>Add Project</span>
+                      </div>
+
+                  </div>
+
+
+              </section>
+
 
           </div>
 
       </div>
 
   </div>
+
+  <script src="js/draganddrop.js"></script>
+
 
 </body>
 </html>

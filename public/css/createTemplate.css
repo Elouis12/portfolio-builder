@@ -62,10 +62,10 @@ body{
     width: 80%;
     margin: auto;
 }
-.section-container{
+/*.section-container{
 
     width: 100%;
-}
+}*/
 .section-title{
 
     display: flex;
@@ -121,10 +121,10 @@ body{
 
 .section-container :not(:first-child){ /* everything but the h4 element */
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
 }
 
 .info{
