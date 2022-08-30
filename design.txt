@@ -1,0 +1,101 @@
+
+
+
+REQUIREMENTS
+
+
+    MVP
+
+        * let users add info pertaining to each section
+
+        * have sections
+            - home
+            - about
+            - experience
+            - skills
+            - project
+            - resume
+            - contact
+            the user can add stuff to
+
+            ABOUT
+                - icon
+                - summary
+
+            EXPERIENCES
+                - icon
+                - job role
+                - start and end date
+                - company name
+                - location
+                - summary
+
+            SKILLS
+
+                - icon
+                - skill category
+                - icons with skill name
+
+            PROJECTS
+
+                - image
+                - summary
+                - (optional) link to the project
+
+
+            CONTACTS
+
+                - icon
+                - clickable icons with their links
+
+
+
+        * choose 3 colors for whole theme layout
+            - primary color - background
+            - secondary color - color of divs for text
+            - accent color
+
+
+        * user should be able to download the zip folder which
+            is a folder that contains all they need
+
+
+        * have a live viewer so the user can view how the
+            final product will look like using IFRAME
+            and source it to the relative path
+
+
+        * use a Node js package to download a folder
+            as a file
+            PACKAGE :
+                express-easy-zip
+
+
+HOW IT WILL ADD THE INFO TO THE HTML BODY
+
+
+    * we can save the HTML contents in variables
+
+        ex. about = <div> about me <div/>
+
+        then insert it into a tag within the template where
+        the about will go
+
+        when the user finally decides to create the portfolio
+        and download the zip file, just delete the content inside to reset the template
+
+
+THINGS I WILL NEED TO KNOW
+
+    1. writing to files in js ( use NODE JS? )
+
+
+DATA STRUCTURES
+
+    class -
+        Template :
+
+            ~ functions :
+                * set html - everytime a user adds into the field, it updates
+                  for the about, resume, contact, expereinces, etc
+                * create template - allow user to download the template
