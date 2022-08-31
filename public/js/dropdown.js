@@ -1,40 +1,47 @@
 function closeSection(element){
 
 
-
-
     // add arrow up or down
-    if( element.children[1].classList.contains("fa-angle-up") ){
+    if( element.children[1].classList.contains("fa-angle-up") ){ // WHEN ARROW UP
 
-        // clicked on icon list - this keeps the icon box there but still hidden
-
+        // CLICKED ON ICON LIST - this keeps the icon box there but still hidden
         element.children[1].remove(); // removes the current arrow angle
 
         element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-angle-down"></i>`)
 
-        if( element.children[0].innerText === "Icons" ){
+        if(
+            element.children[0].innerText === "Icons" ||
+            element.children[0].innerText === "Contact Type"
 
-            element.parentElement.children[1].style.visibility = "hidden";
+        ){
+
+            element.parentElement.children[1].classList.add("hideVisibility");
             return;
 
         }
 
-        element.parentElement.children[1].style.display = "none";
+        element.parentElement.children[1].classList.add("hide");
 
-    }else{
+    }else{ // WHEN ARROW DOWN
 
         element.children[1].remove(); // removes the current arrow angle
         element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-angle-up"></i>`)
 
-        // clicked on icon list - this shows the icon box
-        if( element.children[0].innerText === "Icons" ){
+        // CLICKED ON ICON LIST - this shows the icon box
+        if(
+            element.children[0].innerText === "Icons" ||
+            element.children[0].innerText === "Contact Type"
 
-            element.parentElement.children[1].style.visibility = "visible";
+        ){
+
+            element.parentElement.children[1].classList.remove("hideVisibility");
             return;
 
         }
 
-        element.parentElement.children[1].style.display = "block";
+        // element.parentElement.children[1].style.display = "block";
+        element.parentElement.children[1].classList.remove("hide");
+
 
     }
 

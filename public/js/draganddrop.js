@@ -1,6 +1,3 @@
-//selecting all required elements
-// let dropArea = document.getElementById("drag-area");
-
 let dropArea;
 let dragText;
 let button;
@@ -101,9 +98,10 @@ function deleteFile(){
   }
 
   // remove the last 2 ( image and delete button )
-  dropArea.children[ dropArea.children.length - 1 ].remove();
-  dropArea.children[ dropArea.children.length - 1 ].remove();
+  // dropArea.lastElementChild.remove();
+  // dropArea.lastElementChild.remove();
 
+  dropArea.classList.remove("active");
 
 
 }

@@ -21,9 +21,9 @@ function newExperience(){
                                   <div class="drop-down">
                                       <div class="drop-down-select-div" onclick="closeSection(this)">
                                           <span>Icons</span>
-                                          <i class="fa-solid fa-angle-up"></i>
+                                          <i class="fa-solid fa-angle-down"></i>
                                       </div>
-                                      <div class="drop-down-options-div" class="hide">
+                                      <div class="drop-down-options-div hideVisibility">
                                           <i class="fa-solid fa-user options"></i>
                                           <i class="fa-solid fa-user options"></i>
                                           <i class="fa-solid fa-user options"></i>
@@ -100,9 +100,9 @@ function newCategory(){
                                   <div class="drop-down">
                                       <div class="drop-down-select-div" onclick="closeSection(this)">
                                           <span>Icons</span>
-                                          <i class="fa-solid fa-angle-up"></i>
+                                          <i class="fa-solid fa-angle-down"></i>
                                       </div>
-                                      <div class="drop-down-options-div" class="hide">
+                                      <div class="drop-down-options-div hideVisibility">
                                           <i class="fa-solid fa-user options"></i>
                                           <i class="fa-solid fa-user options"></i>
                                           <i class="fa-solid fa-user options"></i>
@@ -139,9 +139,9 @@ function newCategory(){
                                               <div class="drop-down">
                                                   <div class="drop-down-select-div" onclick="closeSection(this)">
                                                       <span>Icons</span>
-                                                      <i class="fa-solid fa-angle-up"></i>
+                                                      <i class="fa-solid fa-angle-down"></i>
                                                   </div>
-                                                  <div class="drop-down-options-div" class="hide">
+                                                  <div class="drop-down-options-div hideVisibility">
                                                       <i class="fa-solid fa-user options"></i>
                                                       <i class="fa-solid fa-user options"></i>
                                                       <i class="fa-solid fa-user options"></i>
@@ -159,12 +159,11 @@ function newCategory(){
                                               <input type="text" class="title-to-border-element"/>
                                           </div>
 
-                                      </div>
-
-
-                                      <div class="delete-section middle-width" onclick="deleteSection(this)">
-                                          <i class="fa-solid fa-circle-minus"></i>
-                                          <span>Delete Skill</span>
+                                          <div class="delete-section middle-width" onclick="deleteSection(this)">
+                                              <i class="fa-solid fa-circle-minus"></i>
+                                              <span>Delete Skill</span>
+                                          </div>
+                                      
                                       </div>
 
                                   </div>
@@ -209,7 +208,7 @@ function newCategory(){
 
 function newSkill(element){
 
-    const skillNumber = document.getElementsByClassName("skill-container").length;
+    const skillNumber = element.parentElement.children.length-1; // so we don't get the 'add skill' element that's at the end
 
     const skillDiv = document.createElement("DIV");
 
@@ -230,9 +229,9 @@ function newSkill(element){
                                               <div class="drop-down">
                                                   <div class="drop-down-select-div" onclick="closeSection(this)">
                                                       <span>Icons</span>
-                                                      <i class="fa-solid fa-angle-up"></i>
+                                                      <i class="fa-solid fa-angle-down"></i>
                                                   </div>
-                                                  <div class="drop-down-options-div" class="hide">
+                                                  <div class="drop-down-options-div hideVisibility">
                                                       <i class="fa-solid fa-user options"></i>
                                                       <i class="fa-solid fa-user options"></i>
                                                       <i class="fa-solid fa-user options"></i>
@@ -261,7 +260,8 @@ function newSkill(element){
 
     skillDiv.innerHTML = skill;
 
-    skillDiv.setAttribute("class", "skill-container")
+    skillDiv.setAttribute("class", "skill-container");
+
 
     // let skillSection = document.getElementById("skill");
     let skillSection = element.parentElement;
@@ -350,6 +350,93 @@ function newProject(element){
 }
 
 
+
+
+function newContact(element){
+
+    const contactNumber = document.getElementsByClassName("contacts-container").length;
+
+    const contactDiv = document.createElement("DIV");
+
+    const contact = `
+                              <div class="section-title" onclick="closeSection(this)">
+                                  <span>Contact ${contactNumber + 1}</span>
+                                  <i class="fa-solid fa-angle-up"></i>
+                              </div>
+
+                              <div id="contacts-info">
+
+
+                                  <!-- SELECTIONS -->
+                                  <div class="section-icon-selector">
+                                      <!--dropdown-->
+                                      <div class="drop-down">
+                                          <div class="drop-down-select-div" onclick="closeSection(this)">
+                                              <span>Icons</span>
+                                              <i class="fa-solid fa-angle-down"></i>
+                                          </div>
+                                          <div class="drop-down-options-div hideVisibility">
+                                              <i class="fa-solid fa-user options"></i>
+                                              <i class="fa-solid fa-user options"></i>
+                                              <i class="fa-solid fa-user options"></i>
+                                              <i class="fa-solid fa-user options"></i>
+
+                                          </div>
+                                      </div>
+                                      <!--allow custom icon selection-->
+
+                                  </div>
+
+                                  <!-- SELECTIONS -->
+                                  <div class="section-icon-selector">
+                                      <!--dropdown-->
+                                      <div class="drop-down">
+                                          <div class="drop-down-select-div" onclick="closeSection(this)">
+                                              <span>Contact Type</span>
+                                              <i class="fa-solid fa-angle-up"></i>
+                                          </div>
+                                          <div class="drop-down-options-div hideVisibility">
+                                              <div>Email</div>
+                                              <div>Url</div>
+                                              <div>Person</div>
+                                          </div>
+                                      </div>
+                                      <!--allow custom icon selection-->
+
+                                  </div>
+
+                                  <div class="title-to-border experience-input">
+                                      <span>Contact Title</span>
+                                      <input type="url" class="title-to-border-element"/>
+                                  </div>
+
+                                  <!-- DELETE CATEGORY -->
+                                  <div class="delete-section middle-width" onclick="deleteSection(this)">
+                                      <i class="fa-solid fa-circle-minus"></i>
+                                      <span>Delete Contact</span>
+                                  </div>
+
+                              </div>
+    `
+
+    contactDiv.innerHTML = contact;
+
+    contactDiv.setAttribute("class", "contacts-container")
+
+    // let skillSection = document.getElementById("skill");
+    let contactSection = element.parentElement;
+
+    // we created an HTML element because INSERT BEFORE takes an element
+    contactSection.insertBefore (contactDiv, contactSection.lastElementChild);
+
+
+    // document.getElementById(`Experience ${ projectNumber + 1 }`).click();
+
+    // window.location.href = `Experience ${ experienceNumber + 1 }`
+
+}
+
+
 function deleteSection(element) {
 
     const lengthOfContainers = element.parentElement.parentElement.parentElement.children.length-1;     // n-1 because item n is the "add button" and we want all the "containers"
@@ -371,4 +458,11 @@ function deleteSection(element) {
     }
 
     element.parentElement.parentElement.remove();
+}
+
+
+function uploadResume(element){
+
+    element.parentElement.children[1].click();
+
 }

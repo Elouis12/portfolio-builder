@@ -223,3 +223,57 @@ textarea {
 
 }
 
+div[class*="-container"], .drop-down, .add-section{
+
+    font-size: 13px;
+}
+
+
+#resume-container{
+
+    /*display: flex;*/
+    /*justify-content: space-around;*/
+    /*align-items: center;*/
+    position: relative;
+    width: 100%;
+    margin: auto;
+    font-size: 13px;
+
+}
+#resume-container > button[class="resume-button"]{
+
+    background-color: hsl(207, 19%, 9%);
+    padding: 5px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+
+    position: relative;
+    z-index: 2;
+
+}
+#resume-container > button[class="resume-button"]:hover{
+
+    cursor: pointer;
+
+}
+
+input[type=file]{
+
+    font-family: 'Poppins', serif;
+    position: absolute;
+    top: 0;
+    left: 50px;
+    z-index: 1;
+}
+
+
+div[class*="-container"]:not(div[class="drag-container"]){
+
+    /*border-left: solid 2px red;*/
+    border-left: 2px hsl(142, 90%, 61%) solid;
+    /*border-left: 2px #f1f1f1 solid;*/
+    margin-bottom: 10px;
+    /*background-color: red;*/
+}

@@ -33,11 +33,14 @@
               <section class="section-container">
 
                   <div class="section-title" onclick="closeSection(this)">
-                      <span>Navigation Bar</span>
-                      <i class="fa-solid fa-angle-up"></i>
+                      <span>
+                        <i class="fa-solid fa-bars"></i>
+                        Navigation Bar
+                      </span>
+                      <i class="fa-solid fa-angle-down"></i>
                   </div>
 
-                  <div class="info" >
+                  <div class="info hide">
 
                     <div class="title-to-border">
                       <span>Name</span>
@@ -52,25 +55,28 @@
               <section class="section-container">
 
                   <div class="section-title" onclick="closeSection(this)">
-                      <span>About Me</span>
-                      <i class="fa-solid fa-angle-up"></i>
+                      <span>
+                        <i class="fa-solid fa-address-card"></i>
+                          About Me
+                      </span>
+                      <i class="fa-solid fa-angle-down"></i>
                   </div>
 
-                  <div class="info">
+                  <div class="info hide">
                       <!-- SELECTIONS -->
                       <div class="section-icon-selector">
                           <!--dropdown-->
                           <div class="drop-down">
                               <div class="drop-down-select-div" onclick="closeSection(this)">
                                   <span>Icons</span>
-                                  <i class="fa-solid fa-angle-up"></i>
+                                  <i class="fa-solid fa-angle-down"></i>
                               </div>
-                              <div class="drop-down-options-div" class="hide">
+                              <div class="drop-down-options-div hideVisibility">
                                   <i class="fa-solid fa-user options"></i>
-                                  <i class="fa-solid fa-user options"></i>
-                                  <i class="fa-solid fa-user options"></i>
-                                  <i class="fa-solid fa-user options"></i>
-
+                                  <i class="fa-solid fa-person options"></i>
+                                  <i class="fa-solid fa-address-card options"></i>
+<!--                                  <i class="fa-solid fa-user-hair options"></i>-->
+<!--                                  <i class="fa-solid fa-user-hair-long options"></i>             -->
                               </div>
                           </div>
                           <!--allow custom icon selection-->
@@ -93,11 +99,14 @@
               <section class="section-container">
 
                   <div class="section-title" onclick="closeSection(this)">
-                      <span>Experiences</span>
-                      <i class="fa-solid fa-angle-up"></i>
+                      <span>
+                          <i class="fa-solid fa-briefcase"></i>
+                          Experiences
+                      </span>
+                      <i class="fa-solid fa-angle-down"></i>
                   </div>
 
-                  <div id="experiences" class="middle-width">
+                  <div id="experiences" class="middle-width hide">
 
                       <div class="experiences-container">
 
@@ -117,9 +126,9 @@
                                   <div class="drop-down">
                                       <div class="drop-down-select-div" onclick="closeSection(this)">
                                           <span>Icons</span>
-                                          <i class="fa-solid fa-angle-up"></i>
+                                          <i class="fa-solid fa-angle-down"></i>
                                       </div>
-                                      <div class="drop-down-options-div" class="hide">
+                                      <div class="drop-down-options-div hideVisibility">
                                           <i class="fa-solid fa-user options"></i>
                                           <i class="fa-solid fa-user options"></i>
                                           <i class="fa-solid fa-user options"></i>
@@ -171,11 +180,14 @@
               <section class="section-container">
 
                   <div class="section-title" onclick="closeSection(this)">
-                      <span>Skills</span>
-                      <i class="fa-solid fa-angle-up"></i>
+                      <span>
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                          Skills
+                      </span>
+                      <i class="fa-solid fa-angle-down"></i>
                   </div>
 
-                  <div id="category" class="middle-width">
+                  <div id="category" class="middle-width hide">
 
 
                       <!-- CATEGORY -->
@@ -197,9 +209,9 @@
                                   <div class="drop-down">
                                       <div class="drop-down-select-div" onclick="closeSection(this)">
                                           <span>Icons</span>
-                                          <i class="fa-solid fa-angle-up"></i>
+                                          <i class="fa-solid fa-angle-down"></i>
                                       </div>
-                                      <div class="drop-down-options-div" class="hide">
+                                      <div class="drop-down-options-div hideVisibility">
                                           <i class="fa-solid fa-user options"></i>
                                           <i class="fa-solid fa-user options"></i>
                                           <i class="fa-solid fa-user options"></i>
@@ -238,7 +250,7 @@
                                                       <span>Icons</span>
                                                       <i class="fa-solid fa-angle-up"></i>
                                                   </div>
-                                                  <div class="drop-down-options-div" class="hide">
+                                                  <div class="drop-down-options-div hideVisibility">
                                                       <i class="fa-solid fa-user options"></i>
                                                       <i class="fa-solid fa-user options"></i>
                                                       <i class="fa-solid fa-user options"></i>
@@ -304,11 +316,14 @@
 
 
                   <div class="section-title" onclick="closeSection(this)">
-                      <span>Projects</span>
-                      <i class="fa-solid fa-angle-up"></i>
+                      <span>
+                          <i class="fa-brands fa-app-store-ios"></i>
+                           Projects
+                      </span>
+                      <i class="fa-solid fa-angle-down"></i>
                   </div>
 
-                  <div id="project" class="middle-width">
+                  <div id="project" class="middle-width hide">
 
 
                       <!-- CATEGORY -->
@@ -372,6 +387,125 @@
 
               </section>
 
+
+              <!-- RESUME -->
+
+              <section class="section-container">
+
+
+                  <div class="section-title" onclick="closeSection(this)">
+                      <span>
+                          <i class="fa-solid fa-file"></i>
+                          Resume
+                      </span>
+                      <i class="fa-solid fa-angle-down"></i>
+                  </div>
+
+                  <div id="resume" class="middle-width hide">
+
+                          <div id="resume-info">
+
+                              <div id="resume-container" >
+
+                                  <button class="resume-button" value="Upload Resume" onclick="uploadResume(this)">
+                                      Upload Resume
+                                      <i class="fa-solid fa-paperclip"></i>
+                                  </button>
+                                  <input type="file" class="title-to-border-element"/>
+                              </div>
+
+                          </div>
+
+                  </div>
+
+              </section>
+
+
+              <!-- CONTACTS -->
+
+              <section class="section-container">
+
+
+                  <div class="section-title" onclick="closeSection(this)">
+                      <span>
+                      <i class="fa-solid fa-address-card"></i>
+                      Contacts
+                      </span>
+                      <i class="fa-solid fa-angle-down"></i>
+                  </div>
+
+                  <div id="contacts" class="middle-width hide">
+
+                          <div class="contacts-container">
+
+                              <div class="section-title" onclick="closeSection(this)">
+                                  <span>Contact 1</span>
+                                  <i class="fa-solid fa-angle-up"></i>
+                              </div>
+
+                              <div id="contacts-info">
+
+
+                                  <!-- SELECTIONS -->
+                                  <div class="section-icon-selector">
+                                      <!--dropdown-->
+                                      <div class="drop-down">
+                                          <div class="drop-down-select-div" onclick="closeSection(this)">
+                                              <span>Icons</span>
+                                              <i class="fa-solid fa-angle-up"></i>
+                                          </div>
+                                          <div class="drop-down-options-div hideVisibility">
+                                              <i class="fa-solid fa-user options"></i>
+                                              <i class="fa-solid fa-user options"></i>
+                                              <i class="fa-solid fa-user options"></i>
+                                              <i class="fa-solid fa-user options"></i>
+
+                                          </div>
+                                      </div>
+                                      <!--allow custom icon selection-->
+
+                                  </div>
+
+                                  <!-- SELECTIONS -->
+                                  <div class="section-icon-selector">
+                                      <!--dropdown-->
+                                      <div class="drop-down">
+                                          <div class="drop-down-select-div" onclick="closeSection(this)">
+                                              <span>Contact Type</span>
+                                              <i class="fa-solid fa-angle-down"></i>
+                                          </div>
+                                          <div class="drop-down-options-div hideVisibility">
+                                              <div>Email</div>
+                                              <div>Url</div>
+                                              <div>Person</div>
+                                          </div>
+                                      </div>
+                                      <!--allow custom icon selection-->
+
+                                  </div>
+
+                                  <div class="title-to-border experience-input">
+                                      <span>Contact Title</span>
+                                      <input type="url" class="title-to-border-element"/>
+                                  </div>
+
+                                  <!-- DELETE CATEGORY -->
+                                  <div class="delete-section middle-width" onclick="deleteSection(this)">
+                                      <i class="fa-solid fa-circle-minus"></i>
+                                      <span>Delete Contact</span>
+                                  </div>
+
+                              </div>
+                          </div>
+
+                      <div class="add-section" onclick="newContact(this)">
+                          <i class="fa-solid fa-circle-plus"></i>
+                          <span>Add Contact</span>
+                      </div>
+
+                  </div>
+
+              </section>
 
           </div>
 

@@ -36,14 +36,26 @@
 }
 
 .options{
-    cursor: pointer;
+    /*cursor: pointer;*/
     width: 100%;
     text-align: center;
 }
-.options:hover{
+.options:hover,
+.drop-down-options-div > div:hover,
+i[class*="angle"]:hover{
 
     background: #f2f2f2;
+    cursor: pointer;
 
+}
+.drop-down-options-div > div{
+
+    text-align: center;
+}
+
+.hideVisibility{
+
+    visibility: hidden;
 }
 
 .hide{
@@ -61,8 +73,3 @@
     width: 100%;
 }
 
-
-i[class*="angle"]{
-
-    cursor: pointer;
-}
