@@ -44,7 +44,7 @@ function validateFields() {
             )
 
                 ||
-            input.value === ""
+            ( input.value === "" && input.getAttribute("id") !== "nav-name" )
 
         ) {
 

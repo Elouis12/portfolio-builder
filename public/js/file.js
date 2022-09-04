@@ -59,16 +59,16 @@ function newExperience(){
                                 </div>
                                 <div class="title-to-border experience-input">
                                     <span>Summary</span>
-                                    <textarea class="title-to-border-element"></textarea>
+                                    <textarea class="title-to-border-element" onkeyup="iframe()"></textarea>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                 </div>
-<!--                                <div class="title-to-border experience-input">
+                                <div class="title-to-border experience-input">
                                   
                                         <span>Date</span>
                                         <input id="flatpickr">
                                         <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                         
-                                </div>-->
+                                </div>
 
                                 <div class="delete-section middle-width" onclick="deleteSection(this); iframe()">
                                     <i class="fa-solid fa-circle-minus"></i>
@@ -453,7 +453,7 @@ function newProject(element){
                                 </div>
                                 <div class="title-to-border experience-input">
                                     <span>Project Summary</span>
-                                    <textarea class="title-to-border-element"></textarea>
+                                    <textarea class="title-to-border-element" onkeyup="iframe()"></textarea>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                 </div>
 
@@ -634,6 +634,8 @@ async function deleteSection(element) {
     const lengthOfContainers = element.parentElement.parentElement.parentElement.children.length-1;     // n-1 because item n is the "add button" and we want all the "containers"
     const numberAt = parseInt( element.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] );
 
+// CHECKS TO REMOVE BORDER FROM EMPTY SECTION AFTER USER REMOVES LAST ONE
+    removeRedBorderFromUnfilledSection();
 
 // UPDATE PROJECT IMAGES ARRAY
 
@@ -699,4 +701,21 @@ function iframe(){
 
     document.getElementById("create-button").click();
     document.getElementById('resume-embed').src += '';
+}
+
+function removeRedBorderFromUnfilledSection(){
+
+    let addButtons = document.getElementsByClassName("add-section");
+
+    for( let x = 0; x < addButtons.length; x+=1 ){
+
+        let sectionContainers = addButtons[x].closest(".section-container");
+
+        // 2 because of the current container we're going to delete and the add button otherwise it would be 1
+        if( sectionContainers.children[1].children.length === 2 && sectionContainers.children[0].classList.contains('red-border')  ){ // has section title AND add button only then we didn't add to the section
+
+            sectionContainers.children[0].classList.remove('red-border')
+        }
+    }
+
 }

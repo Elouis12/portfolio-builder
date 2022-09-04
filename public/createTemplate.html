@@ -21,15 +21,12 @@
     <script src="js/draganddrop.js"></script>
     <script src="js/validations.js"></script>
 
-    <!-- DATE PICKER -->
-<!--
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
--->
+    <!-- DATE PICKER-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 
 </head>
 <body>
@@ -64,7 +61,7 @@
 
                         <div class="title-to-border">
                             <span>Name</span>
-                            <input class="title-to-border-element" id="nav-name" type="text">
+                            <input class="title-to-border-element" id="nav-name" type="text" onkeyup="iframe()">
                             <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                         </div>
 
@@ -114,7 +111,7 @@
 
                         <div class="title-to-border">
                             <span>Summary</span>
-                            <textarea id="about-me-summary" class="title-to-border-element"></textarea>
+                            <textarea id="about-me-summary" class="title-to-border-element" onkeyup="iframe()"></textarea>
                             <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                         </div>
 

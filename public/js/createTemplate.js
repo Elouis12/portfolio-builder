@@ -190,13 +190,13 @@ class CreateTemplate{
             // if user gave an image
             if( JSON.parse(localStorage.getItem("projectImages"))[x] ){
 
-            projectImage[ projectImage.length - 1 ].setAttribute("style",
+                projectImage[ projectImage.length - 1 ].setAttribute("style",
 
-                `
+                    `
                             background-image: url('./images/${JSON.parse(localStorage.getItem("projectImages"))[x] }');
                             background-size: cover;"
                     `
-            )
+                )
             }
 
 

@@ -19,28 +19,30 @@ export class Template{
 
             // arrow function allows for scoping / level access of private variables
 
-            if( /*validateFields()*/ true ){ // if all field are entered then get the fields
+            if( validateFields() /*true*/ ){ // if all field are entered then get the fields
 
                 this.getFields();
-                // make request to download zip file
+
+                // 1. make request to download zip file
+                await downloadPortfolio();
+
+                // 2. clear local storage
+                // localStorage.removeItem("resume")
+                // localStorage.removeItem("contacts")
+                // localStorage.removeItem("projects")
+                // localStorage.removeItem("about")
+                // localStorage.removeItem("navigationBar")
+                // localStorage.removeItem("experiences")
+
+                // 3. send request to server to delete all files from /images and /media
+
 
             }else{
 
+                // just update the iframe but don't send the zip folder
+                this.getFields();
+
             }
-
-            // 1. reload iframe so HTML can get filled in one last time
-
-            // 2. clear local storage
-            // localStorage.removeItem("resume")
-            // localStorage.removeItem("contacts")
-            // localStorage.removeItem("projects")
-            // localStorage.removeItem("about")
-            // localStorage.removeItem("navigationBar")
-            // localStorage.removeItem("experiences")
-
-
-
-            // 3. send request to server to delete all files from /images and /media
 
         });
 
@@ -288,7 +290,6 @@ export class Template{
         // add it to local storage so later we can check which sections were added
         localStorage.setItem( "sections", JSON.stringify(sectionsNotAdded) )
 
-        console.log(JSON.parse(localStorage.getItem("sections")))
     }
 
 

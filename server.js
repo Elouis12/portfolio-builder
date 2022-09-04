@@ -91,6 +91,51 @@ app.delete("/remove-image/:image", (req, resp)=>{
 
 
 
+let AdmZip = require('adm-zip');
+
+app.post('/template-zip-folder', function(req, resp) {
+    let zip = new AdmZip();
+    // add local file
+    zip.addLocalFolder("./public/portfolio", 'portfolio');
+    // get everything as a buffer
+    // var zipFileContents = zip.toBuffer();
+
+    // zip.writeZip('portfolio.zip');
+    fs.writeFileSync('output.zip', zip.toBuffer());
+/*    const fileName = 'uploads.zip';
+    const fileType = 'application/zip';
+
+    resp.writeHead(200, {
+        'Content-Disposition': `attachment; filename="${fileName}"`,
+        'Content-Type': fileType,
+    })*/
+
+    // return resp.end(zipFileContents);
+
+
+    // zip.writeZip('portfolio.zip');
+
+/*    resp.set('Content-Type','application/octet-stream');
+    resp.set('Content-Disposition',`attachment; filename=portfolio.zip`);
+    resp.set('Content-Length',zip.toBuffer().length);
+
+    resp.download('./portfolio.zip')*/
+    // resp.send(zip.toBuffer());
+
+    // resp.status(200).send( zip );
+    // resp.status(200).send( fs );
+
+
+    // create read steam for the pdf
+    const rs = fs.createReadStream("./portfolio.zip");
+
+    // set response header: Content-Disposition
+    resp.setHeader("Content-Disposition", "attachment; portfolio.zip");
+
+    // pipe the read stream to the Response object
+    rs.pipe(resp);
+
+});
 
 
 

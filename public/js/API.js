@@ -81,3 +81,26 @@ async function removeImage(imageName){
     );
 
 }
+
+async function downloadPortfolio(){
+
+
+    await fetch(
+
+        `http://localhost:3000/template-zip-folder`,
+        {
+
+            method: 'POST',
+        }
+    ).then(
+
+        resp => resp.json()
+
+    ).then(
+
+        data => { console.log(data); }
+    ).catch(
+        (e)=> e
+    );
+
+}
