@@ -10,8 +10,8 @@ function closeSection(element){
         element.insertAdjacentHTML("beforeend", `<i class="fa-solid fa-angle-down"></i>`)
 
         if(
-            element.children[0].innerText === "Icons" ||
-            element.children[0].innerText === "Contact Type"
+            element.getAttribute("class") === "drop-down-select-div"
+
 
         ){
 
@@ -29,8 +29,7 @@ function closeSection(element){
 
         // CLICKED ON ICON LIST - this shows the icon box
         if(
-            element.children[0].innerText === "Icons" ||
-            element.children[0].innerText === "Contact Type"
+            element.getAttribute("class") === "drop-down-select-div"
 
         ){
 
@@ -44,6 +43,23 @@ function closeSection(element){
 
 
     }
+
+
+}
+
+
+function iconSelect(element){
+
+
+    let icon = element.children[0];
+
+        element.parentElement.parentElement.children[0].children[0].children[0].setAttribute(
+            "class",
+            `${
+                icon.getAttribute("class").slice(0, icon.getAttribute("class").length )
+            }`
+        )
+
 
 
 }

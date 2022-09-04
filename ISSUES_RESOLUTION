@@ -1,0 +1,11 @@
+
+i was adding create() function to
+
+<button onclick="create()"> </button>
+
+however, the js file CreateTemplate is a module and is only module scoped
+
+which means it thinks that create() is a "global" function when it was only module scoped
+
+so it's trying to access a functions it thinks is global but is only scoped from the module
+

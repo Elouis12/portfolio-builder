@@ -6,7 +6,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-* {box-sizing:border-box;}
+* {box-sizing:border-box;
+font-family: Poppins}
 
 html {
     height: 100%;
@@ -17,7 +18,8 @@ body{
 
     font-family: 'Poppins', serif;
     /*margin-top: 0px;*/
-    height: 100%;}
+    height: 100%;
+}
 
 
 #template-layout-container{
@@ -26,20 +28,33 @@ body{
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
-    width: 80%;
+    /*width: 80%;*/
+    width: 100%;
     min-height: 100%;
     /*margin-top: 0;*/
 
 
+
+}
+
+#layout-container{
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: relative;
 }
 
 
-/*#portfolio-info{
+#portfolio-info{
 
-    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 
-}*/
+}
 
 
 #title-h2{
@@ -94,31 +109,77 @@ body{
     margin: auto;
     /*background: #00d4ff;*/
     width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
+.title-to-border > i {
+
+    margin-left: 10px;
+    color: #ff4c4c;
+}
+
+.red-border{
+
+    border: 3px solid #ff4c4c;
+    width: max-content;
+
+}
 .title-to-border > span{
 
     position: absolute;
     top: -9px;
     z-index: 1;
-    background: white;
+    /*background: white;*/
     left: 10px;
     padding: 0 5px;
+    /*background-color: transparent;*/
+    background: linear-gradient(to bottom, transparent 50%, #f2f2f2 0%);
+
+    color: #aaa;
 
 }
+
+.hideVisibility{
+
+    visibility: hidden;
+}
+
 .title-to-border > input{
 
      width: 100%;
      height: 30px;
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #f2f2f2;
+    padding: 20px;
+    border-radius: 3px;
+    /*color: #aaa;*/
 }
 .title-to-border > textarea{
 
      width: 100%;
      height: 100px;
-    /*margin-inside: 30px;*/
-}
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #f2f2f2;
+    border-radius: 3px;
+    padding: 15px;
+    resize: none;
+    font-size: 12px;
 
+}
+.title-to-border > textarea:focus, .title-to-border > input:focus{
+    outline: none;
+}
 .section-container :not(:first-child){ /* everything but the h4 element */
 
     /*display: flex;*/
@@ -199,18 +260,13 @@ body{
 
 .experience, .title-to-border > span{
 
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .drop-down-options-div{
 
     height: 70px;
     width: 100%;
-}
-textarea {
-
-    padding: 15px;
-    resize: none;
 }
 
 .title-to-border-element{
@@ -223,7 +279,7 @@ textarea {
 
 }
 
-div[class*="-container"], .drop-down, .add-section{
+div[class*="-container"], .add-section{
 
     font-size: 13px;
 }
@@ -276,4 +332,80 @@ div[class*="-container"]:not(div[class="drag-container"]){
     /*border-left: 2px #f1f1f1 solid;*/
     margin-bottom: 10px;
     /*background-color: red;*/
+}
+
+
+
+#create-button{
+
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 3rem;
+    font-weight: 500;
+    cursor: pointer;
+    background:  rgb(0, 114, 255);
+    color: #fff;
+    width: 50%;
+    font-family: Poppins;
+    /*border: none;*/
+    margin-bottom: 10%;
+;
+
+}
+
+#create-button:hover{
+
+    padding: 0.5rem 1rem;
+    /*margin-top: 2rem;*/
+    /*border: none;*/
+    border-radius: 3rem;
+    font-weight: 500;
+    cursor: pointer;
+    background: #fff;
+    color: rgb(0, 114, 255);
+    border: 1px solid rgb(0, 114, 255);
+}
+
+
+#create-button:active{
+
+    color: white;
+    background: rgb(0, 114, 255);
+    transition-delay: 1000ms;
+    transition: all ease-in-out;
+
+}
+
+embed{
+
+    /*position: fixed;*/
+}
+
+#icon-display{
+
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /*background-color: #ff4c4c;*/
+}
+#icon-display > i{
+
+    display: flex;
+    /*background-color: #ff4c4c;*/
+}
+
+.drag-container{
+
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+
+    margin: auto auto 30px;
+}
+
+input[id="flatpickr"]{
+
+    text-align: center;
 }

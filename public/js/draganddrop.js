@@ -57,11 +57,15 @@ function showFile(){
     fileReader.onload = ()=>{
 
       hideElements();
+
       let fileURL = fileReader.result; //passing user file source in fileURL variable
       let imgTag = `<img class="img" src="${fileURL}" alt="">`; //creating an img tag and passing user selected file source inside src attribute
-      // dropArea.innerHTML = imgTag; //adding that created img tag inside dropArea container
+
+      let deleteButton = `<button class="delete-button" onclick="deleteFile(this)">delete</button>`
+
       dropArea.insertAdjacentHTML("beforeend", imgTag); //adding that created img tag inside dropArea container
-      dropArea.insertAdjacentHTML("beforeend", '<button class="delete-button" onclick="deleteFile()">delete</button>')
+      dropArea.insertAdjacentHTML("beforeend", deleteButton)
+
     }
     fileReader.readAsDataURL(file);
 
@@ -75,10 +79,22 @@ function showFile(){
 
 function hideElements(){
 
-  let length = dropArea.children.length;
 
-  // hide everything
-  for( let x = 0; x < length; x+=1 ){
+  // on the first function call, image and button won't be there
+  // and so we don't to accidentally delete another element
+  if( dropArea.children[ dropArea.children.length - 1 ].getAttribute("class") === "delete-button" ){
+
+    // remove image
+    dropArea.children[ dropArea.children.length - 1 ].remove();
+
+    // remove button
+    dropArea.children[ dropArea.children.length - 1 ].remove();
+
+  }
+
+
+  // hide the rest of the elements
+  for( let x = 0; x < dropArea.children.length; x+=1 ) {
 
     dropArea.children[x].classList.add("hide");
 
@@ -86,20 +102,46 @@ function hideElements(){
 
 }
 
-function deleteFile(){
+async function deleteFile(element){
 
-  let length = dropArea.children.length;
 
-  // show everything but the last 2
-  for( let x = 0; x < length-2; x+=1 ){
+  // UPDATE PROJECT IMAGE
+
+  let projectContainer = element.closest(".project-container");
+
+    // find the project number
+    let index =  parseInt( projectContainer.children[0].children[0].innerHTML.split(" ")[1] ) - 1;
+
+    await removeImage(projectImagesArray[index]);
+
+    // 'remove it'
+    projectImagesArray[index] = null;
+
+    // filter out the null images and return new array
+    projectImagesArray = projectImagesArray.filter( ( images )=>{
+
+      return images != null
+    } )
+
+    // save it to local storage
+    localStorage.setItem("projectImages", JSON.stringify(projectImagesArray) );
+
+
+
+  // remove image
+  dropArea.children[ dropArea.children.length - 1 ].remove();
+
+  // remove button
+  dropArea.children[ dropArea.children.length - 1 ].remove();
+
+
+
+  // un hide the rest of the elements
+  for( let x = 0; x < dropArea.children.length; x+=1 ) {
 
     dropArea.children[x].classList.remove("hide");
 
   }
-
-  // remove the last 2 ( image and delete button )
-  // dropArea.lastElementChild.remove();
-  // dropArea.lastElementChild.remove();
 
   dropArea.classList.remove("active");
 
