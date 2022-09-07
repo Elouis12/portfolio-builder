@@ -85,20 +85,66 @@ async function removeImage(imageName){
 async function downloadPortfolio(){
 
 
-    await fetch(
+/*    await fetch(
 
         `http://localhost:3000/template-zip-folder`,
         {
 
-            method: 'POST',
+            method: 'GET',
         }
     ).then(
 
-        resp => resp.json()
+        (resp) => {
+
+            return resp.json();
+        }
 
     ).then(
 
-        data => { console.log(data); }
+        (data) => {
+            console.log(data);
+        }
+    ).catch(
+        (e)=> e
+    );*/
+
+    window.open("http://localhost:3000/template-zip-folder")
+
+
+}
+
+
+async function htmlContent(content){
+
+    // alert("getting content")
+        await fetch(
+
+        `http://localhost:3000/html-content/`,
+        {
+            headers: { // this made us not get the file
+                "Content-Type": "application/json"
+            },
+
+            method: 'POST',
+            body: JSON.stringify({html: content})
+        }
+    ).then(
+
+        (resp) => {
+
+            return resp.json();
+        }
+
+    ).then(
+
+        (data) => {
+
+            if( data.success === "yes" ){
+
+                // alert("finished getting content")
+                // hide the overlay again
+            }
+        }
     ).catch(
         (e)=> e
     );

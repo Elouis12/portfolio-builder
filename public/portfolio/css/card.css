@@ -9,20 +9,23 @@
     box-sizing: border-box;
 }
 
-.card-container{
+.project-section-container{
 
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    flex-basis: 25%;
+    align-items: center;
+
+    background-color: hsl(207, 19%, 7%);
+
+    border-radius: 10px;
+
+    padding: 20px;
 
 }
 
-.card-container > *{
-    margin-bottom: 30px;
-}
 
-.card{
+.project-section-container-card{
 
     color: white;
     background-image: url("https://images.unsplash.com/photo-1515693516428-3c89b92d3220?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFpbnklMjBuaWdodCUyMHdpbmRvd3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400");
@@ -37,19 +40,19 @@
     line-height: 1.6;
 
     transition: transform 500ms ease;
+    margin-bottom: 10px;
+
 
 }
 
-.card:hover{
+.project-section-container-card:hover{
 
     transform: scale(1.05);
 }
-.card-content{
+.project-section-container-card-content{
 
     --padding: 1.5rem;
     padding: var( --padding );
-    /*background: hsl(0, 0%, 0%);*/
-    /*background: rgba(0,0,0,0.5);*/
     background: linear-gradient(
 
             rgba(0,0,0,0),
@@ -63,7 +66,7 @@
 
 
 
-.card:hover .card-content{
+.project-section-container-card:hover .project-section-container-card-content{
 
     transform: translateY(0);
     transition: 500ms; /*brings it up slowly*/
@@ -71,13 +74,13 @@
 }
 
 /* can comment the bottom 2*/
-.card-content > *:not(.card-title){
+.project-section-container-card-content > *:not(.project-section-container-card-content-title){
 
     opacity: 0;
     transition: opacity 500ms linear;
 }
 
-.card:hover .card-content > *:not(.card-title){
+.project-section-container-card:hover .project-section-container-card-content > *:not(.project-section-container-card-content-title){
 
     opacity: 1;
     transition-delay: 500ms; /*delays the text*/
@@ -86,7 +89,7 @@
 
 
 
-.card-title{
+.project-section-container-card-content-title{
 
     position: relative; /*the parent*/
     /*width: max-content; !*so it fits the text*!*/
@@ -101,7 +104,7 @@
 
 }
 
-.card-title::after{
+.project-section-container-card-content-title::after{
 
     content: "";
     position: absolute; /*links to its parent?*/
@@ -119,20 +122,16 @@
 
 }
 
-.card:hover .card-title::after{ /*move the line under the card title*/
+.project-section-container-card:hover .project-section-container-card-content-title::after{ /*move the line under the card title*/
 
     transform: scaleX(1);
 }
 
-.card-body{
+.project-section-container-card-content-body{
 
     color: rgba(255, 255, 255, 0.85);
     height: 100px;
-    /*white-space: nowrap;*/
     overflow: scroll;
-    /*text-overflow: ellipsis;*/
-    /*border: solid red;*/
-    /*background-color: red;*/
 
 }
 
@@ -167,7 +166,7 @@
 #waldo-link-div > a {
 
     text-decoration: none;
-    color: lightblue/*#8395ca*/;
+    color: lightblue;
 }
 
 #waldo-link-div > a:hover {

@@ -9,6 +9,8 @@ const path = require("path");
 
 const fs = require('fs');
 
+const fsExtra = require('fs-extra');
+
 const multer = require("multer");
 
 const app = express();
@@ -16,6 +18,8 @@ const app = express();
 app.use( express.static( "./public" ))
 
 app.use( cors() );
+
+app.use(express.json())
 
 // where we store, name of file, duplicate files, etc pretty much handle the logics
 const storeResume = multer.diskStorage(
@@ -93,47 +97,97 @@ app.delete("/remove-image/:image", (req, resp)=>{
 
 let AdmZip = require('adm-zip');
 
-app.post('/template-zip-folder', function(req, resp) {
+app.get('/template-zip-folder', async function(req, resp) {
+
     let zip = new AdmZip();
     // add local file
     zip.addLocalFolder("./public/portfolio", 'portfolio');
-    // get everything as a buffer
-    // var zipFileContents = zip.toBuffer();
 
-    // zip.writeZip('portfolio.zip');
-    fs.writeFileSync('output.zip', zip.toBuffer());
-/*    const fileName = 'uploads.zip';
-    const fileType = 'application/zip';
-
-    resp.writeHead(200, {
-        'Content-Disposition': `attachment; filename="${fileName}"`,
-        'Content-Type': fileType,
-    })*/
-
-    // return resp.end(zipFileContents);
+    zip.writeZip('portfolio.zip');
 
 
-    // zip.writeZip('portfolio.zip');
-
-/*    resp.set('Content-Type','application/octet-stream');
-    resp.set('Content-Disposition',`attachment; filename=portfolio.zip`);
-    resp.set('Content-Length',zip.toBuffer().length);
-
-    resp.download('./portfolio.zip')*/
-    // resp.send(zip.toBuffer());
-
-    // resp.status(200).send( zip );
-    // resp.status(200).send( fs );
+    resp.setHeader('Content-disposition', 'attachment; filename=portfolio.zip');
+    resp.setHeader('Content-type', 'application/zip');
 
 
-    // create read steam for the pdf
-    const rs = fs.createReadStream("./portfolio.zip");
+    console.log('downloading file')
+    // resp.download('./design.txt')
+    resp.download('./portfolio.zip',  (err) => {
+        if(err) {
+            console.log(err);
+        }
+    });
 
-    // set response header: Content-Disposition
-    resp.setHeader("Content-Disposition", "attachment; portfolio.zip");
+    // remove the zip file
+    // let filePath = `./portfolio.zip`;
+    // fs.unlinkSync(filePath);
 
-    // pipe the read stream to the Response object
-    rs.pipe(resp);
+
+    // reset the html file
+    await fs.readFile('./public/html/templateCopy.html','utf-8', async (err, result)=>{
+
+        if(err){
+            console.log(err);
+            return;
+        }
+
+        const textFile = result; // result of the file
+
+
+        await fs.writeFile('./public/portfolio/template.html', textFile, (err, result)=>{
+
+            console.log("resetting html file")
+            if(err){
+                console.log(err);
+            }
+            // console.log(result);
+        });
+
+    })
+
+    // remove all files from /images
+    fs.readdir('./public/portfolio/images', (err, files) => {
+        if (err) throw err;
+
+        for (const file of files) {
+
+            if( file !== "default.jpeg" ){ // remove all except the default image
+                fs.unlink(path.join('./public/portfolio/images', file), err => {
+                    if (err) throw err;
+                });
+            }
+
+        }
+    });
+
+    // remove all files from /media
+    await fsExtra.emptyDirSync('./public/portfolio/media');
+
+
+
+
+});
+
+
+app.post('/html-content/', (req, resp) => {
+
+
+    // save content to html file
+    fs.writeFile('./public/portfolio/template.html', req.body.html, (err, result)=>{
+
+        console.log("writing to html file")
+            if(err){
+
+                resp.json({success:"no"})
+
+                console.log(err);
+
+            }
+            // console.log(result);
+    });
+
+    resp.json({success:"yes"})
+
 
 });
 
@@ -142,7 +196,8 @@ app.post('/template-zip-folder', function(req, resp) {
 
 
 
-app.use("/create-template", (req, resp)=>{
+
+app.get("/create-template", (req, resp)=>{
 
     resp.sendFile( path.resolve( __dirname, './public/createTemplate.html') );
 

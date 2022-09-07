@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+  <meta charset="UTF-8">
+  <title>Ernesto's Portfolio</title>
+  <link id="indexLink" rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="css/card.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+  <script type="text/javascript" src="./js/index.js"></script>
+
+
+</head>
+
+<body id="home" onload="setTheme()">
+
+
+<!-- NAVBAR -->
+<nav id="navbar" class="navbar">
+
+  <div class="container">
+
+    <div class="logo-container">
+
+      <i id="nightTheme" class="fa-solid fa-cloud-moon" onclick="darkMode()"></i>
+      <div id="logo" class="logo"></div>
+
+    </div>
+
+    <ul id="navigation">
+
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li class="experiences"><a href="#experiences">Experience</a></li>
+      <li class="skills"><a href="#skills">Skills</a></li>
+      <li class="projects"><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li class="contacts"><a href="#contacts">Contact</a></li>
+    </ul>
+
+    <div id="dropdown" class="hide">
+
+      <i class="fa-solid fa-bars"></i>
+
+      <div id="dropdown-content">
+        <div>
+          <a href="#home">Home</a>
+        </div>
+        <div>
+          <a href="#about">About</a>
+        </div>
+        <div class="experiences">
+          <a href="#experiences">Experience</a>
+        </div>
+        <div class="skills">
+          <a href="#skills">Skills</a>
+        </div>
+        <div class="projects">
+          <a href="#projects">Projects</a>
+        </div>
+        <div>
+          <a href="#resume">Resume</a>
+        </div>
+        <div class="contacts">
+          <a href="#contacts">Contact</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+<section id="navbar-wrapper"></section>
+
+
+<!-- ABOUT -->
+<section id="about" class="about-section">
+
+  <h1 class="section-title">
+    ABOUT
+  </h1>
+
+  <div class="about-section-container">
+
+    <i class="fa-solid fa-user"></i>
+
+    <div id="about-body" class="about-section-container-body">
+
+                <span id="about-summary">
+
+                </span>
+
+      <span id="contact-me">
+                    <span>
+                        Feel free to contact me :)
+                    </span>
+                    <a id="say-hello" href="#contacts">say hello</a>
+                </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- EXPERIENCE -->
+<section id="experiences" class="experience">
+
+  <h1 class="section-title">
+    EXPERIENCE
+  </h1>
+
+  <div class="experience-section-container">
+
+  </div>
+
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills" class="skills">
+
+  <h1 class="section-title">
+    SKILLS
+  </h1>
+  <div class="skills-section-container" id="skills-container">
+
+  </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects">
+
+  <h1 class="section-title">
+    PROJECTS
+  </h1>
+
+  <div id="project-section-container" class="project-section-container">
+
+
+  </div>
+
+</section>
+
+
+<!-- RESUME -->
+
+<section id="resume">
+
+  <h1 class="section-title">
+    RESUME
+  </h1>
+  <div class="resume-section-container">
+
+    <i class="fa-regular fa-file themeIcon"></i>
+    <div class="section-info">
+
+      <embed id="resume-embed" src="./media/resume.pdf" width="575" height="500">
+
+    </div>
+
+    <div class="resume-section-container-actions">
+      <i title="expand resume" class="fa-regular fa-eye" onclick="showOverlay()"></i>
+      <a title="download my resume" href="./media/resume.pdf" download>
+        <i class="fa-regular fa-circle-down themeIcon"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contacts">
+
+  <h1 class="section-title">
+    CONTACT
+  </h1>
+  <div class="contact-section-container">
+
+    <i class="fa-regular fa-id-card themeIcon"></i>
+
+    <div id="contact-section-container-body" class="contact-section-container-body">
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- VIEW LARGER -->
+<section id="overlayElement" class="resume-view-container hide" onclick="closeOverlay()">
+  <embed src="media/resume.pdf#zoom=Fit" height="700px" width="75%"/>
+  <i class="fa-solid fa-circle-xmark" onclick="closeOverlay()"></i>
+</section>
+
+
+<footer class=" footer">
+  <div class="container">
+
+  </div>
+</footer>
+
+<script type="text/javascript" src="../js/API.js"></script>
+<script type="text/javascript" src="../js/CreateTemplate.js"></script>
+<script type="text/javascript" src="../js/scrollPosition.js"></script>
+
+</body>
+</html>

@@ -1,8 +1,17 @@
+import {Template} from "./Template.js";
+
+let template = new Template();
+
+/*
+
+    1. find out why deleteButton in category has [ length - 1 ] and the others don't
+*/
+
 function newExperience(){
 
     const experienceNumber = document.getElementsByClassName("experiences-container").length;
 
-    const experienceDiv = document.createElement("DIV");
+    const experienceContainer = document.createElement("DIV");
 
     const experience = `
     
@@ -44,33 +53,33 @@ function newExperience(){
 
                                 <div class="title-to-border experience-input">
                                     <span>Job Title</span>
-                                    <input type="text" class="title-to-border-element" onkeyup="iframe()"/>
+                                    <input type="text" class="title-to-border-element"/>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                 </div>
                                 <div class="title-to-border experience-input">
                                     <span>Company Name</span>
-                                    <input type="text" class="title-to-border-element" onkeyup="iframe()"/>
+                                    <input type="text" class="title-to-border-element"/>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                 </div>
                                 <div class="title-to-border experience-input">
                                     <span>Location</span>
-                                    <input type="text" class="title-to-border-element" onkeyup="iframe()"/>
+                                    <input type="text" class="title-to-border-element"/>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                 </div>
                                 <div class="title-to-border experience-input">
                                     <span>Summary</span>
-                                    <textarea class="title-to-border-element" onkeyup="iframe()"></textarea>
+                                    <textarea class="title-to-border-element"></textarea>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                 </div>
                                 <div class="title-to-border experience-input">
                                   
                                         <span>Date</span>
-                                        <input id="flatpickr">
+                                        <input id="flatpickr" value="">
                                         <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                         
                                 </div>
 
-                                <div class="delete-section middle-width" onclick="deleteSection(this); iframe()">
+                                <div class="delete-section middle-width">
                                     <i class="fa-solid fa-circle-minus"></i>
                                     <span>Delete Experience</span>
                                 </div>
@@ -78,14 +87,14 @@ function newExperience(){
                             </div>
     `
 
-    experienceDiv.innerHTML = experience;
+    experienceContainer.innerHTML = experience;
 
-    experienceDiv.setAttribute("class", "experiences-container")
+    experienceContainer.setAttribute("class", "experiences-container")
 
     let experienceSection = document.getElementById("experiences");
 
     // we created an HTML element because INSERT BEFORE takes an element
-    experienceSection.insertBefore(experienceDiv, experienceSection.lastElementChild);
+    experienceSection.insertBefore(experienceContainer, experienceSection.lastElementChild);
 
 
     // document.getElementById(`Experience ${ experienceNumber + 1 }`).click();
@@ -95,6 +104,17 @@ function newExperience(){
     // let example = flatpickr('#flatpickr')
 
     $('input[id="flatpickr"]').daterangepicker();
+
+    addEventListenerToElements();
+
+    // add "delete" event to delete button
+
+    let deleteButton = experienceContainer.children[1].lastElementChild;
+
+    deleteButton.addEventListener("click", deleteSection)
+    deleteButton.addEventListener("click", refreshIframe)
+
+
 }
 
 function newCategory(){
@@ -144,13 +164,13 @@ function newCategory(){
 
                                 <div class="title-to-border experience-input">
                                     <span>Category Name</span>
-                                    <input type="text" class="title-to-border-element" onkeyup="iframe()"/>
+                                    <input type="text" class="title-to-border-element"/>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                 </div>
 
 
                                 <!-- INDIVIDUAL SKILLS -->
-                                <div id="skill" class="middle-width">
+                                <div class="middle-width skill">
 
                                     <div class="skill-container">
 
@@ -160,7 +180,7 @@ function newCategory(){
                                             <i class="fa-solid fa-angle-down"></i>
                                         </div>
 
-                                        <div id="skill-info">
+                                        <div class="skill-info">
 
                                             <!-- SELECTIONS -->
                                             <div class="section-icon-selector">
@@ -231,12 +251,12 @@ function newCategory(){
 
                                             <div class="title-to-border experience-input">
                                                 <span>Skill Name</span>
-                                                <input type="text" class="title-to-border-element" onkeyup="iframe()"/>
+                                                <input type="text" class="title-to-border-element"/>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                             </div>
 
 
-                                            <div class="delete-section middle-width" onclick="deleteSection(this); iframe()">
+                                            <div class="delete-section middle-width">
                                                 <i class="fa-solid fa-circle-minus"></i>
                                                 <span>Delete Skill</span>
                                             </div>
@@ -247,7 +267,7 @@ function newCategory(){
 
 
                                     <!-- ADD SKILL -->
-                                    <div class="add-section" onclick="newSkill(this); iframe()">
+                                    <div class="add-section">
                                         <i class="fa-solid fa-circle-plus"></i>
                                         <span>Add Skill</span>
                                     </div>
@@ -256,7 +276,7 @@ function newCategory(){
 
 
                                 <!-- DELETE CATEGORY -->
-                                <div class="delete-section middle-width" onclick="deleteSection(this); iframe()">
+                                <div class="delete-section middle-width">
                                     <i class="fa-solid fa-circle-minus"></i>
                                     <span>Delete Category</span>
                                 </div>
@@ -280,12 +300,39 @@ function newCategory(){
 
     // window.location.href = `Experience ${ experienceNumber + 1 }`
 
+    addEventListenerToElements();
+
+    // add "add"event add button
+    let categoryContainer = document.getElementsByClassName("category-container");
+
+    let skillAddButton = categoryContainer[ categoryContainer.length - 1 ].children[1].children[2].lastElementChild;
+
+    skillAddButton.addEventListener("click", newSkill)
+
+
+    // add "delete" event to delete button
+
+    let skillDeleteButton = categoryContainer[ categoryContainer.length - 1 ].children[1].children[2].children[0].children[1].lastElementChild;
+
+    skillDeleteButton.addEventListener("click", deleteSection)
+    skillDeleteButton.addEventListener("click", refreshIframe)
+
+
+
+    // add "delete" event to delete button
+
+    let deleteButton = categoryContainer[ categoryContainer.length - 1 ].children[1].lastElementChild;
+
+    deleteButton.addEventListener("click", deleteSection)
+    deleteButton.addEventListener("click", refreshIframe)
+
+
 }
 
 
 function newSkill(element){
 
-    const skillNumber = element.parentElement.children.length-1; // so we don't get the 'add skill' element that's at the end
+    const skillNumber = element.currentTarget.parentElement.children.length-1; // so we don't get the 'add skill' element that's at the end
 
     const skillDiv = document.createElement("DIV");
 
@@ -298,7 +345,7 @@ function newSkill(element){
                                           <i class="fa-solid fa-angle-up"></i>
                                       </div>
 
-                                        <div id="skill-info">
+                                        <div class="skill-info">
 
                                             <!-- SELECTIONS -->
                                             <div class="section-icon-selector">
@@ -369,12 +416,12 @@ function newSkill(element){
 
                                             <div class="title-to-border experience-input">
                                                 <span>Skill Name</span>
-                                                <input type="text" class="title-to-border-element" onkeyup="iframe()"/>
+                                                <input type="text" class="title-to-border-element"/>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                             </div>
 
 
-                                            <div class="delete-section middle-width" onclick="deleteSection(this); iframe()">
+                                            <div class="delete-section middle-width">
                                                 <i class="fa-solid fa-circle-minus"></i>
                                                 <span>Delete Skill</span>
                                             </div>
@@ -389,7 +436,7 @@ function newSkill(element){
 
 
     // let skillSection = document.getElementById("skill");
-    let skillSection = element.parentElement;
+    let skillSection = element.currentTarget.parentElement;
 
     // we created an HTML element because INSERT BEFORE takes an element
     skillSection.insertBefore (skillDiv, skillSection.lastElementChild);
@@ -398,6 +445,17 @@ function newSkill(element){
     // document.getElementById(`Experience ${ skillNumber + 1 }`).click();
 
     // window.location.href = `Experience ${ experienceNumber + 1 }`
+
+    addEventListenerToElements();
+
+
+        // add "delete" event to delete button
+
+    let skillDeleteButton = skillDiv.children[1].lastElementChild;
+
+    skillDeleteButton.addEventListener("click", deleteSection)
+    skillDeleteButton.addEventListener("click", refreshIframe)
+
 
 }
 
@@ -443,22 +501,22 @@ function newProject(element){
 
                                 <div class="title-to-border experience-input">
                                     <span>Project Title</span>
-                                    <input type="text" class="title-to-border-element" onkeyup="iframe()"/>
+                                    <input type="text" class="title-to-border-element"/>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                 </div>
                                 <div class="title-to-border experience-input">
                                     <span>Project Link</span>
-                                    <input type="text" class="title-to-border-element" onkeyup="iframe()"/>
+                                    <input id="project-link" type="text" class="title-to-border-element" placeholder="https://"/>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                 </div>
                                 <div class="title-to-border experience-input">
                                     <span>Project Summary</span>
-                                    <textarea class="title-to-border-element" onkeyup="iframe()"></textarea>
+                                    <textarea class="title-to-border-element"></textarea>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                 </div>
 
                                 <!-- DELETE CATEGORY -->
-                                <div class="delete-section middle-width" onclick="deleteSection(this); iframe()">
+                                <div class="delete-section middle-width">
                                     <i class="fa-solid fa-circle-minus"></i>
                                     <span>Delete Project</span>
                                 </div>
@@ -472,11 +530,15 @@ function newProject(element){
     projectContainer.setAttribute("class", "project-container")
 
     // let skillSection = document.getElementById("skill");
-    let projectSection = element.parentElement;
+    let projectSection = element.currentTarget.parentElement;
 
     // we created an HTML element because INSERT BEFORE takes an element
     projectSection.insertBefore (projectContainer, projectSection.lastElementChild);
 
+
+    let deleteButton = projectContainer.children[1].lastElementChild;
+    deleteButton.addEventListener("click", deleteSection)
+    deleteButton.addEventListener("click", refreshIframe)
 
     // document.getElementById(`Experience ${ projectNumber + 1 }`).click();
 
@@ -495,7 +557,7 @@ function newProject(element){
             // to know which index to save the file to
             // ex. index 0 is for project 1
 
-            let index = parseInt( element.target.parentElement.parentElement.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] ) - 1
+            let index = parseInt( element.currentTarget.parentElement.parentElement.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] ) - 1
 
             projectImagesArray[ index ] = image.name;
 
@@ -505,11 +567,17 @@ function newProject(element){
             // store on server
             await sendProjectImages(image);
 
-            iframe();
-
+            // refresh to show the image
+            refreshIframe();
 
         });// listens for when user adds pdf file
 
+
+    addEventListenerToElements();
+
+
+    // add event to selecting an image
+    // projectContainer.children[1].children[0].children[0].children[3].addEventListener("click", initValues)
 
 }
 
@@ -598,12 +666,12 @@ function newContact(element){
 
                                 <div class="title-to-border experience-input">
                                     <span>Contact</span>
-                                    <input type="text" class="title-to-border-element" onkeyup="iframe()"/>
+                                    <input type="text" class="title-to-border-element" placeholder="https:// OR @domain.com"/>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                 </div>
 
                                 <!-- DELETE CATEGORY -->
-                                <div class="delete-section middle-width" onclick="deleteSection(this); iframe()">
+                                <div class="delete-section middle-width">
                                     <i class="fa-solid fa-circle-minus"></i>
                                     <span>Delete Contact</span>
                                 </div>
@@ -616,7 +684,7 @@ function newContact(element){
     contactDiv.setAttribute("class", "contacts-container")
 
     // let skillSection = document.getElementById("skill");
-    let contactSection = element.parentElement;
+    let contactSection = element.currentTarget.parentElement;
 
     // we created an HTML element because INSERT BEFORE takes an element
     contactSection.insertBefore (contactDiv, contactSection.lastElementChild);
@@ -626,25 +694,56 @@ function newContact(element){
 
     // window.location.href = `Experience ${ experienceNumber + 1 }`
 
+    addEventListenerToElements();
+
+
+    // add "delete" event to delete button
+
+    let deleteButton = contactDiv.children[1].lastElementChild;
+
+    deleteButton.addEventListener("click", deleteSection)
+    deleteButton.addEventListener("click", refreshIframe)
+
+
 }
 
 
 async function deleteSection(element) {
 
-    const lengthOfContainers = element.parentElement.parentElement.parentElement.children.length-1;     // n-1 because item n is the "add button" and we want all the "containers"
-    const numberAt = parseInt( element.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] );
+    const lengthOfContainers = element.currentTarget.parentElement.parentElement.parentElement.children.length-1;     // n-1 because item n is the "add button" and we want all the "containers"
+    const numberAt = parseInt( element.currentTarget.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] );
+
+
+// IF SKILLS IS LESS THAN 1 ADD 1 BECAUSE USER SHOULD HAVE AT MIN 1 SKILL
+
+
+    let skillInfo = element.currentTarget.parentElement;
+    let skillsContainer = element.currentTarget.parentElement.parentElement.parentElement;
+
+    if(
+        skillInfo.getAttribute("class") === "skill-info" &&
+        skillsContainer.children.length <= 2 // if more than 4 then we've added a skill diff
+    ){
+
+        return; // do nothing
+    }
 
 // CHECKS TO REMOVE BORDER FROM EMPTY SECTION AFTER USER REMOVES LAST ONE
     removeRedBorderFromUnfilledSection();
 
 // UPDATE PROJECT IMAGES ARRAY
 
-    if( element.parentElement.parentElement.getAttribute("class") === "project-container" ){
+    if( element.currentTarget.parentElement.parentElement.getAttribute("class") === "project-container" ){
 
         // find the project number
-        let index =  parseInt( element.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] ) - 1;
+        let index =  parseInt( element.currentTarget.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] ) - 1;
 
-        await removeImage(projectImagesArray[index]);
+        // if the image exists and is not undefined then remove it from server
+        if( projectImagesArray[index] ){
+
+            await removeImage(projectImagesArray[index]);
+
+        }
 
         // 'remove it'
         projectImagesArray[index] = null;
@@ -666,7 +765,7 @@ async function deleteSection(element) {
     // go all the way to n-1 because item n is the "add button" and we want all the "containers" before it
     for ( let x = numberAt; x < lengthOfContainers; x+=1  ){
 
-        let currentContainer = element.parentElement.parentElement.parentElement;
+        let currentContainer = element.currentTarget.parentElement.parentElement.parentElement;
 
         // splits the content into array so we can reuse to properly update
         // ex. "experience 1" -> [ "experience", "1" ]
@@ -677,30 +776,23 @@ async function deleteSection(element) {
 
     }
 
+    // alert(element.getAttribute("class"))
     // remove the element
-    element.parentElement.parentElement.remove();
+    element.currentTarget.parentElement.parentElement.remove();
 
-
-
-    // find which project was deleted so we can remove its picture from the projectImageArray
-}
-
-
-function uploadResume(element){
-
-    element.parentElement.children[1].click();
 
 }
 
 
 
-function iframe(){
 
 
-    // document.getElementById('resume-embed').src = document.getElementById('resume-embed').src
+function refreshIframe(){
 
-    document.getElementById("create-button").click();
+
+    template.getFields();
     document.getElementById('resume-embed').src += '';
+
 }
 
 function removeRedBorderFromUnfilledSection(){
@@ -719,3 +811,86 @@ function removeRedBorderFromUnfilledSection(){
     }
 
 }
+
+/*  color picker  */
+
+$(document).ready(function() {
+    $('.color-picker').spectrum({
+        type: "component"
+    });
+});
+
+/* remove the borders */
+
+let colorBoxes = document.getElementsByClassName("sp-colorize");
+
+/*colorBoxes.forEach((boxes)=>{
+
+    boxes.classList.add("no-border")
+});*/
+
+
+
+function addEventListenerToElements(){
+
+    // WHEN THE USER CLICK AN INPUT
+    let inputs = document.getElementsByClassName("title-to-border-element");
+
+    for( let x = 0; x < inputs.length; x+=1 ){
+
+        // already added
+        if( inputs[x].getAttribute("keyup") ){
+
+            continue;
+        }
+        inputs[x].addEventListener("keyup", refreshIframe)
+    }
+
+    // WHEN USER CLICKS ON DROP DOWN SELECTION
+    let dropdown = document.getElementsByClassName("drop-down-options-div");
+
+    for( let x = 0; x < dropdown.length; x+=1 ){
+
+        let item = dropdown[x];
+        for( let y = 0; y < item.children.length; y+=1  ){
+
+            // already added
+            /*if( item.children[y].getAttribute("c") ){
+
+                continue;
+            }*/
+            item.children[y].addEventListener("click", refreshIframe)
+        }
+    }
+}
+
+function addEventListenerAddButtons(){
+
+    // experience
+    let experienceAddButton = document.getElementById("experiences").children[0];
+
+    experienceAddButton.addEventListener("click", newExperience);
+
+
+    // category
+    let categoryAddButton = document.getElementById("category").children[0];
+
+    categoryAddButton.addEventListener("click", newCategory);
+
+
+    // project
+    let projectAddButton = document.getElementById("project").children[0];
+
+    projectAddButton.addEventListener("click", newProject);
+
+
+    // contact
+    let contactAddButton = document.getElementById("contacts").children[0];
+
+    contactAddButton.addEventListener("click", newContact);
+
+
+}
+
+
+addEventListenerAddButtons();

@@ -13,7 +13,30 @@ class CreateTemplate{
 
         this.#removeUnusedSections();
 
+        let html = document.getElementById("html");
+
+        let scripts = document.getElementsByTagName("SCRIPT");
+        for( let x = 0; x < scripts.length; x+=1  ){
+
+            // keeps the script that it will need once template is generated
+            if( scripts[x].getAttribute("src") !== "./js/index.js" ){
+                scripts[x].remove();
+
+            }
+        }
+
+        html.removeAttribute("id");
+
+        localStorage.setItem("htmlContent", html.innerHTML)
+
+        // alert(localStorage.getItem("htmlContent"))
+        /*if( JSON.parse(localStorage.getItem("generateTemplate")) ){
+
+            htmlContent(html.innerHTML);
+
+        }*/
         // clear local storage
+        localStorage.removeItem("generateTemplate")
 
         // this.#clearLocalStorage()
 
@@ -30,71 +53,80 @@ class CreateTemplate{
     #setAboutMe(){
 
         let aboutMe = document.getElementById("about-summary");
+        let aboutMeIcon = document.getElementsByClassName("about-section-container");
 
         let summary =  JSON.parse(localStorage.getItem("about"));
-        aboutMe.insertAdjacentHTML("beforebegin",summary[0].aboutMeSummary)
+
+        aboutMeIcon[0].children[0].setAttribute("class", `${summary[0].aboutMeIcon} themeIcon`);
+        aboutMe.insertAdjacentHTML("beforebegin",summary[0].aboutMeSummary);
+
     }
 
     #setExperiences(){
 
 
-        let experienceContainer = `
+        let experienceBody = `
             
-        <div class="container darker-card">
+        <div class="experience-section-container-card">
 
-        <i  class="fa-solid fa-arrows-spin themeIcon experience-icon"></i>
-        <!--    <i class="fa-solid fa-user themeIcon"></i>-->
 
-        <div class="section-info" >
-            <div class="title-and-date experience-title-container">
-                
+            <div id="experience-body" class="experience-section-container-body">
+
+                <i class="fa-solid fa-user themeIcon themeIcon"></i>
+
+                <div class="experience-section-container-body-title">
+
+                </div>
+                <div class="experience-section-container-body-title">
+
+                </div>
+                <p  class="experience-section-container-body-summary">
+
+                </p>
+
             </div>
-            <div class="company-name-and-location experience-title-container">
-
-            </div>
-            <p class="job-summary">
-
-            </p>
 
         </div>
-    </div>
         
         `
         let experiences = JSON.parse( localStorage.getItem("experiences") );
 
-        let experienceDiv = document.getElementById("experiences");
+        let experienceContainer = document.getElementsByClassName("experience-section-container");
+
 
         for( let x = 0; x < experiences.length; x+=1 ){
 
             // insert into the HTML
-            experienceDiv.insertAdjacentHTML("beforeend", experienceContainer);
+            experienceContainer[0].insertAdjacentHTML("beforeend", experienceBody);
 
 
+            // grab the newly added body
+            let newlyAddedBody = document.getElementsByClassName("experience-section-container-body");
 
 // add relevant info to the HTML container
 
             // ICON
-            let experienceIcon = document.getElementsByClassName("experience-icon")
-            experienceIcon[ experienceIcon.length - 1 ].setAttribute("class", `${experiences[x].icon} themeIcon icon`)
+            let experienceIcon = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0];
+            experienceIcon.setAttribute("class", `${experiences[x].icon} themeIcon icon`)
 
 
             // JOB TITLE AND DATE
-            let titleAndDate = document.getElementsByClassName("title-and-date");
+            let titleAndDate = newlyAddedBody[ newlyAddedBody.length - 1 ].children[1];
 
 
-            titleAndDate[ titleAndDate.length - 1 ].insertAdjacentHTML("beforeend", `<h4>${experiences[x].jobTitle}</h4>`)
-            titleAndDate[ titleAndDate.length - 1 ].insertAdjacentHTML("beforeend", `<h4>${experiences[x].date}</h4>`)
+            titleAndDate.insertAdjacentHTML("beforeend", `<h4>${experiences[x].jobTitle}</h4>`)
+            titleAndDate.insertAdjacentHTML("beforeend", `<h4>${experiences[x].date}</h4>`)
 
             // NAME AND LOCATION
-            let nameAndLocation = document.getElementsByClassName("company-name-and-location");
+            let nameAndLocation = newlyAddedBody[ newlyAddedBody.length - 1 ].children[2];
 
-            nameAndLocation[ nameAndLocation.length - 1 ].insertAdjacentHTML("beforeend", `<h5>${experiences[x].companyName}</h5>`)
-            nameAndLocation[ nameAndLocation.length - 1 ].insertAdjacentHTML("beforeend", `<h5>${experiences[x].location}</h5>`)
+            nameAndLocation.insertAdjacentHTML("beforeend", `<h5>${experiences[x].companyName}</h5>`)
+            nameAndLocation.insertAdjacentHTML("beforeend", `<h5>${experiences[x].location}</h5>`)
 
 
             // JOB SUMMARY
-            let jobSummary = document.getElementsByClassName("job-summary");
-            jobSummary[ jobSummary.length - 1 ].innerText = experiences[x].summary;
+            let jobSummary = newlyAddedBody[ newlyAddedBody.length - 1 ].children[3];
+            jobSummary.innerText = experiences[x].summary;
         }
 
     }
@@ -102,17 +134,24 @@ class CreateTemplate{
     #setSkills() {
 
 
-        let skillsCard = `
+        let skillsBody = `
         
-            <div class="programming-container darker-card" >
+        <!-- CATEGORY CONTAINER -->
+        <div class="skills-category-container" >
 
-                <div class="programming-section">
+            <!-- CATEGORIES AND SKILLS -->
+            <div class="skills-category-container-body">
+
+                <div class="skills-category-container-title">
                     <i class="fa-solid fa-language themeIcon"></i>
+                    
                 </div>
-    
-                <div class="languages-container">
+
+                <div class="skills-category-container-body-skills">
 
                 </div>
+
+            </div>
 
         </div>
         
@@ -121,23 +160,27 @@ class CreateTemplate{
         // the fields to fill into the elements
         let skills = JSON.parse(localStorage.getItem("skills"));
 
-        let skillsContainer = document.getElementById("skills-container");
+        let skillsContainer = document.getElementsByClassName("skills-section-container");
 
         for (let x = 0; x < skills.length; x += 1) {
 
             // add card
-            skillsContainer.insertAdjacentHTML("beforeend", skillsCard)
+            skillsContainer[0].insertAdjacentHTML("beforeend", skillsBody)
+
+            // grab card
+            let newlyAddedBody = document.getElementsByClassName("skills-category-container");
 
             // add category name once we add the element for it
-            let categoryName = document.getElementsByClassName("programming-section");
-            categoryName[ categoryName.length - 1 ].insertAdjacentHTML("beforeend", `<h3>${skills[x].categoryName}</h3>`)
+            let categoryName = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[0];
+            categoryName.insertAdjacentHTML("beforeend", `<h3>${skills[x].categoryName}</h3>`)
 
 
             // add individual skills to the language container
-            let languagesContainer = document.getElementsByClassName("languages-container");
+            let languagesContainer =  newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[1];
+
             for( let y = 0; y < skills[x].skills.length; y+=1 ){
 
-                languagesContainer[ languagesContainer.length - 1 ].insertAdjacentHTML("beforeend", `
+                languagesContainer.insertAdjacentHTML("beforeend", `
                 
                     <div>
                         <i class="fa-brands fa-html5 themeIcon"></i>
@@ -155,26 +198,27 @@ class CreateTemplate{
 
 
         let projectCard = `
-        
-            <div style="
-                            background-image: url('../portfolio/images/default.jpeg
-                            background-size: cover;"
-           
-                 class="card">
-                <div class="card-content">
-                    <h2 class="card-title">
-                    </h2>
-                    <p class="card-body">
-                     </p>
-                    <a class="card-button" href="#">Learn More</a>
-                </div>
+                <div class="project-section-container-card"
+             style="
+          background-image: url('../portfolio/images/default.jpeg');
+          background-size: cover;"
+        >
+            <div class="project-section-container-card-content">
+                <h2 class="project-section-container-card-content-title">
+
+                </h2>
+                <p class="project-section-container-card-content-body">
+
+                </p>
+                <a class="button" href="https://github.com/Elouis12/where-on-earth-is-waldo">Learn More</a>
             </div>
+        </div>
         
         `
 
         let projects = JSON.parse(localStorage.getItem("projects"));
 
-        let projectCardContainer = document.getElementById("card-container");
+        let projectCardContainer = document.getElementsByClassName("project-section-container");
 
 
         /*
@@ -182,15 +226,18 @@ class CreateTemplate{
         */
         for( let x = 0; x < projects.length; x+=1 ){
 
-            projectCardContainer.insertAdjacentHTML("beforeend", projectCard)
+            projectCardContainer[0].insertAdjacentHTML("beforeend", projectCard)
 
-            let projectImage = document.getElementsByClassName("card");
+            // grab card
+            let newlyAddedBody = document.getElementsByClassName("project-section-container-card");
+
+            let projectImage = newlyAddedBody[ newlyAddedBody.length - 1 ];
 
 
-            // if user gave an image
+            // if user gave an image or not null
             if( JSON.parse(localStorage.getItem("projectImages"))[x] ){
 
-                projectImage[ projectImage.length - 1 ].setAttribute("style",
+                projectImage.setAttribute("style",
 
                     `
                             background-image: url('./images/${JSON.parse(localStorage.getItem("projectImages"))[x] }');
@@ -200,24 +247,24 @@ class CreateTemplate{
             }
 
 
-            let projectTitle = document.getElementsByClassName("card-title");
-            projectTitle[ projectTitle.length - 1 ].insertAdjacentHTML("beforeend", `${projects[x].projectTitle}`)
+            let projectTitle = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[0];
+            projectTitle.insertAdjacentHTML("beforeend", `${projects[x].projectTitle}`)
 
 
-            let projectSummary = document.getElementsByClassName("card-body");
-            projectSummary[ projectSummary.length - 1 ].insertAdjacentHTML("beforeend", `${projects[x].projectSummary}`)
+            let projectSummary = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[1];
+            projectSummary.insertAdjacentHTML("beforeend", `${projects[x].projectSummary}`)
 
 
-            let projectLink = document.getElementsByClassName("card-button");
+            let projectLink = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[2];
 
             // if user gave no link hide the button
             if( projects[x].projectLink === "" ){
 
-                projectLink[ projectLink.length - 1 ].classList.add("hideVisibility")
+                projectLink.classList.add("hideVisibility")
 
             }else{
 
-                projectLink[ projectLink.length - 1 ].setAttribute("href", `${projects[x].projectLink}`)
+                projectLink.setAttribute("href", `${projects[x].projectLink}`)
 
             }
 
@@ -235,7 +282,7 @@ class CreateTemplate{
 
     #setContact(){
 
-        let contactContainer = document.getElementById("contact-container");
+        let contactBody = document.getElementsByClassName("contact-section-container-body");
 
 
         let contacts = JSON.parse(localStorage.getItem("contacts"));
@@ -252,7 +299,7 @@ class CreateTemplate{
                 href = contacts[x].contact;
             }
 
-            contactContainer.insertAdjacentHTML("beforeend",
+            contactBody[0].insertAdjacentHTML("beforeend",
 
                 `
                      <a title='${contacts[x].contact}' href="${href}"><i class='${contacts[x].icon}'></i></a>

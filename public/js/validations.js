@@ -2,7 +2,30 @@ function validateFields() {
 
     let inputsDiv = document.getElementsByClassName("title-to-border")
 
+    let resumeInput = document.getElementById("resume-input");
+
+
     let validated = true;
+
+    // RESUME
+    if( resumeInput.value === "" ){
+        // show error icon
+        resumeInput.parentElement.children[2].classList.remove("hideVisibility")
+
+        resumeInput.closest(".section-container").children[0].classList.add("red-border");
+
+        validated = false;
+
+    } else {
+
+        // hide error icon
+        resumeInput.parentElement.children[2].classList.add("hideVisibility")
+
+        resumeInput.closest(".section-container").children[0].classList.remove("red-border");
+
+    }
+
+
     for (let x = 0; x < inputsDiv.length; x += 1) {
 
         let input = inputsDiv[x].children[1];
@@ -16,6 +39,8 @@ function validateFields() {
 
         let contactType;
 
+        let value = input.value.trim();
+
         if (inputsDiv[x].children[0].innerHTML === "Contact") {
 
             contactType = inputsDiv[x].parentElement.children[1].children[0].children[0].children[0].children[0].getAttribute("class");
@@ -27,8 +52,8 @@ function validateFields() {
             (
                 inputsDiv[x].children[0].innerHTML === "Contact" &&
                 (
-                    contactType === "fa-solid fa-envelope" && !validateEmail(input.value) ||
-                    contactType === "fa-solid fa-link" && !validateUrl(input.value)
+                    contactType === "fa-solid fa-envelope" && !validateEmail(value) ||
+                    contactType === "fa-solid fa-link" && !validateUrl(value)
 
                 )
             )
@@ -36,15 +61,22 @@ function validateFields() {
                 ||
 
             (
-                inputsDiv[x].children[0].innerHTML === "Project Link" &&
-                (
-                    !input.value === "" &&  !validateUrl(input.value)
-                )
+                inputsDiv[x].children[0].innerHTML === "Project Link"
+                &&
+                !validateUrl(value)
 
             )
 
                 ||
-            ( input.value === "" && input.getAttribute("id") !== "nav-name" )
+            (
+                value === "" &&
+                (
+                    input.getAttribute("id") !== "nav-name"
+                        ||
+                    input.getAttribute("id") !== "project-link"
+                )
+            )
+
 
         ) {
 

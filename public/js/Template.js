@@ -14,30 +14,75 @@ export class Template{
 
     constructor() {
 
+    }
+
+
+    addEventsToListeners(){
+
+        // WHEN THE USER CLICK AN INPUT
+        let inputs = document.getElementsByClassName("title-to-border-element");
+
+        for( let x = 0; x < inputs.length; x+=1 ){
+
+            inputs[x].addEventListener("keyup", ()=>{
+
+                this.getFields();
+                document.getElementById('resume-embed').src += '';
+
+            })
+        }
+
+        // WHEN USER CLICKS ON DROP DOWN SELECTION
+        let dropdown = document.getElementsByClassName("drop-down-options-div");
+
+        for( let x = 0; x < dropdown.length; x+=1 ){
+
+            let item = dropdown[x];
+            for( let y = 0; y < item.children.length; y+=1  ){
+
+                item.children[y].addEventListener("click", ()=>{
+
+                    this.getFields();
+                    document.getElementById('resume-embed').src += '';
+
+                })
+            }
+        }
+
         // WHEN THE USER CLICK THE CREATE BUTTON
-        document.getElementById("create-button").addEventListener('click', async ()=>{
+        document.getElementById("create-button").addEventListener('click', async (e)=>{
 
             // arrow function allows for scoping / level access of private variables
 
-            if( validateFields() /*true*/ ){ // if all field are entered then get the fields
+            if( validateFields() ){ // if all field are entered then get the fields
 
-                this.getFields();
+                this.getFields(); // saves to local storage to update page
 
-                // 1. make request to download zip file
+                localStorage.setItem("generateTemplate", JSON.stringify(true))
+
+
+                document.getElementById('resume-embed').src += '';
+
+                // console.log(localStorage.getItem("htmlContent"))
+                // alert(localStorage.getItem("htmlContent"))
+
+                // 1. send to html to be written to the template file
+                await htmlContent( localStorage.getItem("htmlContent"))
+
+                // 2. make request to download zip file
                 await downloadPortfolio();
 
-                // 2. clear local storage
-                // localStorage.removeItem("resume")
-                // localStorage.removeItem("contacts")
-                // localStorage.removeItem("projects")
-                // localStorage.removeItem("about")
-                // localStorage.removeItem("navigationBar")
-                // localStorage.removeItem("experiences")
 
-                // 3. send request to server to delete all files from /images and /media
+                // 3. clear local storage ( except the done one )
+                localStorage.removeItem("resume")
+                localStorage.removeItem("contacts")
+                localStorage.removeItem("projects")
+                localStorage.removeItem("about")
+                localStorage.removeItem("navigationBar")
+                localStorage.removeItem("experiences")
 
 
-            }else{
+            }else{ // we may not need this section anymore
 
                 // just update the iframe but don't send the zip folder
                 this.getFields();
@@ -59,7 +104,6 @@ export class Template{
             console.log(resume);
             localStorage.setItem( "resume", JSON.stringify(this.#_resume ));
 
-            iframe();
         };
         resumeFile.addEventListener("change", handleFiles);// listens for when user adds pdf file
 
@@ -75,7 +119,7 @@ export class Template{
         let navName = document.getElementById("nav-name");
 
         // navObject.Icon = navMeIcon;
-        navObject.navTitle = navName.value;
+        navObject.navTitle = navName.value.trim();
 
         navArray.push( navObject );
 
@@ -96,11 +140,11 @@ export class Template{
 
         let aboutObject = {};
 
-        const aboutMeIcon = document.getElementById("about-me-drop-down");
+        const aboutMeIc = document.getElementById("about-me-drop-down").children[0].children[0].children[0];
         const aboutMeSummary = document.getElementById("about-me-summary");
 
-        // aboutObject.Icon = aboutMeIcon;
-        aboutObject.aboutMeSummary = aboutMeSummary.value;
+        aboutObject.aboutMeIcon = aboutMeIc.getAttribute("class");
+        aboutObject.aboutMeSummary = aboutMeSummary.value.trim();
 
         aboutArray.push( aboutObject );
 
@@ -124,11 +168,11 @@ export class Template{
             let experienceObject = {};
 
             experienceObject.icon = experiences[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("class"); // store the class
-            experienceObject.jobTitle = experiences[x].children[1].children[1].children[1].value;
-            experienceObject.companyName = experiences[x].children[1].children[2].children[1].value;
-            experienceObject.location = experiences[x].children[1].children[3].children[1].value;
-            experienceObject.summary = experiences[x].children[1].children[4].children[1].value;
-            experienceObject.date = experiences[x].children[1].children[5].children[1].value;
+            experienceObject.jobTitle = experiences[x].children[1].children[1].children[1].value.trim();
+            experienceObject.companyName = experiences[x].children[1].children[2].children[1].value.trim();
+            experienceObject.location = experiences[x].children[1].children[3].children[1].value.trim();
+            experienceObject.summary = experiences[x].children[1].children[4].children[1].value.trim();
+            experienceObject.date = experiences[x].children[1].children[5].children[1].value.trim();
 
             experienceArray.push( experienceObject );
         }
@@ -151,7 +195,7 @@ export class Template{
 
             let categoryObject = {};
 
-            categoryObject.categoryName = categories[x].children[1].children[1].children[1].value;
+            categoryObject.categoryName = categories[x].children[1].children[1].children[1].value.trim();
 
             let skillDiv = categories[x].children[1].children[2]; // id = "skill"
 
@@ -160,7 +204,7 @@ export class Template{
 
 
                 // each individual skill
-                let skill = skillDiv.children[y].children[1].children[1].children[1].value;
+                let skill = skillDiv.children[y].children[1].children[1].children[1].value.trim();
 
                 skillsArray.push( skill );
 
@@ -191,9 +235,9 @@ export class Template{
             let projectObject = {};
 
             projectObject.projectImage = this.#_projectImages[x];
-            projectObject.projectTitle = projects[x].children[1].children[1].children[1].value;
-            projectObject.projectLink = projects[x].children[1].children[2].children[1].value;
-            projectObject.projectSummary = projects[x].children[1].children[3].children[1].value;
+            projectObject.projectTitle = projects[x].children[1].children[1].children[1].value.trim();
+            projectObject.projectLink = projects[x].children[1].children[2].children[1].value.trim();
+            projectObject.projectSummary = projects[x].children[1].children[3].children[1].value.trim();
 
             projectsArray.push( projectObject );
         }
@@ -235,7 +279,7 @@ export class Template{
 
             let contactObject = {};
 
-            let contact = contacts[x].children[1].children[2].children[1].value;
+            let contact = contacts[x].children[1].children[2].children[1].value.trim();
 
             contactObject.icon = contacts[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("class")
 
@@ -298,6 +342,8 @@ export class Template{
 function main(){
 
     let template = new Template();
+
+    template.addEventsToListeners();
 
 }
 

@@ -20,7 +20,7 @@ function initValues(element){
     //getting user select file and [0] this means if user select multiple files then we'll select only the first one
     file = this.files[0];
     dropArea.classList.add("active");
-    showFile(); //calling function
+    showImage(); //calling function
   });
 
 
@@ -42,14 +42,14 @@ function initValues(element){
     event.preventDefault(); //preventing from default behaviour
     //getting user select file and [0] this means if user select multiple files then we'll select only the first one
     file = event.dataTransfer.files[0];
-    showFile(); //calling function
+    showImage(); //calling function
   });
 
 
 
 }
 
-function showFile(){
+function showImage(){
   let fileType = file.type; //getting selected file type
   let validExtensions = ["image/jpeg", "image/jpg", "image/png", "pdf"]; //adding some valid image extensions in array
   if(validExtensions.includes(fileType)){ //if user selected file is an image file
@@ -145,6 +145,34 @@ async function deleteFile(element){
 
   dropArea.classList.remove("active");
 
+
+}
+
+
+
+
+function uploadResume(element){
+
+  element.parentElement.children[1].click();
+
+}
+
+
+
+function showResume(element){
+
+  let filePath = element.value; //getting selected file type
+
+  let filePathArray = filePath.split("."); //getting selected file type
+  let fileType = filePathArray[ filePathArray.length - 1 ]; //getting selected file type
+  let validExtensions = "pdf"; //adding some valid image extensions in array
+  if ( fileType !== validExtensions ) { //if user selected file is an image file
+
+    alert("This is not a PDF File!");
+    element.value = ''; // displays 'No file selected.'
+
+    // refresh embed iframe
+  }
 
 }
 
