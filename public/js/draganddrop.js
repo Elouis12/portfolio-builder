@@ -16,11 +16,11 @@ function initValues(element){
 
 
 
-  input.addEventListener("change", function(){
+  input.addEventListener("change", async function(){
     //getting user select file and [0] this means if user select multiple files then we'll select only the first one
     file = this.files[0];
     dropArea.classList.add("active");
-    showImage(); //calling function
+    await showImage(); //calling function
   });
 
 
@@ -38,18 +38,23 @@ function initValues(element){
   });
 
 //If user drop File on DropArea
-  dropArea.addEventListener("drop", (event)=>{
+  dropArea.addEventListener("drop", async (event)=>{
     event.preventDefault(); //preventing from default behaviour
     //getting user select file and [0] this means if user select multiple files then we'll select only the first one
     file = event.dataTransfer.files[0];
-    showImage(); //calling function
+    await showImage(); //calling function
   });
 
 
 
 }
 
-function showImage(){
+
+let projectImagesArray = [];
+let portfolioImage;
+
+
+async function showImage(){
   let fileType = file.type; //getting selected file type
   let validExtensions = ["image/jpeg", "image/jpg", "image/png", "pdf"]; //adding some valid image extensions in array
   if(validExtensions.includes(fileType)){ //if user selected file is an image file
@@ -69,12 +74,38 @@ function showImage(){
     }
     fileReader.readAsDataURL(file);
 
+// update from front end
+
+    // if a project image
+    if( input.getAttribute("class").split(" ")[0] === "project-file-input"  ){ // we need to access it's first class
+
+      // grab index of current image
+      let index = parseInt( input.closest(".project-container").children[0].children[0].innerHTML.split(" ")[1] ) - 1;
+
+      projectImagesArray[index] = file.name;
+
+      localStorage.setItem("projectImages", JSON.stringify(projectImagesArray))
+
+      // if portfolio image
+    }else{
+
+      localStorage.setItem("portfolioImage", JSON.stringify(file.name))
+
+    }
+
+    // send image to server
+    await sendProjectImages(file);
+
+    refreshIframe();
+
   }else{
+
 
     alert("This is not an Image File!");
     dropArea.classList.remove("active");
     dragText.textContent = "Drag & Drop to Upload File";
   }
+
 }
 
 function hideElements(){
@@ -105,10 +136,17 @@ function hideElements(){
 async function deleteFile(element){
 
 
-  // UPDATE PROJECT IMAGE
+  // UPDATE IMAGES
 
   let projectContainer = element.closest(".project-container");
 
+
+  // DELETING FROM PROJECT SECTION
+  if( projectContainer ){
+
+
+    // remove this once able to have projectImages actual array be global
+    let projectImagesArray = JSON.parse(localStorage.getItem("projectImages"));
     // find the project number
     let index =  parseInt( projectContainer.children[0].children[0].innerHTML.split(" ")[1] ) - 1;
 
@@ -126,6 +164,15 @@ async function deleteFile(element){
     // save it to local storage
     localStorage.setItem("projectImages", JSON.stringify(projectImagesArray) );
 
+  // IT WAS THE PORTFOLIO IMAGE TO BE DELETED
+  }else{
+
+    let portfolioImage = JSON.parse(localStorage.getItem("portfolioImage"));
+
+    await removeImage(portfolioImage);
+
+
+  }
 
 
   // remove image
@@ -145,10 +192,21 @@ async function deleteFile(element){
 
   dropArea.classList.remove("active");
 
+  input.value = ""
+
+  // refresh the embedded file
+  refreshIframe();
+
 
 }
 
 
+function refreshIframe(){
+
+  // no need to do template.getFields() because the local storage for icon is done in here and not in Template.js
+  document.getElementById('resume-embed').src += '';
+
+}
 
 
 function uploadResume(element){
@@ -170,6 +228,9 @@ function showResume(element){
 
     alert("This is not a PDF File!");
     element.value = ''; // displays 'No file selected.'
+
+    // add the link to it
+    localStorage.setItem("resumeName", element.name);
 
     // refresh embed iframe
   }

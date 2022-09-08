@@ -460,7 +460,7 @@ input[id="flatpickr"]{
 
     #template-layout-container{
 
-        height: 100vh;
+        height: 80vh;
         box-shadow: 120px 80px 40px 20px #fff;
 
     }
@@ -546,4 +546,12 @@ input[id="flatpickr"]{
     font-weight: 500;
     color: rgb(0, 114, 255);
     border: 1px solid rgb(0, 114, 255);
+}
+
+
+.fav-icon-container{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

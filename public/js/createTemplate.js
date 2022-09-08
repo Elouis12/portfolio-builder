@@ -3,6 +3,7 @@ class CreateTemplate{
     // when we load the actual html page it will set thee values to the portfolio html file
     constructor(){
 
+        this.#setPortfolio();
         this.#setNavigationBarName();
         this.#setAboutMe();
         this.#setExperiences();
@@ -10,6 +11,7 @@ class CreateTemplate{
         this.#setProjects();
         this.#setResume();
         this.#setContact();
+
 
         this.#removeUnusedSections();
 
@@ -40,6 +42,19 @@ class CreateTemplate{
 
         // this.#clearLocalStorage()
 
+    }
+
+    #setPortfolio(){
+
+        let portfolioName = document.getElementById("title");
+        let favIcon = document.getElementById("fav-icon");
+
+        let portfolioTitle = JSON.parse(localStorage.getItem("portfolioTitle"));
+        let portfolioImage = JSON.parse(localStorage.getItem("portfolioImage"));
+
+        portfolioName.innerHTML = portfolioTitle.portfolioTitle;
+
+        favIcon.setAttribute("href", `./images/${portfolioImage}`)
     }
 
 
@@ -234,13 +249,16 @@ class CreateTemplate{
             let projectImage = newlyAddedBody[ newlyAddedBody.length - 1 ];
 
 
-            // if user gave an image or not null
-            if( JSON.parse(localStorage.getItem("projectImages"))[x] ){
+            // if user gave an image or not null or else it ill just keep the dealt
+            if(
+                JSON.parse(localStorage.getItem("projectImages")) && // if even exists
+                JSON.parse(localStorage.getItem("projectImages"))[x]
+            ){
 
                 projectImage.setAttribute("style",
 
                     `
-                            background-image: url('./images/${JSON.parse(localStorage.getItem("projectImages"))[x] }');
+                            background-image: url('./images/${ JSON.parse(localStorage.getItem("projectImages"))[x] }');
                             background-size: cover;"
                     `
                 )
@@ -275,8 +293,16 @@ class CreateTemplate{
     #setResume(){
 
         let resumeEmbed = document.getElementById("resume-embed");
+        let downloadResume = document.getElementById("download-resume");
+        let viewResumeLarge = document.getElementById("view-resume-larger");
 
-        // resumeEmbed.setAttribute("src", JSON.parse(localStorage.getItem("resume")));
+        // resume was set
+        if( localStorage.getItem("resumeName") ){
+
+            resumeEmbed.setAttribute("src", "./media/resume.pdf")
+            viewResumeLarge.setAttribute("src", "media/resume.pdf#zoom=Fit")
+            downloadResume.setAttribute("href", "./media/resume.pdf")
+        }
     }
 
 

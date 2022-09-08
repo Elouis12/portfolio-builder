@@ -8,9 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/dropdown.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/draganddrop.css"/>
 
     <!-- LOAD CDNs FIRST SO WE CAN CAN ACCESS VARIABLES IN FILES IN JS SECTION -->
@@ -29,7 +27,7 @@
     <!-- JS -->
     <script src="js/validations.js"></script>
     <script src="js/dropdown.js"></script>
-    <script type="module" src="js/file.js"></script>
+    <script type="module" src="js/main.js"></script>
     <script type=module src="js/Template.js"></script>
     <script type="text/javascript" src="js/API.js"></script>
     <script src="js/draganddrop.js"></script>
@@ -56,6 +54,50 @@
         <div id="portfolio-info">
 
             <div class="sections">
+
+                <!-- PORTFOLIO -->
+                <section class="section-container">
+
+                    <div class="section-title" onclick="closeSection(this)">
+                      <span>
+                          <i class="fa-solid fa-clipboard-user"></i>
+                          Portfolio
+                      </span>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </div>
+
+                    <div class="info hide">
+
+
+                        <!-- DRAG AND DROP -->
+                        <div class="fav-icon-container">
+
+                            <div class="drag-container">
+                                <div id="drag-area" class="drag-area">
+                                    <div class="icon">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                    </div>
+                                    <header>Drag & Drop to Upload Image</header>
+                                    <span>OR</span>
+                                    <button onclick="initValues(this)">Browse File</button>
+                                    <input id="portfolio-file-input" class="portfolio-file-input" type="file" hidden>
+
+                                </div>
+                            </div>
+                            <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
+
+                        </div>
+
+                        <div class="title-to-border">
+                            <span>Portfolio Title</span>
+                            <input class="title-to-border-element" id="portfolio-name" type="text">
+                            <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
+                        </div>
+
+                    </div>
+
+                </section>
+
 
                 <!-- NAVIGATION -->
                 <section class="section-container">

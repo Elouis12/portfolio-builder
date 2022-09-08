@@ -463,14 +463,6 @@ function newSkill(element){
 let projectImagesArray = []; // to store all the images
 function newProject(element){
 
-    // so we know the user created a section
-
-    if( !localStorage.getItem("projectCreated" ) ){
-
-        localStorage.setItem("projectCreated", JSON.stringify(true) );
-
-    }
-
     const projectNumber = document.getElementsByClassName("project-container").length;
 
     const projectContainer = document.createElement("DIV");
@@ -492,7 +484,7 @@ function newProject(element){
                                         <div class="icon">
                                             <i class="fas fa-cloud-upload-alt"></i>
                                         </div>
-                                        <header>Drag & Drop to Upload File</header>
+                                        <header>Drag & Drop to Upload Image</header>
                                         <span>OR</span>
                                         <button onclick="initValues(this)">Browse File</button>
                                         <input class="project-file-input" type="file" hidden>
@@ -550,7 +542,7 @@ function newProject(element){
     let image;
     // add the event listener for the last/newly inserted project container section
     // w do project - 1 because the newly added html will have that element be the last
-        projectImageInputFile[ projectImageInputFile.length - 1 ].addEventListener("change", async (element)=>{
+/*        projectImageInputFile[ projectImageInputFile.length - 1 ].addEventListener("change", async (element)=>{
 
             image = projectImageInputFile[ projectImageInputFile.length - 1 ].files[0];
 
@@ -570,7 +562,7 @@ function newProject(element){
             // refresh to show the image
             refreshIframe();
 
-        });// listens for when user adds pdf file
+        });// listens for when user adds pdf file*/
 
 
     addEventListenerToElements();

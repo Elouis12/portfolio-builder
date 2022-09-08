@@ -10,6 +10,7 @@ export class Template{
     #_navigationBar;
 
     #_projectImages = [];
+    #_portfolio;
 
 
     constructor() {
@@ -79,7 +80,10 @@ export class Template{
                 localStorage.removeItem("projects")
                 localStorage.removeItem("about")
                 localStorage.removeItem("navigationBar")
-                localStorage.removeItem("experiences")
+                localStorage.removeItem("experiences");
+
+                localStorage.removeItem("portfolioTitle");
+                localStorage.removeItem("portfolioImage");
 
 
             }else{ // we may not need this section anymore
@@ -106,6 +110,25 @@ export class Template{
 
         };
         resumeFile.addEventListener("change", handleFiles);// listens for when user adds pdf file
+
+    }
+
+
+    #getPortfolio(){
+
+
+        let portfolioObject = {};
+
+        let portfolioName = document.getElementById("portfolio-name");
+
+        portfolioObject.portfolioTitle = portfolioName.value.trim();
+
+        this.#_portfolio = portfolioObject;
+
+        localStorage.setItem( "portfolioTitle", JSON.stringify(this.#_portfolio ));
+
+        return this.#_portfolio;
+
 
     }
 
@@ -229,7 +252,7 @@ export class Template{
 
         let projects = document.getElementsByClassName("project-container");
 
-        // make each experience an object
+        // make each project an object
         for( let x = 0; x < projects.length; x += 1 ) {
 
             let projectObject = {};
@@ -300,6 +323,7 @@ export class Template{
 
     getFields(){
 
+        this.#getPortfolio();
         this.#getNavigationBar();
         this.#getAbout();
         this.#getExperiences();

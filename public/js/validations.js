@@ -1,29 +1,12 @@
+
+let validated = true;
+
 function validateFields() {
 
     let inputsDiv = document.getElementsByClassName("title-to-border")
 
-    let resumeInput = document.getElementById("resume-input");
 
-
-    let validated = true;
-
-    // RESUME
-    if( resumeInput.value === "" ){
-        // show error icon
-        resumeInput.parentElement.children[2].classList.remove("hideVisibility")
-
-        resumeInput.closest(".section-container").children[0].classList.add("red-border");
-
-        validated = false;
-
-    } else {
-
-        // hide error icon
-        resumeInput.parentElement.children[2].classList.add("hideVisibility")
-
-        resumeInput.closest(".section-container").children[0].classList.remove("red-border");
-
-    }
+    validateResumeInput();
 
 
     for (let x = 0; x < inputsDiv.length; x += 1) {
@@ -47,6 +30,40 @@ function validateFields() {
         }
 
 
+        if( input.parentElement.children[0].innerHTML === "Navigation Title" ){
+
+            continue;
+        }
+
+        if(
+                inputsDiv[x].children[0].innerHTML === "Project Link" && // don't select project AS long as they didn't give a value
+                input.value === ""
+         ){
+
+            // it might be the case the red button is applied
+            if( !inputsDiv[x].children[2].getAttribute("class").includes("hideVisibility") ){
+
+                inputsDiv[x].children[2].classList.add("hideVisibility");
+
+            }
+
+            // if any of it's others (project title, project summary ) have a red exclamation then remove any potential red border from section title
+
+/*            let container = inputsDiv[x];
+            let projectTitleDiv = container.children[1];
+            let projectSummaryDiv = container.children[3];
+
+            if(
+                !projectTitleDiv.children[2].getAttribute("class").includes("hideVisibility") ||
+                !projectSummaryDiv.children[2].getAttribute("class").includes("hideVisibility")
+
+            ){
+
+            }*/
+            continue;
+        }
+
+
         if (
 
             (
@@ -59,7 +76,6 @@ function validateFields() {
             )
 
                 ||
-
             (
                 inputsDiv[x].children[0].innerHTML === "Project Link"
                 &&
@@ -68,14 +84,7 @@ function validateFields() {
             )
 
                 ||
-            (
-                value === "" &&
-                (
-                    input.getAttribute("id") !== "nav-name"
-                        ||
-                    input.getAttribute("id") !== "project-link"
-                )
-            )
+                value === ""
 
 
         ) {
@@ -102,8 +111,62 @@ function validateFields() {
         }
     }
 
+    validateFavIconInput(); // putting it at the end prevents the portfolio title input field from removing the 'red-border' style being applied
+
     return validated;
 
+}
+
+function validateResumeInput(){
+
+    let resumeInput = document.getElementById("resume-input");
+    // RESUME
+    if( resumeInput.value === "" ){
+        // show error icon
+        resumeInput.parentElement.children[2].classList.remove("hideVisibility")
+
+        resumeInput.closest(".section-container").children[0].classList.add("red-border");
+
+        validated = false;
+
+    } else {
+
+        // hide error icon
+        resumeInput.parentElement.children[2].classList.add("hideVisibility")
+
+        resumeInput.closest(".section-container").children[0].classList.remove("red-border");
+
+    }
+
+    return validated;
+}
+function validateFavIconInput(){
+
+    let favIconInput = document.getElementById("portfolio-file-input");
+    let favIconInputMainContainer = favIconInput.closest('.section-container')
+    let favIconInputContainer = favIconInput.closest('.fav-icon-container')
+
+    if( favIconInput.value === "" ){
+
+
+        // show error icon
+        favIconInputContainer.children[ favIconInputContainer.children.length - 1 ].classList.remove("hideVisibility")
+
+        favIconInputMainContainer.children[0].classList.add("red-border");
+
+        validated = false;
+
+    }else{
+
+        // hide error icon
+        favIconInputContainer.children[ favIconInputContainer.children.length - 1 ].classList.add("hideVisibility")
+
+        // remove border
+        favIconInputMainContainer.children[0].classList.remove("red-border")
+
+    }
+
+    return validated;
 }
 
 const validateEmail = (email) => {

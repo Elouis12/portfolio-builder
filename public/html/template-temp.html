@@ -2,7 +2,7 @@
 <html lang="en" id="html">
 <head>
   <meta charset="UTF-8">
-  <title>Ernesto's Portfolio</title>
+  <title id="title"></title>
   <link id="indexLink" rel="stylesheet" type="text/css" href="css/index.css">
   <link rel="stylesheet" type="text/css" href="css/card.css">
 
@@ -12,6 +12,7 @@
 
   <script type="text/javascript" src="./js/index.js"></script>
 
+  <link id="fav-icon" rel="icon" type="image/x-icon">
 
 </head>
 
@@ -164,13 +165,13 @@
     <i class="fa-regular fa-file themeIcon"></i>
     <div class="section-info">
 
-      <embed id="resume-embed" src="./media/resume.pdf" width="575" height="500">
+      <embed id="resume-embed" width="575" height="500">
 
     </div>
 
     <div class="resume-section-container-actions">
       <i title="expand resume" class="fa-regular fa-eye" onclick="showOverlay()"></i>
-      <a title="download my resume" href="./media/resume.pdf" download>
+      <a id="download-resume" title="download my resume" download>
         <i class="fa-regular fa-circle-down themeIcon"></i>
       </a>
     </div>
@@ -198,7 +199,7 @@
 
 <!-- VIEW LARGER -->
 <section id="overlayElement" class="resume-view-container hide" onclick="closeOverlay()">
-  <embed src="media/resume.pdf#zoom=Fit" height="700px" width="75%"/>
+  <embed id="view-resume-larger" height="700px" width="75%"/>
   <i class="fa-solid fa-circle-xmark" onclick="closeOverlay()"></i>
 </section>
 
@@ -212,6 +213,5 @@
 <script type="text/javascript" src="../js/API.js"></script>
 <script type="text/javascript" src="../js/CreateTemplate.js"></script>
 <script type="text/javascript" src="../js/scrollPosition.js"></script>
-
 </body>
 </html>
