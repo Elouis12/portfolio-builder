@@ -42,6 +42,7 @@ class CreateTemplate{
 
         // this.#clearLocalStorage()
 
+
     }
 
     #setPortfolio(){
@@ -52,9 +53,16 @@ class CreateTemplate{
         let portfolioTitle = JSON.parse(localStorage.getItem("portfolioTitle"));
         let portfolioImage = JSON.parse(localStorage.getItem("portfolioImage"));
 
-        portfolioName.innerHTML = portfolioTitle.portfolioTitle;
+        if( portfolioTitle ){
+            portfolioName.innerHTML = portfolioTitle.portfolioTitle;
 
-        favIcon.setAttribute("href", `./images/${portfolioImage}`)
+        }
+
+        if( portfolioImage ){
+            favIcon.setAttribute("href", `./images/${portfolioImage}`)
+
+        }
+
     }
 
 
@@ -62,7 +70,12 @@ class CreateTemplate{
 
         let logo = document.getElementById("logo");
         let name =  JSON.parse(localStorage.getItem("navigationBar"));
-        logo.insertAdjacentHTML("beforeend",name[0].navTitle)
+
+        if(  name ){
+
+            logo.insertAdjacentHTML("beforeend",name[0].navTitle)
+
+        }
     }
 
     #setAboutMe(){
@@ -72,8 +85,13 @@ class CreateTemplate{
 
         let summary =  JSON.parse(localStorage.getItem("about"));
 
-        aboutMeIcon[0].children[0].setAttribute("class", `${summary[0].aboutMeIcon} themeIcon`);
-        aboutMe.insertAdjacentHTML("beforebegin",summary[0].aboutMeSummary);
+
+        if( summary ){
+
+            aboutMeIcon[0].children[0].setAttribute("class", `${summary[0].aboutMeIcon} themeIcon`);
+            aboutMe.insertAdjacentHTML("beforebegin",summary[0].aboutMeSummary);
+
+        }
 
     }
 
@@ -109,40 +127,44 @@ class CreateTemplate{
         let experienceContainer = document.getElementsByClassName("experience-section-container");
 
 
-        for( let x = 0; x < experiences.length; x+=1 ){
+        if( experiences ){
 
-            // insert into the HTML
-            experienceContainer[0].insertAdjacentHTML("beforeend", experienceBody);
+            for( let x = 0; x < experiences.length; x+=1 ){
+
+                // insert into the HTML
+                experienceContainer[0].insertAdjacentHTML("beforeend", experienceBody);
 
 
-            // grab the newly added body
-            let newlyAddedBody = document.getElementsByClassName("experience-section-container-body");
+                // grab the newly added body
+                let newlyAddedBody = document.getElementsByClassName("experience-section-container-body");
 
 // add relevant info to the HTML container
 
-            // ICON
-            let experienceIcon = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0];
-            experienceIcon.setAttribute("class", `${experiences[x].icon} themeIcon icon`)
+                // ICON
+                let experienceIcon = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0];
+                experienceIcon.setAttribute("class", `${experiences[x].icon} themeIcon icon`)
 
 
-            // JOB TITLE AND DATE
-            let titleAndDate = newlyAddedBody[ newlyAddedBody.length - 1 ].children[1];
+                // JOB TITLE AND DATE
+                let titleAndDate = newlyAddedBody[ newlyAddedBody.length - 1 ].children[1];
 
 
-            titleAndDate.insertAdjacentHTML("beforeend", `<h4>${experiences[x].jobTitle}</h4>`)
-            titleAndDate.insertAdjacentHTML("beforeend", `<h4>${experiences[x].date}</h4>`)
+                titleAndDate.insertAdjacentHTML("beforeend", `<h4>${experiences[x].jobTitle}</h4>`)
+                titleAndDate.insertAdjacentHTML("beforeend", `<h4>${experiences[x].date}</h4>`)
 
-            // NAME AND LOCATION
-            let nameAndLocation = newlyAddedBody[ newlyAddedBody.length - 1 ].children[2];
+                // NAME AND LOCATION
+                let nameAndLocation = newlyAddedBody[ newlyAddedBody.length - 1 ].children[2];
 
-            nameAndLocation.insertAdjacentHTML("beforeend", `<h5>${experiences[x].companyName}</h5>`)
-            nameAndLocation.insertAdjacentHTML("beforeend", `<h5>${experiences[x].location}</h5>`)
+                nameAndLocation.insertAdjacentHTML("beforeend", `<h5>${experiences[x].companyName}</h5>`)
+                nameAndLocation.insertAdjacentHTML("beforeend", `<h5>${experiences[x].location}</h5>`)
 
 
-            // JOB SUMMARY
-            let jobSummary = newlyAddedBody[ newlyAddedBody.length - 1 ].children[3];
-            jobSummary.innerText = experiences[x].summary;
+                // JOB SUMMARY
+                let jobSummary = newlyAddedBody[ newlyAddedBody.length - 1 ].children[3];
+                jobSummary.innerText = experiences[x].summary;
+            }
         }
+
 
     }
 
@@ -177,25 +199,26 @@ class CreateTemplate{
 
         let skillsContainer = document.getElementsByClassName("skills-section-container");
 
-        for (let x = 0; x < skills.length; x += 1) {
+        if( skills ){
+            for (let x = 0; x < skills.length; x += 1) {
 
-            // add card
-            skillsContainer[0].insertAdjacentHTML("beforeend", skillsBody)
+                // add card
+                skillsContainer[0].insertAdjacentHTML("beforeend", skillsBody)
 
-            // grab card
-            let newlyAddedBody = document.getElementsByClassName("skills-category-container");
+                // grab card
+                let newlyAddedBody = document.getElementsByClassName("skills-category-container");
 
-            // add category name once we add the element for it
-            let categoryName = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[0];
-            categoryName.insertAdjacentHTML("beforeend", `<h3>${skills[x].categoryName}</h3>`)
+                // add category name once we add the element for it
+                let categoryName = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[0];
+                categoryName.insertAdjacentHTML("beforeend", `<h3>${skills[x].categoryName}</h3>`)
 
 
-            // add individual skills to the language container
-            let languagesContainer =  newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[1];
+                // add individual skills to the language container
+                let languagesContainer =  newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[1];
 
-            for( let y = 0; y < skills[x].skills.length; y+=1 ){
+                for( let y = 0; y < skills[x].skills.length; y+=1 ){
 
-                languagesContainer.insertAdjacentHTML("beforeend", `
+                    languagesContainer.insertAdjacentHTML("beforeend", `
                 
                     <div>
                         <i class="fa-brands fa-html5 themeIcon"></i>
@@ -203,9 +226,11 @@ class CreateTemplate{
                     </div>
 
                 `)
-            }
+                }
 
+            }
         }
+
     }
 
 
@@ -236,57 +261,62 @@ class CreateTemplate{
         let projectCardContainer = document.getElementsByClassName("project-section-container");
 
 
-        /*
-            classListVariable - 1 means we're accessing the newly created container
-        */
-        for( let x = 0; x < projects.length; x+=1 ){
+        if( projects ){
 
-            projectCardContainer[0].insertAdjacentHTML("beforeend", projectCard)
+            /*
+    classListVariable - 1 means we're accessing the newly created container
+*/
+            for( let x = 0; x < projects.length; x+=1 ){
 
-            // grab card
-            let newlyAddedBody = document.getElementsByClassName("project-section-container-card");
+                projectCardContainer[0].insertAdjacentHTML("beforeend", projectCard)
 
-            let projectImage = newlyAddedBody[ newlyAddedBody.length - 1 ];
+                // grab card
+                let newlyAddedBody = document.getElementsByClassName("project-section-container-card");
+
+                let projectImage = newlyAddedBody[ newlyAddedBody.length - 1 ];
 
 
-            // if user gave an image or not null or else it ill just keep the dealt
-            if(
-                JSON.parse(localStorage.getItem("projectImages")) && // if even exists
-                JSON.parse(localStorage.getItem("projectImages"))[x]
-            ){
+                // if user gave an image or not null or else it ill just keep the dealt
+                if(
+                    JSON.parse(localStorage.getItem("projectImages")) && // if even exists
+                    JSON.parse(localStorage.getItem("projectImages"))[x]
+                ){
 
-                projectImage.setAttribute("style",
+                    projectImage.setAttribute("style",
 
-                    `
+                        `
                             background-image: url('./images/${ JSON.parse(localStorage.getItem("projectImages"))[x] }');
                             background-size: cover;"
                     `
-                )
+                    )
+                }
+
+
+                let projectTitle = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[0];
+                projectTitle.insertAdjacentHTML("beforeend", `${projects[x].projectTitle}`)
+
+
+                let projectSummary = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[1];
+                projectSummary.insertAdjacentHTML("beforeend", `${projects[x].projectSummary}`)
+
+
+                let projectLink = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[2];
+
+                // if user gave no link hide the button
+                if( projects[x].projectLink === "" ){
+
+                    projectLink.classList.add("hideVisibility")
+
+                }else{
+
+                    projectLink.setAttribute("href", `${projects[x].projectLink}`)
+
+                }
+
             }
-
-
-            let projectTitle = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[0];
-            projectTitle.insertAdjacentHTML("beforeend", `${projects[x].projectTitle}`)
-
-
-            let projectSummary = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[1];
-            projectSummary.insertAdjacentHTML("beforeend", `${projects[x].projectSummary}`)
-
-
-            let projectLink = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[2];
-
-            // if user gave no link hide the button
-            if( projects[x].projectLink === "" ){
-
-                projectLink.classList.add("hideVisibility")
-
-            }else{
-
-                projectLink.setAttribute("href", `${projects[x].projectLink}`)
-
-            }
-
         }
+
+
     }
 
 
@@ -313,24 +343,27 @@ class CreateTemplate{
 
         let contacts = JSON.parse(localStorage.getItem("contacts"));
 
-        for( let x = 0; x < contacts.length; x+=1 ){
+        if( contacts ){
 
-            let href;
+            for( let x = 0; x < contacts.length; x+=1 ){
 
-            if( contacts[x].contactType === "fa-solid fa-envelope" ){
+                let href;
 
-                href = `mailto:${contacts[x].contact}`
-            }else{
+                if( contacts[x].contactType === "fa-solid fa-envelope" ){
 
-                href = contacts[x].contact;
-            }
+                    href = `mailto:${contacts[x].contact}`
+                }else{
 
-            contactBody[0].insertAdjacentHTML("beforeend",
+                    href = contacts[x].contact;
+                }
 
-                `
+                contactBody[0].insertAdjacentHTML("beforeend",
+
+                    `
                      <a title='${contacts[x].contact}' href="${href}"><i class='${contacts[x].icon}'></i></a>
                   `
-            )
+                )
+            }
         }
 
     }
@@ -351,10 +384,11 @@ class CreateTemplate{
 
                 navLinks = document.getElementsByClassName(section);
 
-                for( let x = 0; x < navLinks.length; x+= 1){
+                while( navLinks.length > 0 ){
 
-                    navLinks[x].remove();
+                    navLinks[0].remove();
                 }
+
 
             }else if( section === "skills" /*&& sectionsNotAdded[section] === false*/ ){
 
@@ -363,9 +397,9 @@ class CreateTemplate{
 
                 navLinks = document.getElementsByClassName(section);
 
-                for( let x = 0; x < navLinks.length; x+= 1){
+                while( navLinks.length > 0 ){
 
-                    navLinks[x].remove();
+                    navLinks[0].remove();
                 }
 
             }else if( section === "projects"/* && sectionsNotAdded[section] === false*/ ){
@@ -375,9 +409,9 @@ class CreateTemplate{
 
                 navLinks = document.getElementsByClassName(section);
 
-                for( let x = 0; x < navLinks.length; x+= 1){
+                while( navLinks.length > 0 ){
 
-                    navLinks[x].remove();
+                    navLinks[0].remove();
                 }
 
             }else if( section === "contacts" /*&& sectionsNotAdded[section] === false*/ ){
@@ -387,9 +421,9 @@ class CreateTemplate{
 
                 navLinks = document.getElementsByClassName(section);
 
-                for( let x = 0; x < navLinks.length; x+= 1){
+                while( navLinks.length > 0 ){
 
-                    navLinks[x].remove();
+                    navLinks[0].remove();
                 }
 
             }

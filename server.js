@@ -79,15 +79,53 @@ app.post("/upload-project-images", uploadProjectImages.single('project-image'), 
 
 
 
-app.delete("/remove-image/:image", (req, resp)=>{
+app.delete("/remove-image/:image", async (req, resp)=>{
 
 
     console.log(req.params.image)
     // remove the image
+
     let filePath = `./public/portfolio/images/${req.params.image}`;
-    fs.unlinkSync(filePath);
+
+    if( await fs.existsSync(filePath) ){
+
+        fs.unlinkSync(filePath);
+
+    }
 
     resp.status(200).send("image removed");
+
+} )
+
+app.delete("/remove-files", async (req, resp)=>{
+
+
+    let imageDir = `./public/portfolio/images/`;
+    let mediaDir = `./public/portfolio/media/`;
+
+    const imageFiles = await fs.readdirSync(imageDir);
+    const mediaFiles = await fs.readdirSync(mediaDir);
+
+        // remove files from image folder
+        for( const file of imageFiles ){
+
+            if( file === "default.jpeg" ){
+
+                continue;
+            }
+            fs.unlinkSync(`./public/portfolio/images/${file}`);
+
+        }
+
+        for( const file of mediaFiles ){
+
+            fs.unlinkSync(`./public/portfolio/media/${file}`);
+
+        }
+
+    // }
+
+    resp.status(200).send("files removed");
 
 } )
 

@@ -150,3 +150,27 @@ async function htmlContent(content){
     );
 
 }
+
+
+async function removeFiles(){
+
+
+    await fetch(
+
+        `http://localhost:3000/remove-files`,
+        {
+
+            method: 'DELETE',
+        }
+    ).then(
+
+        resp => resp.json()
+
+    ).then(
+
+        data => { console.log(data) }
+    ).catch(
+        (e)=> e
+    );
+
+}

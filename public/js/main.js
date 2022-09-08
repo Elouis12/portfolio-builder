@@ -50,34 +50,39 @@ function newExperience(){
                                     <!--allow custom icon selection-->
 
                                 </div>
-
-                                <div class="title-to-border experience-input">
-                                    <span>Job Title</span>
-                                    <input type="text" class="title-to-border-element"/>
-                                    <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
-                                </div>
-                                <div class="title-to-border experience-input">
-                                    <span>Company Name</span>
-                                    <input type="text" class="title-to-border-element"/>
-                                    <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
-                                </div>
-                                <div class="title-to-border experience-input">
-                                    <span>Location</span>
-                                    <input type="text" class="title-to-border-element"/>
-                                    <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
-                                </div>
-                                <div class="title-to-border experience-input">
-                                    <span>Summary</span>
-                                    <textarea class="title-to-border-element"></textarea>
-                                    <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
-                                </div>
-                                <div class="title-to-border experience-input">
-                                  
-                                        <span>Date</span>
-                                        <input id="flatpickr" value="">
+                                
+                                <!-- hold inputs -->
+                                <div>
+                                
+                                    <div class="title-to-border experience-input">
+                                        <span>Job Title</span>
+                                        <input type="text" class="title-to-border-element"/>
                                         <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
-                                        
+                                    </div>
+                                    <div class="title-to-border experience-input">
+                                        <span>Company Name</span>
+                                        <input type="text" class="title-to-border-element"/>
+                                        <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="title-to-border experience-input">
+                                        <span>Location</span>
+                                        <input type="text" class="title-to-border-element"/>
+                                        <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="title-to-border experience-input">
+                                        <span>Summary</span>
+                                        <textarea class="title-to-border-element"></textarea>
+                                        <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="title-to-border experience-input">                                    
+                                            <span>Date</span>
+                                            <input id="flatpickr" value="">
+                                            <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>                                            
+                                    </div>
+                                
                                 </div>
+
+
 
                                 <div class="delete-section middle-width">
                                     <i class="fa-solid fa-circle-minus"></i>
@@ -89,7 +94,7 @@ function newExperience(){
 
     experienceContainer.innerHTML = experience;
 
-    experienceContainer.setAttribute("class", "experiences-container")
+    experienceContainer.setAttribute("class", "experiences-container tree-border")
 
     let experienceSection = document.getElementById("experiences");
 
@@ -172,7 +177,7 @@ function newCategory(){
                                 <!-- INDIVIDUAL SKILLS -->
                                 <div class="middle-width skill">
 
-                                    <div class="skill-container">
+                                    <div class="skill-container tree-border">
 
                                         <!-- SKILLS DROPDOWN -->
                                         <div class="section-title" onclick="closeSection(this)">
@@ -187,10 +192,11 @@ function newCategory(){
                                                 <!--dropdown-->
                                                 <div class="drop-down">
                                                     <div class="drop-down-select-div" onclick="closeSection(this)">
-                                          <span>
-                                                      <i class="fa-brands fa-html5"></i>
-                                              <span>Icons</span>
-                                          </span> <i class="fa-solid fa-angle-down"></i>
+                                                  <span>
+                                                              <i class="fa-brands fa-html5"></i>
+                                                      <span>Icons</span>
+                                                  </span>
+                                           <i class="fa-solid fa-angle-down"></i>
                                                     </div>
                                                     <div class="drop-down-options-div hideVisibility">
                                                         <div onclick="iconSelect(this)">
@@ -288,7 +294,7 @@ function newCategory(){
 
     categoryDiv.innerHTML = category;
 
-    categoryDiv.setAttribute("class", "category-container")
+    categoryDiv.setAttribute("class", "category-container tree-border")
 
     let experienceSection = document.getElementById("category");
 
@@ -432,7 +438,7 @@ function newSkill(element){
 
     skillDiv.innerHTML = skill;
 
-    skillDiv.setAttribute("class", "skill-container");
+    skillDiv.setAttribute("class", "skill-container tree-border" );
 
 
     // let skillSection = document.getElementById("skill");
@@ -491,21 +497,24 @@ function newProject(element){
                                     </div>
                                 </div>
 
-                                <div class="title-to-border experience-input">
-                                    <span>Project Title</span>
-                                    <input type="text" class="title-to-border-element"/>
-                                    <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
-                                </div>
-                                <div class="title-to-border experience-input">
-                                    <span>Project Link</span>
-                                    <input id="project-link" type="text" class="title-to-border-element" placeholder="https://"/>
-                                    <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
-                                </div>
-                                <div class="title-to-border experience-input">
-                                    <span>Project Summary</span>
-                                    <textarea class="title-to-border-element"></textarea>
-                                    <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
-                                </div>
+                                <div>
+                                    <div class="title-to-border experience-input">
+                                        <span>Project Title</span>
+                                        <input type="text" class="title-to-border-element"/>
+                                        <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="title-to-border experience-input">
+                                        <span>Project Link</span>
+                                        <input id="project-link" type="text" class="title-to-border-element" placeholder="https://"/>
+                                        <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="title-to-border experience-input">
+                                        <span>Project Summary</span>
+                                        <textarea class="title-to-border-element"></textarea>
+                                        <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
+                                    </div>
+                               </div>
+
 
                                 <!-- DELETE CATEGORY -->
                                 <div class="delete-section middle-width">
@@ -519,7 +528,7 @@ function newProject(element){
 
     projectContainer.innerHTML = project;
 
-    projectContainer.setAttribute("class", "project-container")
+    projectContainer.setAttribute("class", "project-container tree-border")
 
     // let skillSection = document.getElementById("skill");
     let projectSection = element.currentTarget.parentElement;
@@ -673,7 +682,7 @@ function newContact(element){
 
     contactDiv.innerHTML = contact;
 
-    contactDiv.setAttribute("class", "contacts-container")
+    contactDiv.setAttribute("class", "contacts-container tree-border")
 
     // let skillSection = document.getElementById("skill");
     let contactSection = element.currentTarget.parentElement;

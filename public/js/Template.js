@@ -85,6 +85,9 @@ export class Template{
                 localStorage.removeItem("portfolioTitle");
                 localStorage.removeItem("portfolioImage");
 
+                // 4. remove files created from server
+                await removeFiles();
+
 
             }else{ // we may not need this section anymore
 
@@ -191,11 +194,11 @@ export class Template{
             let experienceObject = {};
 
             experienceObject.icon = experiences[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("class"); // store the class
-            experienceObject.jobTitle = experiences[x].children[1].children[1].children[1].value.trim();
-            experienceObject.companyName = experiences[x].children[1].children[2].children[1].value.trim();
-            experienceObject.location = experiences[x].children[1].children[3].children[1].value.trim();
-            experienceObject.summary = experiences[x].children[1].children[4].children[1].value.trim();
-            experienceObject.date = experiences[x].children[1].children[5].children[1].value.trim();
+            experienceObject.jobTitle = experiences[x].children[1].children[1].children[0].children[1].value.trim();
+            experienceObject.companyName = experiences[x].children[1].children[1].children[1].children[1].value.trim();
+            experienceObject.location = experiences[x].children[1].children[1].children[2].children[1].value.trim();
+            experienceObject.summary = experiences[x].children[1].children[1].children[3].children[1].value.trim();
+            experienceObject.date = experiences[x].children[1].children[1].children[4].children[1].value.trim();
 
             experienceArray.push( experienceObject );
         }
@@ -258,9 +261,9 @@ export class Template{
             let projectObject = {};
 
             projectObject.projectImage = this.#_projectImages[x];
-            projectObject.projectTitle = projects[x].children[1].children[1].children[1].value.trim();
-            projectObject.projectLink = projects[x].children[1].children[2].children[1].value.trim();
-            projectObject.projectSummary = projects[x].children[1].children[3].children[1].value.trim();
+            projectObject.projectTitle = projects[x].children[1].children[1].children[0].children[1].value.trim();
+            projectObject.projectLink = projects[x].children[1].children[1].children[1].children[1].value.trim();
+            projectObject.projectSummary = projects[x].children[1].children[1].children[2].children[1].value.trim();
 
             projectsArray.push( projectObject );
         }

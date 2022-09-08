@@ -10,6 +10,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/draganddrop.css"/>
+    <link rel="stylesheet" href="css/footer.css"/>
 
     <!-- LOAD CDNs FIRST SO WE CAN CAN ACCESS VARIABLES IN FILES IN JS SECTION -->
     <!-- DATE PICKER-->
@@ -34,7 +35,7 @@
 
 
 </head>
-<body>
+<body onload="removeFiles()" onunload="removeFiles()">
 
 
 <div id="layout-container">
@@ -48,6 +49,10 @@
         <i class="fa-solid fa-circle-info"></i>
         My Information
     </h3>
+    <div class="view-buttons">
+        <button class="view-new-tab-button" onclick="window.open('http://localhost:3000/portfolio/template.html')">View In New Tab</button>
+<!--        <button class="view-template-button">View Example Template</button>-->
+    </div>
     <div id="template-layout-container" class="container">
 
 
@@ -70,9 +75,9 @@
 
 
                         <!-- DRAG AND DROP -->
-                        <div class="fav-icon-container">
+                        <div id="portfolio-drag-container" class="fav-icon-container">
 
-                            <div class="drag-container">
+                            <div  class="drag-container">
                                 <div id="drag-area" class="drag-area">
                                     <div class="icon">
                                         <i class="fas fa-cloud-upload-alt"></i>
@@ -348,6 +353,36 @@
         <i class="fa-solid fa-arrow-down"></i>
     </div>-->
 </div>
+
+
+<footer>
+    <div class="footer-content">
+        <h3>MyPortfoly</h3>
+        <p>
+
+        </p>
+        <ul class="socials">
+            <li title="https://github.com/elouis12">
+                <a href="https://github.com/elouis12" >
+                    <i class="fa-brands fa-github "></i>
+                </a>
+            </li>
+            <li title="elouis12@me.com">
+                <a href="mailto:elouis12@me.com" >
+                    <i class="fa fa-envelope"></i>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="footer-bottom">
+
+        <p>copyright &copy; <span id="year">2022 MyPortfoly. Designed by <span>Ernesto Louis</span></span></p>
+
+    </div>
+</footer>
+
+<script src="js/removeFiles.js"></script>
 
 
 </body>
