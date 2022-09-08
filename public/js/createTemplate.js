@@ -18,30 +18,15 @@ class CreateTemplate{
         let html = document.getElementById("html");
 
         let scripts = document.getElementsByTagName("SCRIPT");
-        for( let x = 0; x < scripts.length; x+=1  ){
 
-            // keeps the script that it will need once template is generated
-            if( scripts[x].getAttribute("src") !== "./js/index.js" ){
-                scripts[x].remove();
+/*        while( scripts.length > 0 ){
 
-            }
-        }
+            scripts[0].remove();
+        }*/
 
         html.removeAttribute("id");
 
         localStorage.setItem("htmlContent", html.innerHTML)
-
-        // alert(localStorage.getItem("htmlContent"))
-        /*if( JSON.parse(localStorage.getItem("generateTemplate")) ){
-
-            htmlContent(html.innerHTML);
-
-        }*/
-        // clear local storage
-        localStorage.removeItem("generateTemplate")
-
-        // this.#clearLocalStorage()
-
 
     }
 

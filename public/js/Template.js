@@ -84,6 +84,7 @@ export class Template{
 
                 localStorage.removeItem("portfolioTitle");
                 localStorage.removeItem("portfolioImage");
+                localStorage.removeItem("htmlContent");
 
                 // 4. remove files created from server
                 await removeFiles();
