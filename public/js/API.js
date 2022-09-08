@@ -8,7 +8,7 @@ async function sendResume(){
 
     await fetch(
 
-        `http://localhost:3000/upload-resume`,
+        `/upload-resume`,
         {
 /*            headers: { // this made us not get the file
                 "Content-Type": "application/pdf"
@@ -41,7 +41,7 @@ async function sendProjectImages(image){
 
     await fetch(
 
-        `http://localhost:3000/upload-project-images`,
+        `/upload-project-images`,
         {
 
             method: 'POST',
@@ -64,7 +64,7 @@ async function removeImage(imageName){
 
     await fetch(
 
-        `http://localhost:3000/remove-image/${imageName}`,
+        `/remove-image/${imageName}`,
         {
 
             method: 'DELETE',
@@ -87,7 +87,7 @@ async function downloadPortfolio(){
 
 /*    await fetch(
 
-        `http://localhost:3000/template-zip-folder`,
+        `/template-zip-folder`,
         {
 
             method: 'GET',
@@ -108,7 +108,7 @@ async function downloadPortfolio(){
         (e)=> e
     );*/
 
-    window.open("http://localhost:3000/template-zip-folder")
+    window.open("/template-zip-folder")
 
 
 }
@@ -119,7 +119,7 @@ async function htmlContent(content){
     // alert("getting content")
         await fetch(
 
-        `http://localhost:3000/html-content/`,
+        `/html-content/`,
         {
             headers: { // this made us not get the file
                 "Content-Type": "application/json"
@@ -157,7 +157,7 @@ async function removeFiles(){
 
     await fetch(
 
-        `http://localhost:3000/remove-files`,
+        `/remove-files`,
         {
 
             method: 'DELETE',

@@ -138,8 +138,9 @@ let AdmZip = require('adm-zip');
 app.get('/template-zip-folder', async function(req, resp) {
 
     let zip = new AdmZip();
+
     // add local file
-    zip.addLocalFolder("./public/portfolio", 'portfolio');
+    // zip.addLocalFolder("./public/portfolio", 'portfolio');
 
     zip.writeZip('portfolio.zip');
 
