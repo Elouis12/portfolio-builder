@@ -15,7 +15,7 @@ const multer = require("multer");
 
 const app = express();
 
-app.use( express.static( "./public" ))
+app.use( express.static( path.join(__dirname, 'public')))
 
 app.use( cors() );
 
@@ -138,7 +138,6 @@ let AdmZip = require('adm-zip');
 app.get('/template-zip-folder', async function(req, resp) {
 
     let zip = new AdmZip();
-
     // add local file
     // zip.addLocalFolder("./public/portfolio", 'portfolio');
 
