@@ -81,7 +81,7 @@ export class Template{
                 localStorage.removeItem("skills");
                 localStorage.removeItem("projects")
                 localStorage.removeItem("contacts")
-                localStorage.removeItem("resume")
+                localStorage.removeItem("resumeName")
 
                 localStorage.removeItem("projectImages")
                 localStorage.removeItem("portfolioTitle");
@@ -290,12 +290,11 @@ export class Template{
         const handleFiles = () => {
 
             resume = [...resumeFile.files];
-            this.#_resume = resume;
+            this.#_resume = resume/*.name*/;
+
+            localStorage.setItem( "resumeName", resumeFile.name);
         };
         resumeFile.addEventListener("change", handleFiles);// listens for when user adds pdf file
-
-
-        localStorage.setItem( "resume", JSON.stringify(this.#_resume ));
 
         return this.#_resume;
     }

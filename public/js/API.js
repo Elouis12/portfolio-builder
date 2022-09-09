@@ -175,20 +175,18 @@ async function removeFiles(){
     );
 
 
+    localStorage.removeItem("portfolio")
     localStorage.removeItem("navigationBar")
     localStorage.removeItem("about")
     localStorage.removeItem("experiences");
     localStorage.removeItem("skills");
     localStorage.removeItem("projects")
     localStorage.removeItem("contacts")
-    localStorage.removeItem("resume")
-
-
+    localStorage.removeItem("resumeName")
 
     localStorage.removeItem("projectImages")
     localStorage.removeItem("portfolioTitle");
     localStorage.removeItem("portfolioImage");
     localStorage.removeItem("sections");
-    localStorage.removeItem("htmlContent");
 
 }
