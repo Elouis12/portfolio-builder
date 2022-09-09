@@ -95,7 +95,10 @@ export class Template{
                 localStorage.removeItem("sections");
                 // localStorage.removeItem("downloadTemplate");
 
-                // 5. remove files created from server
+                // 5. refresh the current page
+                window.location.reload();
+
+                // 6. remove files created from server
                 // await removeFiles();
 
             }

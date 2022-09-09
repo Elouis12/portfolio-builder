@@ -155,36 +155,23 @@ async function htmlContent(content){
 
 async function removeFiles(){
 
+    await fetch(
 
-    // there's an issue where to download, it refreshes the page
-    // BUT refreshing the page means removing stuff rom the server to not clog it
-    // so when it does that, the pdf and image files get deleted before they even download
+        `/remove-files`,
+        {
 
+            method: 'DELETE',
+        }
+    ).then(
 
-    // so as long as did not click the download button
-    // we can remove from server
-    // download already takes care f that as well
-    // if( !localStorage.getItem("downloadTemplate") ){
+        resp => resp.json()
 
-        await fetch(
+    ).then(
 
-            `/remove-files`,
-            {
-
-                method: 'DELETE',
-            }
-        ).then(
-
-            resp => resp.json()
-
-        ).then(
-
-            data => { console.log(data) }
-        ).catch(
-            (e)=> e
-        );
-    // }
-
+        data => { console.log(data) }
+    ).catch(
+        (e)=> e
+    );
 
 
     localStorage.removeItem("portfolio")
