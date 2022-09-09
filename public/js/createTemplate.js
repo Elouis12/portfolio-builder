@@ -323,13 +323,23 @@ class CreateTemplate{
         let downloadResume = document.getElementById("download-resume");
         let viewResumeLarge = document.getElementById("view-resume-larger");
 
-        // resume was set
-        if( localStorage.getItem("resumeName") ){
+
+        // resume was set with a path name
+        if( localStorage.getItem("resumeName") !== "" ){
 
             resumeEmbed.setAttribute("src", "./media/resume.pdf")
             viewResumeLarge.setAttribute("src", "./media/resume.pdf#zoom=Fit")
             downloadResume.setAttribute("href", "./media/resume.pdf");
             downloadResume.setAttribute("download", "");
+
+        // user gave an invalid file( aka file input was "" )
+        }else{
+
+
+            resumeEmbed.removeAttribute("src");
+            viewResumeLarge.removeAttribute("src");
+            downloadResume.removeAttribute("href");
+            downloadResume.removeAttribute("download");
         }
     }
 

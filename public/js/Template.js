@@ -271,20 +271,55 @@ export class Template{
 
     #getResume() {
 
-        const resumeFile = document.getElementById('resume-input');
+
+        // RESUME SELECT BUTTON
+        let resumeUploadButton = document.getElementById("resume-button")
+        const uploadResume = (element) => {
+
+            element.currentTarget.parentElement.children[1].click();
+        }
+
+        resumeUploadButton.addEventListener("click", uploadResume)
+
+
+
+        // RESUME INPUT FILE BUTTON
+        const resumeInputFile = document.getElementById('resume-input');
 
         let resume;
-        const handleFiles = async () => {
+        const handleFiles = async (element) => {
 
-            resume = [...resumeFile.files];
-            this.#_resume = resume;
-            await sendResume();
+            resume = [...element.currentTarget.files];
 
-            alert(resumeFile.value)
-            localStorage.setItem( "resumeName", resumeFile.value/*JSON.stringify(this.#_resume )*/);
+            // validate file is pdf
+            let file = element.currentTarget
+            let filePath = file.value; //getting selected file type
+
+
+            let filePathArray = filePath.split("."); //getting selected file type
+            let fileType = filePathArray[ filePathArray.length - 1 ]; //getting selected file type
+            let validExtensions = "pdf"; //adding some valid pdf extension
+            if ( fileType !== validExtensions ) { //if user selected file is an image file
+
+                alert("This is not a PDF File!");
+                file.value = ''; // displays 'No file selected.'
+
+            }else{
+
+                // send the resume to be uploaded
+                await sendResume();
+
+                // save the resume to variable
+                this.#_resume = resume;
+            }
+
+            // refresh embed iframe
+            document.getElementById('resume-embed').src += '';
+
+            localStorage.setItem( "resumeName", file.value/*JSON.stringify(this.#_resume )*/);
 
         };
-        resumeFile.addEventListener("change", handleFiles);// listens for when user adds pdf file
+        resumeInputFile.addEventListener("change", handleFiles);// listens for when user adds pdf file
 
         return this.#_resume;
     }

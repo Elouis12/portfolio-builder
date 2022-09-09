@@ -209,31 +209,5 @@ function refreshIframe(){
 }
 
 
-function uploadResume(element){
-
-  element.parentElement.children[1].click();
-
-}
-
-
-
-function showResume(element){
-
-  let filePath = element.value; //getting selected file type
-
-  let filePathArray = filePath.split("."); //getting selected file type
-  let fileType = filePathArray[ filePathArray.length - 1 ]; //getting selected file type
-  let validExtensions = "pdf"; //adding some valid image extensions in array
-  if ( fileType !== validExtensions ) { //if user selected file is an image file
-
-    alert("This is not a PDF File!");
-    element.value = ''; // displays 'No file selected.'
-  }
-
-  // refresh embed iframe
-  document.getElementById('resume-embed').src += '';
-
-}
-
 
 

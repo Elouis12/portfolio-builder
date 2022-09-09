@@ -310,7 +310,7 @@ div[class*="-container"], .add-section{
     align-items: center;
 
 }
-#resume-container > button[class="resume-button"]{
+#resume-container > button[id="resume-button"]{
 
     background-color: hsl(207, 19%, 9%);
     padding: 5px;
@@ -323,7 +323,7 @@ div[class*="-container"], .add-section{
     z-index: 2;
 
 }
-#resume-container > button[class="resume-button"]:hover{
+#resume-container > button[id="resume-button"]:hover{
 
     cursor: pointer;
 
