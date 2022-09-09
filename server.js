@@ -106,24 +106,20 @@ app.delete("/remove-files", async (req, resp)=>{
     const imageFiles = await fs.readdirSync(imageDir);
     const mediaFiles = await fs.readdirSync(mediaDir);
 
-        // remove files from image folder
-        for( const file of imageFiles ){
+    // remove files from image folder
+    for( const file of imageFiles ){
 
-            if( file === "default.jpeg" ){
+        if( file !== "default.jpeg" ){
 
-                continue;
-            }
             fs.unlinkSync(`./public/portfolio/images/${file}`);
 
         }
 
-        for( const file of mediaFiles ){
+    }
 
-            fs.unlinkSync(`./public/portfolio/media/${file}`);
+    // remove all files from /media
+    await fsExtra.emptyDirSync('./public/portfolio/media');
 
-        }
-
-    // }
 
     resp.status(200).send("files removed");
 
@@ -186,7 +182,7 @@ app.get('/template-zip-folder', async function(req, resp) {
 
         for (const file of files) {
 
-            if( file !== "default.jpeg" && fs.existsSync(file) ){ // remove all except the default image
+            if( file !== "default.jpeg" ){ // remove all except the default image
                 fs.unlink(path.join('./public/portfolio/images', file), err => {
                     if (err) throw err;
                 });
@@ -211,8 +207,6 @@ app.get('/template-zip-folder', async function(req, resp) {
 app.post('/html-content', async (req, resp) => {
 
 
-    
-    
     // save content to html file
     await fs.writeFile('./public/portfolio/template.html',
         `
@@ -222,7 +216,7 @@ app.post('/html-content', async (req, resp) => {
     </html>
     `, (err, result)=>{
 
-        console.log("writing to html file")
+            console.log("writing to html file")
             if(err){
 
                 resp.json({success:"no"})
@@ -231,7 +225,7 @@ app.post('/html-content', async (req, resp) => {
 
             }
             // console.log(result);
-    });
+        });
 
     resp.json({success:"yes"})
 
