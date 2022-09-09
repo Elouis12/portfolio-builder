@@ -228,12 +228,10 @@ function showResume(element){
 
     alert("This is not a PDF File!");
     element.value = ''; // displays 'No file selected.'
-
-    // add the link to it
-    localStorage.setItem("resumeName", element.name);
-
-    // refresh embed iframe
   }
+
+  // refresh embed iframe
+  document.getElementById('resume-embed').src += '';
 
 }
 

@@ -702,8 +702,15 @@ function newContact(element){
 
     let deleteButton = contactDiv.children[1].lastElementChild;
 
-    deleteButton.addEventListener("click", deleteSection)
-    deleteButton.addEventListener("click", refreshIframe)
+    // makes sure there's only 1 contact by default
+    if( document.getElementsByClassName("contacts-container").length === 1 ){
+
+        deleteButton.remove();
+    }else {
+
+        deleteButton.addEventListener("click", deleteSection)
+        deleteButton.addEventListener("click", refreshIframe)
+    }
 
 
 }
@@ -895,3 +902,7 @@ function addEventListenerAddButtons(){
 
 
 addEventListenerAddButtons();
+
+
+// make sure the user has at least 1 contact
+document.getElementById('add-contact').click()

@@ -186,7 +186,7 @@ app.get('/template-zip-folder', async function(req, resp) {
 
         for (const file of files) {
 
-            if( file !== "default.jpeg" ){ // remove all except the default image
+            if( file !== "default.jpeg" && fs.existsSync(file) ){ // remove all except the default image
                 fs.unlink(path.join('./public/portfolio/images', file), err => {
                     if (err) throw err;
                 });
@@ -214,7 +214,7 @@ app.post('/html-content', async (req, resp) => {
     
     
     // save content to html file
-    await fs.writeFile('./public/portfolio/template.html', 
+    await fs.writeFile('./public/portfolio/template.html',
         `
     <!DOCTYPE html>
     <html lang="en" id="html">

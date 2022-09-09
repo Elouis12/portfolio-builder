@@ -174,7 +174,7 @@ async function removeFiles(){
         (e)=> e
     );
 
-    localStorage.removeItem("portfolio")
+
     localStorage.removeItem("navigationBar")
     localStorage.removeItem("about")
     localStorage.removeItem("experiences");
