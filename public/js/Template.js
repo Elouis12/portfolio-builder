@@ -69,13 +69,16 @@ export class Template{
                 document.getElementById('resume-embed').src += '';
 
                 // 1. send to html to be written to the template file
-                await htmlContent( localStorage.getItem("htmlContent"))
+                await htmlContent( localStorage.getItem("htmlContent"));
 
-                // 2. make request to download zip file
+                // 2. let teh browser know we don't want to remove files on refresh or unload while downloading file
+                // localStorage.setItem("downloadTemplate");
+
+                // 3. make request to download zip file
                 await downloadPortfolio();
 
 
-                // 3. clear local storage
+                // 4. clear local storage
 
                 localStorage.removeItem("portfolio")
                 localStorage.removeItem("navigationBar")
@@ -90,9 +93,10 @@ export class Template{
                 localStorage.removeItem("portfolioTitle");
                 localStorage.removeItem("portfolioImage");
                 localStorage.removeItem("sections");
+                // localStorage.removeItem("downloadTemplate");
 
-                // 4. remove files created from server
-                await removeFiles();
+                // 5. remove files created from server
+                // await removeFiles();
 
             }
 
