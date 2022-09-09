@@ -111,19 +111,15 @@ app.delete("/remove-files", async (req, resp)=>{
 
             if( file === "default.jpeg" ){
 
-                continue;
+                fs.unlinkSync(`./public/portfolio/images/${file}`);
+
             }
-            fs.unlinkSync(`./public/portfolio/images/${file}`);
 
         }
 
-        for( const file of mediaFiles ){
-
-            fs.unlinkSync(`./public/portfolio/media/${file}`);
-
-        }
-
-    // }
+    // remove all files from /media
+    await fsExtra.emptyDirSync('./public/portfolio/media');
+        
 
     resp.status(200).send("files removed");
 

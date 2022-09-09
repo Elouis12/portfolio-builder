@@ -12,7 +12,7 @@ footer{
     right: 0;
     background-color: #111;
     height: auto;
-    width: 100%;
+    /*width: 100vw;*/
     font-family: Poppins;
     /*padding-top: 40px;*/
     color: #fff;
@@ -54,6 +54,10 @@ footer{
 
 }
 
+ul{
+
+    background-color: #ff4c4c;
+}
 .socials li{
 
     margin: 0 10px;

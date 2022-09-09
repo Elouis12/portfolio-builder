@@ -40,312 +40,316 @@
 
 <div id="layout-container">
 
-    <h2 id="title-h2">
-        <i class="fa-solid fa-image-portrait"></i>
-        Create Portfolio
-    </h2>
+    <div id="template-container">
 
-    <h3 id="my-info-h3">
-        <i class="fa-solid fa-circle-info"></i>
-        My Information
-    </h3>
-    <div class="view-buttons">
-        <button class="view-new-tab-button" onclick="window.open('/portfolio/template.html')">View In New Tab</button>
-<!--        <button class="view-template-button">View Example Template</button>-->
-    </div>
-    <div id="template-layout-container" class="container">
+        <h2 id="title-h2">
+            <i class="fa-solid fa-image-portrait"></i>
+            Create Portfolio
+        </h2>
+
+        <h3 id="my-info-h3">
+            <i class="fa-solid fa-circle-info"></i>
+            My Information
+        </h3>
+        <div class="view-buttons">
+            <button class="view-new-tab-button" onclick="window.open('/portfolio/template.html')">View In New Tab</button>
+            <!--        <button class="view-template-button">View Example Template</button>-->
+        </div>
+        <div id="template-layout-container" class="container">
 
 
-        <div id="portfolio-info">
+            <div id="portfolio-info">
 
-            <div class="sections">
+                <div class="sections">
 
-                <!-- PORTFOLIO -->
-                <section class="section-container">
+                    <!-- PORTFOLIO -->
+                    <section class="section-container">
 
-                    <div class="section-title" onclick="closeSection(this)">
+                        <div class="section-title" onclick="closeSection(this)">
                       <span>
                           <i class="fa-solid fa-clipboard-user"></i>
                           Portfolio
                       </span>
-                        <i class="fa-solid fa-angle-down"></i>
-                    </div>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
 
-                    <div class="info hide">
+                        <div class="info hide">
 
 
-                        <!-- DRAG AND DROP -->
-                        <div id="portfolio-drag-container" class="fav-icon-container">
+                            <!-- DRAG AND DROP -->
+                            <div id="portfolio-drag-container" class="fav-icon-container">
 
-                            <div  class="drag-container">
-                                <div id="drag-area" class="drag-area">
-                                    <div class="icon">
-                                        <i class="fas fa-cloud-upload-alt"></i>
+                                <div  class="drag-container">
+                                    <div id="drag-area" class="drag-area">
+                                        <div class="icon">
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                        </div>
+                                        <header>Drag & Drop to Upload Image</header>
+                                        <span>OR</span>
+                                        <button onclick="initValues(this)">Browse File</button>
+                                        <input id="portfolio-file-input" class="portfolio-file-input" type="file" hidden>
+
                                     </div>
-                                    <header>Drag & Drop to Upload Image</header>
-                                    <span>OR</span>
-                                    <button onclick="initValues(this)">Browse File</button>
-                                    <input id="portfolio-file-input" class="portfolio-file-input" type="file" hidden>
-
                                 </div>
-                            </div>
-                            <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
-
-                        </div>
-
-                        <div class="title-to-border">
-                            <span>Portfolio Title</span>
-                            <input class="title-to-border-element" id="portfolio-name" type="text">
-                            <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- NAVIGATION -->
-                <section class="section-container">
-
-                    <div class="section-title" onclick="closeSection(this)">
-                      <span>
-                        <i class="fa-solid fa-bars"></i>
-                        Navigation Bar
-                      </span>
-                        <i class="fa-solid fa-angle-down"></i>
-                    </div>
-
-                    <div class="info hide">
-
-                        <div class="title-to-border">
-                            <span>Navigation Title</span>
-                            <input class="title-to-border-element" id="nav-name" type="text">
-                            <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
-                        </div>
-
-                    </div>
-
-                </section>
-
-                <!-- ABOUT ME -->
-                <section class="section-container">
-
-                    <div class="section-title" onclick="closeSection(this)">
-                      <span>
-                        <i class="fa-solid fa-address-card"></i>
-                          About Me
-                      </span>
-                        <i class="fa-solid fa-angle-down"></i>
-                    </div>
-
-                    <div class="info hide">
-                        <!-- SELECTIONS -->
-                        <div class="section-icon-selector">
-                            <!--dropdown-->
-                            <div id="about-me-drop-down" class="drop-down">
-                                <div class="drop-down-select-div" onclick="closeSection(this)">
-                                          <span>
-                                              <i class="fa-solid fa-user"></i>
-                                              <span>Icons</span>
-                                          </span> <i class="fa-solid fa-angle-down"></i>
-                                </div>
-                                <div class="drop-down-options-div hideVisibility">
-                                    <div onclick="iconSelect(this)">
-                                        <i class="fa-solid fa-user"></i>
-                                    </div>
-                                    <div onclick="iconSelect(this)">
-                                        <i class="fa-solid fa-person"></i>
-                                    </div>
-                                    <div onclick="iconSelect(this)">
-                                        <i class="fa-solid fa-address-card"></i>
-                                    </div>
-                                    <!--                                  <i class="fa-solid fa-user-hair"></i>-->
-                                    <!--                                  <i class="fa-solid fa-user-hair-long"></i>             -->
-                                </div>
-                            </div>
-                            <!--allow custom icon selection-->
-
-                        </div>
-
-                        <div class="title-to-border">
-                            <span>Summary</span>
-                            <textarea id="about-me-summary" class="title-to-border-element"></textarea>
-                            <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
-                        </div>
-
-                    </div>
-
-
-                </section>
-
-                <!-- EXPERIENCE -->
-                <section class="section-container">
-
-                    <div class="section-title" onclick="closeSection(this)">
-                      <span>
-                          <i class="fa-solid fa-briefcase"></i>
-                          <span>Experiences</span>
-                      </span>
-                        <i class="fa-solid fa-angle-down"></i>
-                    </div>
-
-                    <div id="experiences" class="middle-width hide">
-
-
-                        <div class="add-section">
-                            <i class="fa-solid fa-circle-plus"></i>
-                            <span>Add Experience</span>
-                        </div>
-
-                    </div>
-
-                </section>
-
-                <!-- SKILLS -->
-                <section class="section-container">
-
-                    <div class="section-title" onclick="closeSection(this)">
-                      <span>
-                        <i class="fa-solid fa-screwdriver-wrench"></i>
-                          <span>Skills</span>
-                      </span>
-                        <i class="fa-solid fa-angle-down"></i>
-                    </div>
-
-                    <div id="category" class="middle-width hide">
-
-
-
-                        <div class="add-section">
-                            <i class="fa-solid fa-circle-plus"></i>
-                            <span>Add Category</span>
-                        </div>
-
-                    </div>
-
-                </section>
-
-                <!-- PROJECTS -->
-
-                <section class="section-container">
-
-                    <div class="section-title" onclick="closeSection(this)">
-                      <span>
-                          <i class="fa-brands fa-app-store-ios"></i>
-                           <span>Projects</span>
-                      </span>
-                        <i class="fa-solid fa-angle-down"></i>
-                    </div>
-
-                    <div id="project" class="middle-width hide">
-
-                        <div class="add-section">
-                            <i class="fa-solid fa-circle-plus"></i>
-                            <span>Add Project</span>
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- RESUME -->
-                <section class="section-container">
-
-                    <div class="section-title" onclick="closeSection(this)">
-                      <span>
-                          <i class="fa-solid fa-file"></i>
-                          Resume
-                      </span>
-                        <i class="fa-solid fa-angle-down"></i>
-                    </div>
-
-                    <div id="resume" class="middle-width hide">
-
-                        <div id="resume-info">
-
-                            <div id="resume-container" >
-
-                                <button class="resume-button" value="Upload Resume" onclick="uploadResume(this)">
-                                    Upload Resume
-                                    <i class="fa-solid fa-paperclip"></i>
-                                </button>
-                                <input id="resume-input" name="resume" type="file" class="title-to-border-element" onchange="showResume(this)"/>
                                 <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
 
                             </div>
 
+                            <div class="title-to-border">
+                                <span>Portfolio Title</span>
+                                <input class="title-to-border-element" id="portfolio-name" type="text">
+                                <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
+                            </div>
+
                         </div>
 
-                    </div>
-
-                </section>
+                    </section>
 
 
-                <!-- CONTACTS -->
-                <section class="section-container">
+                    <!-- NAVIGATION -->
+                    <section class="section-container">
 
-                    <div class="section-title" onclick="closeSection(this)">
+                        <div class="section-title" onclick="closeSection(this)">
+                      <span>
+                        <i class="fa-solid fa-bars"></i>
+                        Navigation Bar
+                      </span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+
+                        <div class="info hide">
+
+                            <div class="title-to-border">
+                                <span>Navigation Title</span>
+                                <input class="title-to-border-element" id="nav-name" type="text">
+                                <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- ABOUT ME -->
+                    <section class="section-container">
+
+                        <div class="section-title" onclick="closeSection(this)">
+                      <span>
+                        <i class="fa-solid fa-address-card"></i>
+                          About Me
+                      </span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+
+                        <div class="info hide">
+                            <!-- SELECTIONS -->
+                            <div class="section-icon-selector">
+                                <!--dropdown-->
+                                <div id="about-me-drop-down" class="drop-down">
+                                    <div class="drop-down-select-div" onclick="closeSection(this)">
+                                          <span>
+                                              <i class="fa-solid fa-user"></i>
+                                              <span>Icons</span>
+                                          </span> <i class="fa-solid fa-angle-down"></i>
+                                    </div>
+                                    <div class="drop-down-options-div hideVisibility">
+                                        <div onclick="iconSelect(this)">
+                                            <i class="fa-solid fa-user"></i>
+                                        </div>
+                                        <div onclick="iconSelect(this)">
+                                            <i class="fa-solid fa-person"></i>
+                                        </div>
+                                        <div onclick="iconSelect(this)">
+                                            <i class="fa-solid fa-address-card"></i>
+                                        </div>
+                                        <!--                                  <i class="fa-solid fa-user-hair"></i>-->
+                                        <!--                                  <i class="fa-solid fa-user-hair-long"></i>             -->
+                                    </div>
+                                </div>
+                                <!--allow custom icon selection-->
+
+                            </div>
+
+                            <div class="title-to-border">
+                                <span>Summary</span>
+                                <textarea id="about-me-summary" class="title-to-border-element"></textarea>
+                                <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
+                            </div>
+
+                        </div>
+
+
+                    </section>
+
+                    <!-- EXPERIENCE -->
+                    <section class="section-container">
+
+                        <div class="section-title" onclick="closeSection(this)">
+                      <span>
+                          <i class="fa-solid fa-briefcase"></i>
+                          <span>Experiences</span>
+                      </span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+
+                        <div id="experiences" class="middle-width hide">
+
+
+                            <div class="add-section">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                <span>Add Experience</span>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- SKILLS -->
+                    <section class="section-container">
+
+                        <div class="section-title" onclick="closeSection(this)">
+                      <span>
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                          <span>Skills</span>
+                      </span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+
+                        <div id="category" class="middle-width hide">
+
+
+
+                            <div class="add-section">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                <span>Add Category</span>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- PROJECTS -->
+
+                    <section class="section-container">
+
+                        <div class="section-title" onclick="closeSection(this)">
+                      <span>
+                          <i class="fa-brands fa-app-store-ios"></i>
+                           <span>Projects</span>
+                      </span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+
+                        <div id="project" class="middle-width hide">
+
+                            <div class="add-section">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                <span>Add Project</span>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- RESUME -->
+                    <section class="section-container">
+
+                        <div class="section-title" onclick="closeSection(this)">
+                      <span>
+                          <i class="fa-solid fa-file"></i>
+                          Resume
+                      </span>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+
+                        <div id="resume" class="middle-width hide">
+
+                            <div id="resume-info">
+
+                                <div id="resume-container" >
+
+                                    <button class="resume-button" value="Upload Resume" onclick="uploadResume(this)">
+                                        Upload Resume
+                                        <i class="fa-solid fa-paperclip"></i>
+                                    </button>
+                                    <input id="resume-input" name="resume" type="file" class="title-to-border-element" onchange="showResume(this)"/>
+                                    <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- CONTACTS -->
+                    <section class="section-container">
+
+                        <div class="section-title" onclick="closeSection(this)">
                       <span>
                       <i class="fa-solid fa-address-card"></i>
                       <span>Contacts</span>
                       </span>
-                        <i class="fa-solid fa-angle-down"></i>
-                    </div>
-
-                    <div id="contacts" class="middle-width hide">
-
-                        <div id="add-contact" class="add-section">
-                            <i class="fa-solid fa-circle-plus"></i>
-                            <span>Add Contact</span>
+                            <i class="fa-solid fa-angle-down"></i>
                         </div>
 
-                    </div>
+                        <div id="contacts" class="middle-width hide">
 
-                </section>
+                            <div id="add-contact" class="add-section">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                <span>Add Contact</span>
+                            </div>
 
-<!--                &lt;!&ndash; THEME &ndash;&gt;
-                <section class="section-container">
-
-                    <div class="section-title" onclick="closeSection(this)">
-                      <span>
-                      <i class="fa-solid fa-palette"></i>
-                      <span>Theme</span>
-                      </span>
-                        <i class="fa-solid fa-angle-down"></i>
-                    </div>
-
-                    <div id="theme" class="middle-width hide">
-
-                        <div class="color-section">
-                            <i class="fa-solid fa-fill-drip"></i>
-                            <span>Primary</span>
-                            <input class="color-picker" maxlength="7" size="6" value='#2C3135' />
                         </div>
 
-                        <div class="color-section">
-                            <i class="fa-solid fa-paint-roller"></i>
-                            <span>Secondary</span>
-                            <input class="color-picker" maxlength="7" size="6" value='#101213' />
-                        </div>
+                    </section>
 
-                        <div class="color-section">
-                            <i class="fa-solid fa-paintbrush"></i>
-                            <span>Accent</span>
-                            <input class="color-picker" maxlength="7" size="6" value='#42F584' />
-                        </div>
+                    <!--                &lt;!&ndash; THEME &ndash;&gt;
+                                    <section class="section-container">
 
-                    </div>
+                                        <div class="section-title" onclick="closeSection(this)">
+                                          <span>
+                                          <i class="fa-solid fa-palette"></i>
+                                          <span>Theme</span>
+                                          </span>
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </div>
 
-                </section>-->
+                                        <div id="theme" class="middle-width hide">
+
+                                            <div class="color-section">
+                                                <i class="fa-solid fa-fill-drip"></i>
+                                                <span>Primary</span>
+                                                <input class="color-picker" maxlength="7" size="6" value='#2C3135' />
+                                            </div>
+
+                                            <div class="color-section">
+                                                <i class="fa-solid fa-paint-roller"></i>
+                                                <span>Secondary</span>
+                                                <input class="color-picker" maxlength="7" size="6" value='#101213' />
+                                            </div>
+
+                                            <div class="color-section">
+                                                <i class="fa-solid fa-paintbrush"></i>
+                                                <span>Accent</span>
+                                                <input class="color-picker" maxlength="7" size="6" value='#42F584' />
+                                            </div>
+
+                                        </div>
+
+                                    </section>-->
+
+                </div>
 
             </div>
 
         </div>
 
-    </div>
+        <button id="create-button">Create Portfolio</button>
 
-    <button id="create-button">Create Portfolio</button>
+    </div>
 
     <embed id="resume-embed" type="text/html" src="portfolio/template.html" width="575" height="500">
 
