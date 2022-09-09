@@ -64,9 +64,6 @@ export class Template{
 
                 document.getElementById('resume-embed').src += '';
 
-                // console.log(localStorage.getItem("htmlContent"))
-                // alert(localStorage.getItem("htmlContent"))
-
                 // 1. send to html to be written to the template file
                 await htmlContent( localStorage.getItem("htmlContent"))
 
@@ -74,26 +71,26 @@ export class Template{
                 await downloadPortfolio();
 
 
-                // 3. clear local storage ( except the done one )
-                localStorage.removeItem("resume")
-                localStorage.removeItem("contacts")
-                localStorage.removeItem("projects")
-                localStorage.removeItem("about")
-                localStorage.removeItem("navigationBar")
-                localStorage.removeItem("experiences");
+                // 3. clear local storage
 
+                localStorage.removeItem("portfolio")
+                localStorage.removeItem("navigationBar")
+                localStorage.removeItem("about")
+                localStorage.removeItem("experiences");
+                localStorage.removeItem("skills");
+                localStorage.removeItem("projects")
+                localStorage.removeItem("contacts")
+                localStorage.removeItem("resume")
+
+                localStorage.removeItem("projectImages")
                 localStorage.removeItem("portfolioTitle");
                 localStorage.removeItem("portfolioImage");
+                localStorage.removeItem("sections");
                 localStorage.removeItem("htmlContent");
 
                 // 4. remove files created from server
                 await removeFiles();
 
-
-            }else{ // we may not need this section anymore
-
-                // just update the iframe but don't send the zip folder
-                this.getFields();
 
             }
 
@@ -223,17 +220,25 @@ export class Template{
             let categoryObject = {};
 
             categoryObject.categoryName = categories[x].children[1].children[1].children[1].value.trim();
+            categoryObject.categoryIcon = categories[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("class")
 
             let skillDiv = categories[x].children[1].children[2]; // id = "skill"
 
             let skillsArray = []; // to add skills
             for( let y = 0; y < skillDiv.children.length - 1; y+=1 ){ // - 1 so we don't get the add skill button
 
+                let skillAndIcon = [];
+
+                // each icon for that skill selected
+                let skillIcon = skillDiv.children[y].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("class");
 
                 // each individual skill
                 let skill = skillDiv.children[y].children[1].children[1].children[1].value.trim();
 
-                skillsArray.push( skill );
+                skillAndIcon.push( skillIcon )
+                skillAndIcon.push( skill )
+
+                skillsArray.push( skillAndIcon );
 
             }
             categoryObject["skills"] = skillsArray;

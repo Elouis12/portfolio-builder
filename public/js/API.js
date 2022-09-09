@@ -117,9 +117,11 @@ async function downloadPortfolio(){
 async function htmlContent(content){
 
     // alert("getting content")
+
+    alert(content)
         await fetch(
 
-        `/html-content/`,
+        `/html-content`,
         {
             headers: { // this made us not get the file
                 "Content-Type": "application/json"
@@ -172,5 +174,22 @@ async function removeFiles(){
     ).catch(
         (e)=> e
     );
+
+    localStorage.removeItem("portfolio")
+    localStorage.removeItem("navigationBar")
+    localStorage.removeItem("about")
+    localStorage.removeItem("experiences");
+    localStorage.removeItem("skills");
+    localStorage.removeItem("projects")
+    localStorage.removeItem("contacts")
+    localStorage.removeItem("resume")
+
+
+
+    localStorage.removeItem("projectImages")
+    localStorage.removeItem("portfolioTitle");
+    localStorage.removeItem("portfolioImage");
+    localStorage.removeItem("sections");
+    localStorage.removeItem("htmlContent");
 
 }

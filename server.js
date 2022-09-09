@@ -202,12 +202,10 @@ app.get('/template-zip-folder', async function(req, resp) {
     await fsExtra.emptyDirSync('./public/portfolio/media');
 
 
-
-
 });
 
 
-app.post('/html-content/', (req, resp) => {
+app.post('/html-content', (req, resp) => {
 
 
     // save content to html file

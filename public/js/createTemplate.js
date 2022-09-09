@@ -165,7 +165,7 @@ class CreateTemplate{
             <div class="skills-category-container-body">
 
                 <div class="skills-category-container-title">
-                    <i class="fa-solid fa-language themeIcon"></i>
+                    <i class="themeIcon"></i>
                     
                 </div>
 
@@ -197,6 +197,8 @@ class CreateTemplate{
                 let categoryName = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[0];
                 categoryName.insertAdjacentHTML("beforeend", `<h3>${skills[x].categoryName}</h3>`)
 
+                let categoryIcon = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[0].children[0];
+                categoryIcon.setAttribute("class", `${skills[x].categoryIcon} themeIcon`)
 
                 // add individual skills to the language container
                 let languagesContainer =  newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[1];
@@ -206,8 +208,8 @@ class CreateTemplate{
                     languagesContainer.insertAdjacentHTML("beforeend", `
                 
                     <div>
-                        <i class="fa-brands fa-html5 themeIcon"></i>
-                        <h3>${ skills[x].skills[y] }</h3>
+                        <i class="${skills[x].skills[y][0]} themeIcon"></i>
+                        <h3>${ skills[x].skills[y][1] }</h3>
                     </div>
 
                 `)
@@ -316,7 +318,8 @@ class CreateTemplate{
 
             resumeEmbed.setAttribute("src", "./media/resume.pdf")
             viewResumeLarge.setAttribute("src", "media/resume.pdf#zoom=Fit")
-            downloadResume.setAttribute("href", "./media/resume.pdf")
+            downloadResume.setAttribute("href", "./media/resume.pdf");
+            downloadResume.setAttribute("download", "");
         }
     }
 

@@ -192,11 +192,11 @@ function newCategory(){
                                                 <!--dropdown-->
                                                 <div class="drop-down">
                                                     <div class="drop-down-select-div" onclick="closeSection(this)">
-                                                  <span>
-                                                              <i class="fa-brands fa-html5"></i>
-                                                      <span>Icons</span>
-                                                  </span>
-                                           <i class="fa-solid fa-angle-down"></i>
+                                                      <span>
+                                                          <i class="fa-brands fa-html5"></i>
+                                                        <span>Icons</span>
+                                                    </span>
+                                                        <i class="fa-solid fa-angle-down"></i>
                                                     </div>
                                                     <div class="drop-down-options-div hideVisibility">
                                                         <div onclick="iconSelect(this)">
