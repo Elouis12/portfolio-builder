@@ -106,7 +106,6 @@ export class Template{
             this.#_resume = resume;
             await sendResume();
 
-            console.log(resume);
             localStorage.setItem( "resume", JSON.stringify(this.#_resume ));
 
         };
