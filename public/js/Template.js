@@ -20,6 +20,9 @@ export class Template{
 
     addEventsToListeners(){
 
+        // set eent on change to input file
+        this.#getResume();
+
         // WHEN THE USER CLICK AN INPUT
         let inputs = document.getElementsByClassName("title-to-border-element");
 
@@ -91,25 +94,9 @@ export class Template{
                 // 4. remove files created from server
                 await removeFiles();
 
-
             }
 
         });
-
-
-        const resumeFile = document.getElementById('resume-input');
-
-        let resume;
-        const handleFiles = async () => {
-
-            resume = [...resumeFile.files];
-            this.#_resume = resume;
-            await sendResume();
-
-            localStorage.setItem( "resume", JSON.stringify(this.#_resume ));
-
-        };
-        resumeFile.addEventListener("change", handleFiles);// listens for when user adds pdf file
 
     }
 
@@ -287,12 +274,15 @@ export class Template{
         const resumeFile = document.getElementById('resume-input');
 
         let resume;
-        const handleFiles = () => {
+        const handleFiles = async () => {
 
             resume = [...resumeFile.files];
-            this.#_resume = resume/*.name*/;
+            this.#_resume = resume;
+            await sendResume();
 
-            localStorage.setItem( "resumeName", resumeFile.name);
+            alert(resumeFile.value)
+            localStorage.setItem( "resumeName", resumeFile.value/*JSON.stringify(this.#_resume )*/);
+
         };
         resumeFile.addEventListener("change", handleFiles);// listens for when user adds pdf file
 
@@ -336,7 +326,7 @@ export class Template{
         this.#getExperiences();
         this.#getSkills();
         this.#getProjects();
-        this.#getResume();
+        // this.#getResume();
         this.#getContact();
 
         this.#getSectionsFilled();

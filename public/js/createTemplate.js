@@ -326,9 +326,9 @@ class CreateTemplate{
         // resume was set
         if( localStorage.getItem("resumeName") ){
 
-            resumeEmbed.setAttribute("src", "/media/resume.pdf")
-            viewResumeLarge.setAttribute("src", "media/resume.pdf#zoom=Fit")
-            downloadResume.setAttribute("href", "/media/resume.pdf");
+            resumeEmbed.setAttribute("src", "./media/resume.pdf")
+            viewResumeLarge.setAttribute("src", "./media/resume.pdf#zoom=Fit")
+            downloadResume.setAttribute("href", "./media/resume.pdf");
             downloadResume.setAttribute("download", "");
         }
     }
