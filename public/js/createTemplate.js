@@ -17,12 +17,22 @@ class CreateTemplate{
 
         let html = document.getElementById("html");
 
-        let scripts = document.getElementsByTagName("SCRIPT");
+        let scripts = document.getElementsByClassName("scripts");
 
-/*        while( scripts.length > 0 ){
+        let templateReadyToDownload = localStorage.getItem("templateDownload");
 
-            scripts[0].remove();
-        }*/
+        if( templateReadyToDownload ){
+
+            // remove scripts
+            while( scripts.length > 0 ){
+
+                scripts[0].remove();
+            }
+            localStorage.removeItem("htmlContent");
+            localStorage.removeItem("templateDownload");
+
+        }
+
 
         html.removeAttribute("id");
 

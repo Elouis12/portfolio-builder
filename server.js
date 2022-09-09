@@ -139,9 +139,9 @@ app.get('/template-zip-folder', async function(req, resp) {
 
     let zip = new AdmZip();
     // add local file
-    // zip.addLocalFolder("./public/portfolio", 'portfolio');
+    await zip.addLocalFolder("./public/portfolio", 'portfolio');
 
-    zip.writeZip('portfolio.zip');
+    await zip.writeZip('portfolio.zip');
 
 
     resp.setHeader('Content-disposition', 'attachment; filename=portfolio.zip');
@@ -156,9 +156,6 @@ app.get('/template-zip-folder', async function(req, resp) {
         }
     });
 
-    // remove the zip file
-    // let filePath = `./portfolio.zip`;
-    // fs.unlinkSync(filePath);
 
 
     // reset the html file
@@ -202,14 +199,28 @@ app.get('/template-zip-folder', async function(req, resp) {
     await fsExtra.emptyDirSync('./public/portfolio/media');
 
 
+    // remove the zip file
+    let filePath = `./portfolio.zip`;
+
+    if( fs.existsSync(filePath) ){
+        // fs.unlinkSync(filePath);
+    }
 });
 
 
-app.post('/html-content', (req, resp) => {
+app.post('/html-content', async (req, resp) => {
 
 
+    
+    
     // save content to html file
-    fs.writeFile('./public/portfolio/template.html', req.body.html, (err, result)=>{
+    await fs.writeFile('./public/portfolio/template.html', 
+        `
+    <!DOCTYPE html>
+    <html lang="en" id="html">
+        ${req.body.html}
+    </html>
+    `, (err, result)=>{
 
         console.log("writing to html file")
             if(err){
@@ -231,7 +242,10 @@ app.post('/html-content', (req, resp) => {
 
 
 
+app.get("/create-template/*", (req, resp)=>{
 
+    resp.redirect('/create-template');
+})
 
 app.get("/create-template", (req, resp)=>{
 

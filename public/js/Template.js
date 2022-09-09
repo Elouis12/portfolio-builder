@@ -59,9 +59,10 @@ export class Template{
 
                 this.getFields(); // saves to local storage to update page
 
-                localStorage.setItem("generateTemplate", JSON.stringify(true))
+                localStorage.setItem("templateDownload", true);
 
-
+                // refresh embed one last time so html we get latest version
+                // and so we can see the 'templateDownload local storage'
                 document.getElementById('resume-embed').src += '';
 
                 // 1. send to html to be written to the template file
@@ -86,7 +87,6 @@ export class Template{
                 localStorage.removeItem("portfolioTitle");
                 localStorage.removeItem("portfolioImage");
                 localStorage.removeItem("sections");
-                localStorage.removeItem("htmlContent");
 
                 // 4. remove files created from server
                 await removeFiles();

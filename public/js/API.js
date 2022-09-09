@@ -118,7 +118,6 @@ async function htmlContent(content){
 
     // alert("getting content")
 
-    alert(content)
         await fetch(
 
         `/html-content`,
