@@ -100,8 +100,8 @@ app.delete("/remove-image/:image", async (req, resp)=>{
 app.delete("/remove-files", async (req, resp)=>{
 
 
-    let imageDir = `./public/portfolio/images/`;
-    let mediaDir = `./public/portfolio/media/`;
+    let imageDir = `./public/portfolio/images`;
+    let mediaDir = `./public/portfolio/media`; // without backslash
 
     const imageFiles = await fs.readdirSync(imageDir);
     const mediaFiles = await fs.readdirSync(mediaDir);
@@ -118,7 +118,7 @@ app.delete("/remove-files", async (req, resp)=>{
     }
 
     // remove all files from /media
-    await fsExtra.emptyDirSync('./public/portfolio/media');
+    await fsExtra.emptyDirSync(mediaDir);
 
 
     resp.status(200).send("files removed");

@@ -95,8 +95,15 @@ export class Template{
                 localStorage.removeItem("sections");
                 // localStorage.removeItem("downloadTemplate");
 
-                // 5. refresh the current page
+                // 5. refresh the current page and reset input fields (firefox keeps them)
                 window.location.reload();
+/*                let inputs = document.getElementsByClassName("inputs");
+
+                for( let x= 0; x < inputs.length; x+=1 ){
+
+                    inputs[x].reset();
+                }*/
+
 
                 // 6. remove files created from server
                 // await removeFiles();
