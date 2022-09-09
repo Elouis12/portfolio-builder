@@ -160,6 +160,8 @@ i{
 
 }
 
+
+
 /* ABOUT  */
 
 .about-section-container{
@@ -188,9 +190,16 @@ i{
     width: 400px;
 }
 
+#about-summary{
+    word-break: break-word;
+    line-height: 1.6;
+}
+
 #about-body {
 
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 

@@ -84,7 +84,7 @@ class CreateTemplate{
         if( summary ){
 
             aboutMeIcon[0].children[0].setAttribute("class", `${summary[0].aboutMeIcon} themeIcon`);
-            aboutMe.insertAdjacentHTML("beforebegin",summary[0].aboutMeSummary);
+            aboutMe.innerHTML = summary[0].aboutMeSummary;
 
         }
 
