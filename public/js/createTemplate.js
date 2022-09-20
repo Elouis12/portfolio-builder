@@ -325,6 +325,15 @@ class CreateTemplate{
 
 
         // resume was set with a path name
+        /*
+            find why when
+            localStorage.getItem("resumeName") is null
+            OR
+            localStorage.getItem("resumeName") !== ""
+            still get evaluated
+
+            when localStorage.getItem("resumeName") does not exists
+        */
         if( localStorage.getItem("resumeName") ){
 
             resumeEmbed.setAttribute("src", "./media/resume.pdf")
