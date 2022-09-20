@@ -17,7 +17,7 @@ const app = express();
 
 app.use( express.static( 'public'))
 
-// app.use( cors() );
+app.use( cors() );
 
 app.use(express.json())
 
@@ -215,7 +215,7 @@ app.get('/template-zip-folder', async function(req, resp) {
         const textFile = result; // result of the file
 
 
-        await fs.writeFile('./public/portfolio/template.html', textFile, (err, result)=>{
+        await fs.writeFile('./public/portfolio/index.html', textFile, (err, result)=>{
 
             console.log("resetting html file")
             if(err){
