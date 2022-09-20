@@ -100,37 +100,47 @@ app.delete("/remove-image/:image", async (req, resp)=>{
 app.delete("/remove-files", async (req, resp)=>{
 
 
-    let imageDir = path.join(__dirname, `/public/portfolio/images`);
-    let mediaDir = path.join(__dirname, `/public/portfolio/media`); // without backslash
+    let imageDir = path.join(__dirname, `/public/portfolio/images/`);
+    let mediaDir = path.join(__dirname, `/public/portfolio/media/`); // without backslash
 
-    const imageFiles = await fs.readdirSync(imageDir);
-    const mediaFiles = await fs.readdirSync(mediaDir);
+    try{
 
-    // remove files from image folder
-    for( const file of imageFiles ){
+        const imageFiles = await fs.readdirSync(imageDir);
+        const mediaFiles = await fs.readdirSync(mediaDir);
 
-        if( file && file !== "default.jpeg" ){
 
-            fs.unlinkSync(`./public/portfolio/images/${file}`);
+        // remove files from image folder
+        for( const file of imageFiles ){
 
-        }
+            if( file && file !== "default.jpeg" ){
 
-    }
+                fs.unlinkSync(`./public/portfolio/images/${file}`);
 
-    // remove all files from /media
-    for( const file of mediaFiles ){
-
-        if( file ){
-
-            fs.unlinkSync(`./public/portfolio/media/${file}`);
+            }
 
         }
 
+        // remove all files from /media
+        for( const file of mediaFiles ){
+
+            if( file ){
+
+                fs.unlinkSync(`./public/portfolio/media/${file}`);
+
+            }
+
+        }
+
+
+        // remove all files from /media
+        // await fsExtra.emptyDirSync(mediaDir);
+
+        
+    }catch (e) {
+
+        console.log(e)
     }
 
-
-    // remove all files from /media
-    // await fsExtra.emptyDirSync(mediaDir);
 
 
     resp.status(200).send("files removed");
