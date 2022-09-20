@@ -27,7 +27,7 @@ const storeResume = multer.diskStorage(
 
         destination: (req, file, cb) => {
 
-            cb(null, './public/portfolio/media/');
+            cb(null, './public/portfolio/media');
         },
 
         // differentiate same file ( use date uploaded with name of file )
@@ -44,7 +44,7 @@ const storeProjectImages = multer.diskStorage(
 
         destination: (req, file, cb) => {
 
-            cb(null, './public/portfolio/images/');
+            cb(null, './public/portfolio/images');
         },
 
         // differentiate same file ( use date uploaded with name of file )
@@ -101,6 +101,32 @@ app.delete("/remove-image/:image", async (req, resp)=>{
 app.delete("/remove-files", async (req, resp)=>{
 
 
+    // GIT/HEROKU DOES NOT TAKE EMPTY DIRECTORIES AS IN THE CASE WITH '/media'
+    // SO WE CAN CHECK IF IT EXISTS AND IF NOT THEN CREATE IT
+    try{
+
+        // returns error or not
+        await fs.access("./public/portfolio/media", async function(error) {
+
+            // create the directory
+            if (error) {
+
+                // second parameter is for nested folders?
+                await fs.mkdirSync('./public/portfolio/media',  { recursive: true });
+
+            } else {
+
+                console.log("Directory exists.")
+            }
+        })
+
+    }catch (e){
+
+        console.log('directory does not exists')
+
+    }
+
+    // remove files
     let imageDir = path.join(__dirname, `/public/portfolio/images`);
     let mediaDir = path.join(__dirname, `/public/portfolio/media`); // without backslash
 
