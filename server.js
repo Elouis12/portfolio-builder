@@ -66,6 +66,7 @@ app.post("/upload-resume", uploadResume.single('resume'), (req, resp)=>{
 
     resp.status(200).send("resume uploaded");
 
+    console.log('uploaded resume')
 } )
 
 
@@ -100,8 +101,8 @@ app.delete("/remove-image/:image", async (req, resp)=>{
 app.delete("/remove-files", async (req, resp)=>{
 
 
-    let imageDir = path.join(__dirname, `/public/portfolio/images/`);
-    let mediaDir = path.join(__dirname, `/public/portfolio/media/`); // without backslash
+    let imageDir = path.join(__dirname, `/public/portfolio/images`);
+    let mediaDir = path.join(__dirname, `/public/portfolio/media`); // without backslash
 
     try{
 
@@ -135,7 +136,7 @@ app.delete("/remove-files", async (req, resp)=>{
         // remove all files from /media
         // await fsExtra.emptyDirSync(mediaDir);
 
-        
+
     }catch (e) {
 
         console.log(e)
