@@ -301,7 +301,8 @@ app.get("/create-template", (req, resp)=>{
 
 
 
-app.get("*", (req,resp)=>{
+
+app.use("*", (req,resp)=>{
 
     resp.redirect('/create-template');
 })

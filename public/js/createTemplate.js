@@ -325,7 +325,7 @@ class CreateTemplate{
 
 
         // resume was set with a path name
-        if( localStorage.getItem("resumeName") !== "" ){
+        if( localStorage.getItem("resumeName") ){
 
             resumeEmbed.setAttribute("src", "./media/resume.pdf")
             viewResumeLarge.setAttribute("src", "./media/resume.pdf#zoom=Fit")
