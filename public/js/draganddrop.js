@@ -204,7 +204,7 @@ async function deleteFile(element){
 function refreshIframe(){
 
   // no need to do template.getFields() because the local storage for icon is done in here and not in Template.js
-  document.getElementById('resume-embed').src += '';
+  document.getElementById('embed').src += '';
 
 }
 

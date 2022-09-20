@@ -31,7 +31,7 @@ export class Template{
             inputs[x].addEventListener("keyup", ()=>{
 
                 this.getFields();
-                document.getElementById('resume-embed').src += '';
+                document.getElementById('embed').src += '';
 
             })
         }
@@ -47,7 +47,7 @@ export class Template{
                 item.children[y].addEventListener("click", ()=>{
 
                     this.getFields();
-                    document.getElementById('resume-embed').src += '';
+                    document.getElementById('embed').src += '';
 
                 })
             }
@@ -66,7 +66,7 @@ export class Template{
 
                 // refresh embed one last time so html we get latest version
                 // and so we can see the 'templateDownload local storage'
-                document.getElementById('resume-embed').src += '';
+                document.getElementById('embed').src += '';
 
                 // 1. send to html to be written to the template file
                 await htmlContent( localStorage.getItem("htmlContent"));
@@ -328,7 +328,7 @@ export class Template{
             }
 
             // refresh embed iframe
-            document.getElementById('resume-embed').src += '';
+            document.getElementById('embed').src += '';
 
             localStorage.setItem( "resumeName", file.value/*JSON.stringify(this.#_resume )*/);
 
