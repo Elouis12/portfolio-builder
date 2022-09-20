@@ -204,7 +204,7 @@ app.get('/template-zip-folder', async function(req, resp) {
         // previously has the code below outside of this callback
         // that's why I was getting an error because it was
         // removing the zip before it could finish downloading
-        
+
         // remove the zip file
         let filePath = path.join(__dirname, `/portfolio.zip`);
 

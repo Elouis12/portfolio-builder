@@ -50,6 +50,10 @@ const darkMode = () => {
     logo.style.color = "hsl(0, 0%, 100%)";
 
 
+    let dropdown = document.getElementById("nav-drop-down");
+
+    // dropdown.classList.toggle("dark-mode-section-title")
+
     darkModeTheme = !darkModeTheme;
 
     localStorage.setItem("darkMode", darkModeTheme);
@@ -66,3 +70,24 @@ const setTheme = () => {
         darkMode();
     }
 }
+
+
+window.addEventListener("scroll", ()=>{
+
+    let navbar = document.getElementById("nav-container");
+    let dropdown = document.getElementById("nav-drop-down");
+
+    // alert(window.scrollY)
+    if (window.scrollY > 10 ){
+
+        navbar.classList.add('nav-container-scroll')
+        // dropdown.classList.remove("dark-mode-section-title")
+
+    }else{
+
+        navbar.classList.remove('nav-container-scroll')
+        // dropdown.classList.add("dark-mode-section-title")
+
+    }
+
+})
