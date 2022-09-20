@@ -27,7 +27,7 @@ const storeResume = multer.diskStorage(
 
         destination: (req, file, cb) => {
 
-            cb(null, './public/portfolio/media');
+            cb(null, './public/portfolio/media/');
         },
 
         // differentiate same file ( use date uploaded with name of file )
@@ -44,7 +44,7 @@ const storeProjectImages = multer.diskStorage(
 
         destination: (req, file, cb) => {
 
-            cb(null, './public/portfolio/images');
+            cb(null, './public/portfolio/images/');
         },
 
         // differentiate same file ( use date uploaded with name of file )
@@ -128,6 +128,7 @@ app.delete("/remove-files", async (req, resp)=>{
 
                 fs.unlinkSync(`./public/portfolio/media/${file}`);
 
+                console.log('removing resume')
             }
 
         }
