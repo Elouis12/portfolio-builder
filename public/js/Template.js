@@ -69,7 +69,16 @@ export class Template{
                 document.getElementById('embed').src += '';
 
                 // 1. send to html to be written to the template file
-                await htmlContent( localStorage.getItem("htmlContent"));
+                await htmlContent(
+
+                    `
+                        <!DOCTYPE html>
+                        <html lang="en" id="html">
+                            ${localStorage.getItem("htmlContent")}
+                        </html>
+                    `
+
+                );
 
                 // 2. let teh browser know we don't want to remove files on refresh or unload while downloading file
                 // localStorage.setItem("downloadTemplate");

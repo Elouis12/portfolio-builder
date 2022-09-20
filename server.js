@@ -249,7 +249,7 @@ app.get('/template-zip-folder', async function(req, resp) {
     let filePath = `./portfolio.zip`;
 
     if( fs.existsSync(filePath) ){
-        // fs.unlinkSync(filePath);
+        fs.unlinkSync(filePath);
     }
 });
 
@@ -258,13 +258,10 @@ app.post('/html-content', async (req, resp) => {
 
 
     // save content to html file
-    await fs.writeFile('./public/portfolio/template.html',
-        `
-    <!DOCTYPE html>
-    <html lang="en" id="html">
-        ${req.body.html}
-    </html>
-    `, (err, result)=>{
+    await fs.writeFile(
+        './public/portfolio/index.html',
+        req.body.html,
+        (err, result)=>{
 
             console.log("writing to html file")
             if(err){
