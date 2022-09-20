@@ -422,18 +422,6 @@ class CreateTemplate{
                     navLinks[0].remove();
                 }
 
-            }else if( section === "contacts" /*&& sectionsNotAdded[section] === false*/ ){
-
-
-                document.getElementById(section).remove();
-
-                navLinks = document.getElementsByClassName(section);
-
-                while( navLinks.length > 0 ){
-
-                    navLinks[0].remove();
-                }
-
             }
         }
 

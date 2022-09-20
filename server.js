@@ -114,9 +114,6 @@ app.delete("/remove-files", async (req, resp)=>{
                 // second parameter is for nested folders?
                 await fs.mkdirSync('./public/portfolio/media',  { recursive: true });
 
-            } else {
-
-                console.log("Directory exists.")
             }
         })
 
@@ -304,10 +301,10 @@ app.get("/create-template", (req, resp)=>{
 
 
 
-/*app.get("*", (req,resp)=>{
+app.get("*", (req,resp)=>{
 
     resp.redirect('/create-template');
-})*/
+})
 
 
 app.listen(process.env.PORT, ()=>{
