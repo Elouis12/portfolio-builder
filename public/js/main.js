@@ -799,7 +799,7 @@ function refreshIframe(){
 
 
     template.getFields();
-    document.getElementById('resume-embed').src += '';
+    document.getElementById('embed').src += '';
 
 }
 
