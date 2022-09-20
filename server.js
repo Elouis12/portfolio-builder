@@ -195,10 +195,23 @@ app.get('/template-zip-folder', async function(req, resp) {
 
 
     console.log('downloading file')
-    // resp.download('./design.txt')
+
     resp.download('./portfolio.zip',  (err) => {
         if(err) {
             console.log(err);
+        }
+
+        // previously has the code below outside of this callback
+        // that's why I was getting an error because it was
+        // removing the zip before it could finish downloading
+        
+        // remove the zip file
+        let filePath = path.join(__dirname, `/portfolio.zip`);
+
+        if( fs.existsSync(filePath) ){
+            console.log("portfolio exists")
+
+            fs.unlinkSync(filePath);
         }
     });
 
@@ -245,12 +258,7 @@ app.get('/template-zip-folder', async function(req, resp) {
     await fsExtra.emptyDirSync('./public/portfolio/media');
 
 
-    // remove the zip file
-    let filePath = `./portfolio.zip`;
 
-    if( fs.existsSync(filePath) ){
-        fs.unlinkSync(filePath);
-    }
 });
 
 
