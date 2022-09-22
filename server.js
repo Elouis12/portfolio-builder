@@ -136,7 +136,16 @@ app.delete("/remove-files", async (req, resp)=>{
         // remove files from image folder
         for( const file of imageFiles ){
 
-            if( file && file !== "default.jpeg" ){
+
+            if(
+                file &&
+                (
+                    file !== "default.jpeg"  // in case we ever want to just use jpeg for image
+                          &&
+                    file !== "default.gif"  // in case we ever want to just use gif for image
+                )
+
+            ){
 
                 fs.unlinkSync(`./public/portfolio/images/${file}`);
 
@@ -242,7 +251,15 @@ app.get('/template-zip-folder', async function(req, resp) {
 
         for (const file of files) {
 
-            if( file !== "default.jpeg" ){ // remove all except the default image
+            if(
+                file &&
+                (
+                    file !== "default.jpeg"  // in case we ever want to just use jpeg for image
+                            &&
+                    file !== "default.gif"  // in case we ever want to just use gif for image
+                )
+
+            ){ // remove all except the default image
                 fs.unlink(path.join('./public/portfolio/images', file), err => {
                     if (err) throw err;
                 });

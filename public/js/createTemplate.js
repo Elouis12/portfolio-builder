@@ -21,6 +21,12 @@ class CreateTemplate{
 
         let templateReadyToDownload = localStorage.getItem("templateDownload");
 
+
+        html.removeAttribute("id");
+
+        localStorage.setItem("htmlContent", html.innerHTML)
+
+
         if( templateReadyToDownload ){
 
             // remove scripts
@@ -28,15 +34,13 @@ class CreateTemplate{
 
                 scripts[0].remove();
             }
-            localStorage.removeItem("htmlContent");
+
+
+            localStorage.setItem("htmlContent", html.innerHTML)
+
             localStorage.removeItem("templateDownload");
 
         }
-
-
-        html.removeAttribute("id");
-
-        localStorage.setItem("htmlContent", html.innerHTML)
 
     }
 
@@ -98,7 +102,7 @@ class CreateTemplate{
         <div class="experience-section-container-card">
 
 
-            <div id="experience-body" class="experience-section-container-body">
+            <div class="experience-section-container-body">
 
                 <i class="fa-solid fa-user themeIcon themeIcon"></i>
 
@@ -237,7 +241,7 @@ class CreateTemplate{
         let projectCard = `
                 <div class="project-section-container-card"
              style="
-          background-image: url('../portfolio/images/default.jpeg');
+          background-image: url('../portfolio/images/default.gif');
           background-size: cover;"
         >
             <div class="project-section-container-card-content">

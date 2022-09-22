@@ -2,13 +2,13 @@
 <html lang="en" id="html">
 <head>
   <meta charset="UTF-8">
-  <title id="title"></title>
+  <title id="title">ok</title>
   <link id="indexLink" rel="stylesheet" type="text/css" href="css/index.css">
   <link rel="stylesheet" type="text/css" href="css/card.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <script type="text/javascript" src="./js/index.js"></script>
 
@@ -43,22 +43,6 @@
         <p>about</p>
       </a>
 
-      <a class="nav-items experiences" href="#experiences">
-        <i class="fa-solid fa-screwdriver-wrench"></i>
-        <p>experiences</p>
-      </a>
-
-      <a class="nav-items skills" href="#skills">
-        <i class="fa-sharp fa-solid fa-toolbox"></i>
-        <p>skills</p>
-      </a>
-
-
-      <a class="nav-items projects" href="#projects">
-        <i class="fa-brands fa-app-store-ios"></i>
-        <p>projects</p>
-      </a>
-
 
       <a class="nav-items" href="#resume">
         <i class="fa-solid fa-file"></i>
@@ -91,20 +75,18 @@
 
   <div class="about-section-container">
 
-    <i class="fa-solid fa-user"></i>
+    <i class="fa-solid fa-user themeIcon"></i>
 
     <div id="about-body" class="about-section-container-body">
 
-                    <span id="about-summary">
-
-                    </span>
+      <span id="about-summary">ok</span>
 
       <span id="contact-me">
-                        <span>
-                            Feel free to contact me :)
+                            <span>
+                                Feel free to contact me :)
+                            </span>
+                            <a id="say-hello" href="#contacts">say hello</a>
                         </span>
-                        <a id="say-hello" href="#contacts">say hello</a>
-                    </span>
 
     </div>
 
@@ -114,45 +96,12 @@
 
 
 <!-- EXPERIENCE -->
-<section id="experiences" class="experience">
-
-  <h1 class="section-title">
-    EXPERIENCE
-  </h1>
-
-  <div class="experience-section-container">
-
-  </div>
-
-</section>
 
 
 <!-- SKILLS -->
-<section id="skills" class="skills">
-
-  <h1 class="section-title">
-    SKILLS
-  </h1>
-  <div class="skills-section-container" id="skills-container">
-
-  </div>
-
-</section>
 
 
 <!-- PROJECTS -->
-<section id="projects">
-
-  <h1 class="section-title">
-    PROJECTS
-  </h1>
-
-  <div id="project-section-container" class="project-section-container">
-
-
-  </div>
-
-</section>
 
 
 <!-- RESUME -->
@@ -173,7 +122,7 @@
 
     <div class="resume-section-container-actions">
       <i title="expand resume" class="fa-regular fa-eye" onclick="showOverlay()"></i>
-      <a id="download-resume" title="download my resume" download>
+      <a id="download-resume" title="download my resume">
         <i class="fa-regular fa-circle-down themeIcon"></i>
       </a>
     </div>
@@ -193,6 +142,8 @@
 
     <div id="contact-section-container-body" class="contact-section-container-body">
 
+
+      <a title="e@me.com" href="mailto:e@me.com"><i class="fa-brands fa-linkedin"></i></a>
     </div>
 
   </div>
@@ -201,7 +152,7 @@
 
 <!-- VIEW LARGER -->
 <section id="overlayElement" class="resume-view-container hide" onclick="closeOverlay()">
-  <embed id="view-resume-larger" height="700px" width="75%"/>
+  <embed id="view-resume-larger" width="75%" height="700px">
   <i class="fa-solid fa-circle-xmark" onclick="closeOverlay()"></i>
 </section>
 
@@ -214,6 +165,6 @@
 
 <script class="scripts" type="text/javascript" src="../js/API.js"></script>
 <script class="scripts" type="text/javascript" src="../js/createTemplate.js"></script>
-<script class="scripts" type="text/javascript" src="../js/scrollPosition.js"></script>
 </body>
+
 </html>

@@ -329,14 +329,6 @@ input[type=file]{
 }
 
 
-.view-buttons{
-
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 .button{
 
     padding: 0.5rem 1rem;
@@ -350,18 +342,32 @@ input[type=file]{
     margin: 2% 0%;
 }
 
-#create-button {
+.create-button {
 
     background: rgb(0, 114, 255);
     color: #fff;
 
 }
-#create-button:hover {
+.create-button:hover {
 
     background: #fff;
     color: rgb(0, 114, 255);
     border: 1px solid  rgb(0, 114, 255);
 
+}
+
+.disabled-color{
+
+    background: #4d9cff;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+.disabled-color:hover{
+
+    background-color: #fff;
+    color: #4d9cff;
+    border: 1px solid  #4d9cff;
 }
 
 .embedded-container{
@@ -546,10 +552,20 @@ input[id="flatpickr"]{
 }
 
 
+.view-buttons{
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+
+}
+
 .view-new-tab-button{
 
     background: rgb(0, 114, 255);
     color: #fff;
+    width: max-content;
 }
 
 .view-new-tab-button:hover {
@@ -557,5 +573,22 @@ input[id="flatpickr"]{
     background: #fff;
     color: rgb(0, 114, 255);
     border: 1px solid  rgb(0, 114, 255);
+
+}
+
+.view-template-button{
+
+    background: hsl(142, 90%, 61%);
+    color: #fff;
+    width: max-content;
+    /*flex-basis: 50%;*/
+
+}
+
+.view-template-button:hover {
+
+    background: #fff;
+    color: hsl(142, 90%, 61%);
+    border: 1px solid  hsl(142, 90%, 61%);
 
 }

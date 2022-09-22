@@ -749,6 +749,8 @@ async function deleteSection(element) {
         // if the image exists and is not undefined then remove it from server
         if( projectImagesArray[index] ){
 
+            alert("3")
+            console.log("3")
             await removeImage(projectImagesArray[index]);
 
         }

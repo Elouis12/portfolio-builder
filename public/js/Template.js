@@ -60,6 +60,12 @@ export class Template{
 
             if( validateFields() ){ // if all field are entered then get the fields
 
+                // prevent user from clicking more than once
+                let createButton = document.getElementById("create-button");
+                createButton.disabled = true;
+                createButton.classList.remove('create-button');
+                createButton.classList.add('disabled-button');
+
                 this.getFields(); // saves to local storage to update page
 
                 localStorage.setItem("templateDownload", true);
@@ -68,54 +74,67 @@ export class Template{
                 // and so we can see the 'templateDownload local storage'
                 document.getElementById('embed').src += '';
 
-                // 1. send to html to be written to the template file
-                await htmlContent(
 
-                    `
+
+                // it's sending the HTML before we can remove the scripts from the other file
+                // so a quick way around is to set a time out
+                // we need to remove the scripts because of localstorage and just functionalities
+
+
+                setTimeout(async ()=>{
+
+                    // 1. send to html to be written to the template file
+                    await htmlContent(
+
+                        `
                         <!DOCTYPE html>
                         <html lang="en" id="html">
                             ${localStorage.getItem("htmlContent")}
                         </html>
                     `
 
-                );
+                    );
 
-                // 2. let teh browser know we don't want to remove files on refresh or unload while downloading file
-                // localStorage.setItem("downloadTemplate");
+                    // 2. let teh browser know we don't want to remove files on refresh or unload while downloading file
+                    // localStorage.setItem("downloadTemplate");
 
-                // 3. make request to download zip file
-                await downloadPortfolio();
-
-
-                // 4. clear local storage
-
-                localStorage.removeItem("portfolio")
-                localStorage.removeItem("navigationBar")
-                localStorage.removeItem("about")
-                localStorage.removeItem("experiences");
-                localStorage.removeItem("skills");
-                localStorage.removeItem("projects")
-                localStorage.removeItem("contacts")
-                localStorage.removeItem("resumeName")
-
-                localStorage.removeItem("projectImages")
-                localStorage.removeItem("portfolioTitle");
-                localStorage.removeItem("portfolioImage");
-                localStorage.removeItem("sections");
-                // localStorage.removeItem("downloadTemplate");
-
-                // 5. refresh the current page and reset input fields (firefox keeps them)
-                window.location.reload();
-/*                let inputs = document.getElementsByClassName("inputs");
-
-                for( let x= 0; x < inputs.length; x+=1 ){
-
-                    inputs[x].reset();
-                }*/
+                    // 3. make request to download zip file
+                    await downloadPortfolio();
 
 
-                // 6. remove files created from server
-                // await removeFiles();
+                    // 4. clear local storage
+
+                    localStorage.removeItem("portfolio")
+                    localStorage.removeItem("navigationBar")
+                    localStorage.removeItem("about")
+                    localStorage.removeItem("experiences");
+                    localStorage.removeItem("skills");
+                    localStorage.removeItem("projects")
+                    localStorage.removeItem("contacts")
+                    localStorage.removeItem("resumeName")
+
+                    localStorage.removeItem("projectImages")
+                    localStorage.removeItem("portfolioTitle");
+                    localStorage.removeItem("portfolioImage");
+                    localStorage.removeItem("sections");
+                    localStorage.removeItem("htmlContent")
+
+                    // localStorage.removeItem("downloadTemplate");
+
+                    // 5. refresh the current page and reset input fields (firefox keeps them)
+                    window.location.reload();
+                    /*                let inputs = document.getElementsByClassName("inputs");
+
+                                    for( let x= 0; x < inputs.length; x+=1 ){
+
+                                        inputs[x].reset();
+                                    }*/
+
+
+                    // 6. remove files created from server
+                    // await removeFiles();
+                }, 500)
+
 
             }
 

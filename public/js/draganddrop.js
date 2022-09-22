@@ -56,7 +56,7 @@ let portfolioImage;
 
 async function showImage(){
   let fileType = file.type; //getting selected file type
-  let validExtensions = ["image/jpeg", "image/jpg", "image/png", "pdf"]; //adding some valid image extensions in array
+  let validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/gif"]; //adding some valid image extensions in array
   if(validExtensions.includes(fileType)){ //if user selected file is an image file
     let fileReader = new FileReader(); //creating new FileReader object
     fileReader.onload = ()=>{
@@ -150,6 +150,7 @@ async function deleteFile(element){
     // find the project number
     let index =  parseInt( projectContainer.children[0].children[0].innerHTML.split(" ")[1] ) - 1;
 
+    alert("1")
     await removeImage(projectImagesArray[index]);
 
     // 'remove it'
@@ -169,6 +170,7 @@ async function deleteFile(element){
 
     let portfolioImage = JSON.parse(localStorage.getItem("portfolioImage"));
 
+    alert("2")
     await removeImage(portfolioImage);
 
 

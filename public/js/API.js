@@ -155,6 +155,7 @@ async function htmlContent(content){
 
 async function removeFiles(){
 
+
     await fetch(
 
         `/remove-files`,
