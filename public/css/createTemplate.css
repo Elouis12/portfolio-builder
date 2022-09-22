@@ -2,6 +2,9 @@
     white hsl(0, 0%, 100%);
     blue hsl(207, 19%, 9%);
     green hsl(142, 90%, 61%);
+
+    darker blue hsl(207, 19%, 7%)
+
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -576,7 +579,8 @@ input[id="flatpickr"]{
 
 }
 
-.view-template-button{
+.view-template-button,
+.yes-button{
 
     background: hsl(142, 90%, 61%);
     color: #fff;
@@ -585,10 +589,60 @@ input[id="flatpickr"]{
 
 }
 
-.view-template-button:hover {
+.view-template-button:hover,
+.yes-button:hover{
 
     background: #fff;
     color: hsl(142, 90%, 61%);
     border: 1px solid  hsl(142, 90%, 61%);
 
+}
+
+
+.no-button{
+
+    background:  #FF4C4C;
+    color: #fff;
+    width: max-content;
+    /*flex-basis: 50%;*/
+
+}
+
+.no-button:hover{
+
+    background: #fff;
+    color:  #FF4C4C;
+    border: 1px solid   #FF4C4C;
+
+}
+.modal-text{
+
+    text-align: center;
+}
+.modal-container{
+
+
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(207, 19%, 7%);
+    width: 50%;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+
+}
+
+.modal-buttons-container{
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
 }

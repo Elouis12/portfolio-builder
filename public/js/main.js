@@ -718,78 +718,104 @@ function newContact(element){
 
 async function deleteSection(element) {
 
-    const lengthOfContainers = element.currentTarget.parentElement.parentElement.parentElement.children.length-1;     // n-1 because item n is the "add button" and we want all the "containers"
-    const numberAt = parseInt( element.currentTarget.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] );
+
+    let currentElement = element.currentTarget;
+
+    let modal = document.getElementById("modal-container");
+
+    modal.classList.remove("hide");
+
+    // add event listener to yes button so when user clicks
+
+    let yesButton = document.getElementById("yes-button");
+    let noButton = document.getElementById("no-button");
+
+    yesButton.addEventListener("click", async ()=>{
+
+        const lengthOfContainers = currentElement.parentElement.parentElement.parentElement.children.length-1;     // n-1 because item n is the "add button" and we want all the "containers"
+        const numberAt = parseInt( currentElement.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] );
 
 
 // IF SKILLS IS LESS THAN 1 ADD 1 BECAUSE USER SHOULD HAVE AT MIN 1 SKILL
 
+        let skillInfo = currentElement.parentElement;
+        let skillsContainer = currentElement.parentElement.parentElement.parentElement;
 
-    let skillInfo = element.currentTarget.parentElement;
-    let skillsContainer = element.currentTarget.parentElement.parentElement.parentElement;
+        if(
+            skillInfo.getAttribute("class") === "skill-info" &&
+            skillsContainer.children.length <= 2 // if more than 4 then we've added a skill diff
+        ){
 
-    if(
-        skillInfo.getAttribute("class") === "skill-info" &&
-        skillsContainer.children.length <= 2 // if more than 4 then we've added a skill diff
-    ){
-
-        return; // do nothing
-    }
+            return; // do nothing
+        }
 
 // CHECKS TO REMOVE BORDER FROM EMPTY SECTION AFTER USER REMOVES LAST ONE
-    removeRedBorderFromUnfilledSection();
+        removeRedBorderFromUnfilledSection();
 
 // UPDATE PROJECT IMAGES ARRAY
 
-    if( element.currentTarget.parentElement.parentElement.getAttribute("class") === "project-container" ){
+        if( currentElement.parentElement.parentElement.getAttribute("class") === "project-container" ){
 
-        // find the project number
-        let index =  parseInt( element.currentTarget.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] ) - 1;
+            // find the project number
+            let index =  parseInt( currentElement.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] ) - 1;
 
-        // if the image exists and is not undefined then remove it from server
-        if( projectImagesArray[index] ){
+            // if the image exists and is not undefined then remove it from server
+            if( projectImagesArray[index] ){
 
-            alert("3")
-            console.log("3")
-            await removeImage(projectImagesArray[index]);
+                await removeImage(projectImagesArray[index]);
+
+            }
+
+            // 'remove it'
+            projectImagesArray[index] = null;
+
+            // filter out the null images and return new array
+            projectImagesArray = projectImagesArray.filter( ( images )=>{
+
+                return images != null
+            } )
+
+            // save it to local storage
+            localStorage.setItem("projectImages", JSON.stringify(projectImagesArray) );
+
 
         }
 
-        // 'remove it'
-        projectImagesArray[index] = null;
-
-        // filter out the null images and return new array
-        projectImagesArray = projectImagesArray.filter( ( images )=>{
-
-            return images != null
-        } )
-
-        // save it to local storage
-        localStorage.setItem("projectImages", JSON.stringify(projectImagesArray) );
-
-
-    }
-
 // UPDATE NUMBERS
 
-    // go all the way to n-1 because item n is the "add button" and we want all the "containers" before it
-    for ( let x = numberAt; x < lengthOfContainers; x+=1  ){
+        // go all the way to n-1 because item n is the "add button" and we want all the "containers" before it
+        for ( let x = numberAt; x < lengthOfContainers; x+=1  ){
 
-        let currentContainer = element.currentTarget.parentElement.parentElement.parentElement;
+            let currentContainer = currentElement.parentElement.parentElement.parentElement;
 
-        // splits the content into array so we can reuse to properly update
-        // ex. "experience 1" -> [ "experience", "1" ]
-        let spanContent = currentContainer.children[x].children[0].children[0].innerHTML.split(" ");
+            // splits the content into array so we can reuse to properly update
+            // ex. "experience 1" -> [ "experience", "1" ]
+            let spanContent = currentContainer.children[x].children[0].children[0].innerHTML.split(" ");
 
-        // update the count in the span of that container
-        currentContainer.children[x].children[0].children[0].innerHTML = `${spanContent[0]} ${x}`
+            // update the count in the span of that container
+            currentContainer.children[x].children[0].children[0].innerHTML = `${spanContent[0]} ${x}`
 
-    }
+        }
 
-    // alert(element.getAttribute("class"))
-    // remove the element
-    element.currentTarget.parentElement.parentElement.remove();
+        // alert(element.getAttribute("class"))
+        // remove the element
+        currentElement.parentElement.parentElement.remove();
 
+
+        // hide the modal
+        modal.classList.add("hide")
+
+    });
+
+    noButton.addEventListener("click", ()=>{
+
+        // remove event from yes and no
+
+        // hide modal
+
+        modal.classList.add("hide")
+
+    })
 
 }
 
