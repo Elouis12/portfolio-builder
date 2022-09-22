@@ -60,81 +60,121 @@ export class Template{
 
             if( validateFields() ){ // if all field are entered then get the fields
 
-                // prevent user from clicking more than once
-                let createButton = document.getElementById("create-button");
-                createButton.disabled = true;
-                createButton.classList.remove('create-button');
-                createButton.classList.add('disabled-button');
 
-                this.getFields(); // saves to local storage to update page
+                let modalContainer = document.getElementById("modal-height");
 
-                localStorage.setItem("templateDownload", true);
+                let modalText = document.getElementById("modal-text");
 
-                // refresh embed one last time so html we get latest version
-                // and so we can see the 'templateDownload local storage'
-                document.getElementById('embed').src += '';
+                modalText.innerHTML = "Are you sure you want to create your portfolio?"
+
+                modalContainer.classList.remove("hide");
+
+                // add event listener to yes button so when user clicks
+
+                let yesButton = document.getElementById("yes-button");
+                let noButton = document.getElementById("no-button");
+
+                yesButton.addEventListener("click", ()=>{
+
+                    // prevent user from clicking more than once
+                    let createButton = document.getElementById("create-button");
+                    createButton.disabled = true;
+                    createButton.classList.remove('create-button');
+                    createButton.classList.add('disabled-button');
+
+                    this.getFields(); // saves to local storage to update page
+
+                    localStorage.setItem("templateDownload", true);
+
+                    // refresh embed one last time so html we get latest version
+                    // and so we can see the 'templateDownload local storage'
+                    document.getElementById('embed').src += '';
 
 
 
-                // it's sending the HTML before we can remove the scripts from the other file
-                // so a quick way around is to set a time out
-                // we need to remove the scripts because of localstorage and just functionalities
+                    // it's sending the HTML before we can remove the scripts from the other file
+                    // so a quick way around is to set a time out
+                    // we need to remove the scripts because of localstorage and just functionalities
 
 
-                setTimeout(async ()=>{
+                    setTimeout(async ()=>{
 
-                    // 1. send to html to be written to the template file
-                    await htmlContent(
+                        // 1. send to html to be written to the template file
+                        await htmlContent(
 
-                        `
+                            `
                         <!DOCTYPE html>
                         <html lang="en" id="html">
                             ${localStorage.getItem("htmlContent")}
                         </html>
                     `
 
-                    );
+                        );
 
-                    // 2. let teh browser know we don't want to remove files on refresh or unload while downloading file
-                    // localStorage.setItem("downloadTemplate");
+                        // 2. let teh browser know we don't want to remove files on refresh or unload while downloading file
+                        // localStorage.setItem("downloadTemplate");
 
-                    // 3. make request to download zip file
-                    await downloadPortfolio();
-
-
-                    // 4. clear local storage
-
-                    localStorage.removeItem("portfolio")
-                    localStorage.removeItem("navigationBar")
-                    localStorage.removeItem("about")
-                    localStorage.removeItem("experiences");
-                    localStorage.removeItem("skills");
-                    localStorage.removeItem("projects")
-                    localStorage.removeItem("contacts")
-                    localStorage.removeItem("resumeName")
-
-                    localStorage.removeItem("projectImages")
-                    localStorage.removeItem("portfolioTitle");
-                    localStorage.removeItem("portfolioImage");
-                    localStorage.removeItem("sections");
-                    localStorage.removeItem("htmlContent")
-
-                    // localStorage.removeItem("downloadTemplate");
-
-                    // 5. refresh the current page and reset input fields (firefox keeps them)
-                    window.location.reload();
-                    /*                let inputs = document.getElementsByClassName("inputs");
-
-                                    for( let x= 0; x < inputs.length; x+=1 ){
-
-                                        inputs[x].reset();
-                                    }*/
+                        // 3. make request to download zip file
+                        await downloadPortfolio();
 
 
-                    // 6. remove files created from server
-                    // await removeFiles();
-                }, 500)
+                        // 4. clear local storage
 
+                        localStorage.removeItem("portfolio")
+                        localStorage.removeItem("navigationBar")
+                        localStorage.removeItem("about")
+                        localStorage.removeItem("experiences");
+                        localStorage.removeItem("skills");
+                        localStorage.removeItem("projects")
+                        localStorage.removeItem("contacts")
+                        localStorage.removeItem("resumeName")
+
+                        localStorage.removeItem("projectImages")
+                        localStorage.removeItem("portfolioTitle");
+                        localStorage.removeItem("portfolioImage");
+                        localStorage.removeItem("sections");
+                        localStorage.removeItem("htmlContent")
+
+                        // localStorage.removeItem("downloadTemplate");
+
+                        // 5. refresh the current page and reset input fields (firefox keeps them)
+                        window.location.reload();
+                        /*                let inputs = document.getElementsByClassName("inputs");
+
+                                        for( let x= 0; x < inputs.length; x+=1 ){
+
+                                            inputs[x].reset();
+                                        }*/
+
+
+                        // 6. remove files created from server
+                        // await removeFiles();
+                    }, 500)
+
+                    // hide the modal
+                    modalContainer.classList.add("hide")
+                })
+
+                noButton.addEventListener("click", ()=>{
+
+                    // remove event from yes and no
+
+                    // hide modal
+
+                    modalContainer.classList.add("hide")
+
+                })
+
+                /* FIX ISSUE WHERE CLICKING ON CONTAINER STILL REMOVE THE ENTIRE MODAL */
+                /*    modalContainer.addEventListener("click", ()=>{
+
+                        // remove event from yes and no
+
+                        // hide modal
+
+                        modalContainer.classList.add("hide")
+
+                    })*/
 
             }
 

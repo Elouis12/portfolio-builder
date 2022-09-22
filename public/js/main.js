@@ -721,9 +721,13 @@ async function deleteSection(element) {
 
     let currentElement = element.currentTarget;
 
-    let modal = document.getElementById("modal-container");
+    let modalContainer = document.getElementById("modal-height");
 
-    modal.classList.remove("hide");
+    let modalText = document.getElementById("modal-text");
+
+    modalText.innerHTML = "Are you sure you want to delete this section?"
+
+    modalContainer.classList.remove("hide");
 
     // add event listener to yes button so when user clicks
 
@@ -803,7 +807,7 @@ async function deleteSection(element) {
 
 
         // hide the modal
-        modal.classList.add("hide")
+        modalContainer.classList.add("hide")
 
     });
 
@@ -813,9 +817,19 @@ async function deleteSection(element) {
 
         // hide modal
 
-        modal.classList.add("hide")
+        modalContainer.classList.add("hide")
 
     })
+    /* FIX ISSUE WHERE CLICKING ON CONTAINER STILL REMOVE THE ENTIRE MODAL */
+/*    modalContainer.addEventListener("click", ()=>{
+
+        // remove event from yes and no
+
+        // hide modal
+
+        modalContainer.classList.add("hide")
+
+    })*/
 
 }
 
