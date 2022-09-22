@@ -234,10 +234,15 @@ function validateSkillsContainer(){
             // make category and skills red
             if( !validSkillContainer ){
 
+                categorySectionTitleDiv.classList.add('red-border');
+
                 skillsContainer.children[y].children[0].classList.add('red-border')
 
                 validSkillContainer = true; // reset it for the next skill
+
             }else{
+
+                // categorySectionTitleDiv.classList.remove('red-border');
 
                 skillsContainer.children[y].children[0].classList.remove('red-border')
 
