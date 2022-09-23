@@ -282,7 +282,7 @@ function newCategory(){
 
 
                                 <!-- DELETE CATEGORY -->
-                                <div class="delete-section middle-width">
+                                <div id="delete-section" class="delete-section middle-width">
                                     <i class="fa-solid fa-circle-minus"></i>
                                     <span>Delete Category</span>
                                 </div>
@@ -315,13 +315,20 @@ function newCategory(){
 
     skillAddButton.addEventListener("click", newSkill)
 
-
-    // add "delete" event to delete button
-
     let skillDeleteButton = categoryContainer[ categoryContainer.length - 1 ].children[1].children[2].children[0].children[1].lastElementChild;
 
-    skillDeleteButton.addEventListener("click", deleteSection)
-    skillDeleteButton.addEventListener("click", refreshIframe)
+
+    // dont add a delete button for the first skill category
+    if( skillNumber + 1 === 1 ){
+
+        skillDeleteButton.remove();
+    }else{
+
+        // add "delete" event to delete button
+        skillDeleteButton.addEventListener("click", deleteSection)
+        skillDeleteButton.addEventListener("click", refreshIframe)
+
+    }
 
 
 

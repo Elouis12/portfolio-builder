@@ -657,3 +657,8 @@ input[id="flatpickr"]{
     align-items: center;
     width: 100%;
 }
+
+#missing-section-text{
+
+    color: #ff4c4c;
+}
