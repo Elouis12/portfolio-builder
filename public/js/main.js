@@ -117,9 +117,6 @@ function newExperience(){
     let deleteButton = experienceContainer.children[1].lastElementChild;
 
     deleteButton.addEventListener("click", deleteSection)
-    deleteButton.addEventListener("click", refreshIframe)
-
-
 }
 
 function newCategory(){
@@ -814,7 +811,10 @@ async function deleteSection(element) {
 
 
         // hide the modal
-        modalContainer.classList.add("hide")
+        modalContainer.classList.add("hide");
+
+        // refresh the contents
+        refreshIframe();
 
     });
 
