@@ -402,7 +402,7 @@ i{
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     flex-wrap: wrap;
     width: 100%;
 }
@@ -412,7 +412,7 @@ i{
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 }
 
@@ -420,6 +420,7 @@ i{
 
     word-break: break-word;
     height: auto;
+    width: 80%;
 }
 .skills-category-container-body-skills h3{
 

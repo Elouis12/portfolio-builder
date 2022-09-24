@@ -12,6 +12,7 @@ class CreateTemplate{
         this.#setResume();
         this.#setContact();
         this.#setFooter();
+        this.#goToSection();
 
 
         this.#removeUnusedSections();
@@ -408,6 +409,13 @@ class CreateTemplate{
 
             footerNameElements[x].innerHTML = JSON.parse(localStorage.getItem("footerName"))
         }
+    }
+
+    #goToSection(){
+
+        let section =  localStorage.getItem("section");
+
+        window.location.href = `#${section}`;
     }
 
 

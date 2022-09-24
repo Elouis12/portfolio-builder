@@ -887,7 +887,16 @@ let colorBoxes = document.getElementsByClassName("sp-colorize");
 });*/
 
 
+function sectionTypedIn(e){
 
+    let element = e.currentTarget;
+
+    // make sure to always get the last or index 1 class value because that's where it will be saved
+    let section =  element.closest('.section-container').getAttribute("class").split(" ")[1];
+
+    localStorage.setItem("section", section);
+
+}
 function addEventListenerToElements(){
 
     // WHEN THE USER CLICK AN INPUT
@@ -901,6 +910,7 @@ function addEventListenerToElements(){
             continue;
         }
         inputs[x].addEventListener("keyup", refreshIframe)
+        inputs[x].addEventListener("keyup", sectionTypedIn)
     }
 
     // WHEN USER CLICKS ON DROP DOWN SELECTION
