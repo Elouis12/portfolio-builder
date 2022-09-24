@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 
-const db = mysql.createConnection( {
+const db = mysql.createPool( {
 
     host: process.env.HOST,
     user: process.env.USER,

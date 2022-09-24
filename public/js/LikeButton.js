@@ -51,7 +51,7 @@ let likeButton = async (e)=>{
 
                 thumbsUpCount.innerText = parseInt(thumbsUpCount.innerText) - 1;
 
-                await updateLikes(parseInt(thumbsUpCount.innerText))
+                // await updateLikes(parseInt(thumbsUpCount.innerText))
 
             }
 
@@ -66,7 +66,7 @@ let likeButton = async (e)=>{
 
                 thumbsUpCount.innerText = parseInt(thumbsUpCount.innerText) + 1;
 
-                await updateLikes(parseInt(thumbsUpCount.innerText))
+                // await updateLikes(parseInt(thumbsUpCount.innerText))
 
 
             // remove 1 from thumbs down if it increased by 1
@@ -74,7 +74,7 @@ let likeButton = async (e)=>{
 
                 thumbsDownCount.innerText = parseInt(thumbsDownCount.innerText) - 1
 
-                await updateDislikes(parseInt(thumbsDownCount.innerText))
+                // await updateDislikes(parseInt(thumbsDownCount.innerText))
 
             }
 
@@ -97,7 +97,7 @@ let likeButton = async (e)=>{
 
                 thumbsDownCount.innerText = parseInt(thumbsDownCount.innerText) - 1
 
-                await updateDislikes(parseInt(thumbsDownCount.innerText))
+                // await updateDislikes(parseInt(thumbsDownCount.innerText))
 
             }
 
@@ -111,14 +111,14 @@ let likeButton = async (e)=>{
 
             thumbsDownCount.innerText = parseInt(thumbsDownCount.innerText) + 1
 
-            await updateDislikes(parseInt(thumbsDownCount.innerText))
+            // await updateDislikes(parseInt(thumbsDownCount.innerText))
 
             // remove 1 from thumbs up if it increased by 1
             if( parseInt(thumbsUpCount.innerText) > likes[0] ){
 
                 thumbsUpCount.innerText = parseInt(thumbsUpCount.innerText) - 1
 
-                await updateLikes(parseInt(thumbsUpCount.innerText))
+                // await updateLikes(parseInt(thumbsUpCount.innerText))
 
             }
 
