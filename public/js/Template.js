@@ -58,7 +58,7 @@ export class Template{
 
             // arrow function allows for scoping / level access of private variables
 
-            if( validateFields() ){ // if all field are entered then get the fields
+            if( true || validateFields() ){ // if all field are entered then get the fields
 
 
                 let modalContainer = document.getElementById("modal-height");
@@ -152,7 +152,16 @@ export class Template{
                     }, 500)
 
                     // hide the modal
-                    modalContainer.classList.add("hide")
+                    modalContainer.classList.add("hide");
+
+                    // send user to page to show how to host it
+                    // seems like i have to wait for it to download and then I can go to the page
+                    setTimeout(()=>{
+
+                        window.location.href = "/#host";
+                    })
+
+
                 })
 
                 noButton.addEventListener("click", ()=>{
