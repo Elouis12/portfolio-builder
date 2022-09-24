@@ -71,6 +71,13 @@ const setTheme = () => {
     }
 }
 
+function getYear(){
+
+    let year = document.getElementById("year");
+
+    year.innerText = new Date().getFullYear();
+}
+getYear();
 
 window.addEventListener("scroll", ()=>{
 
