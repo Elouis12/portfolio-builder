@@ -58,7 +58,7 @@ export class Template{
 
             // arrow function allows for scoping / level access of private variables
 
-            if( true || validateFields() ){ // if all field are entered then get the fields
+            if( validateFields() ){ // if all field are entered then get the fields
 
 
                 let modalContainer = document.getElementById("modal-height");
@@ -138,7 +138,7 @@ export class Template{
                         // localStorage.removeItem("downloadTemplate");
 
                         // 5. refresh the current page and reset input fields (firefox keeps them)
-                        window.location.reload();
+                        // window.location.reload();
                         /*                let inputs = document.getElementsByClassName("inputs");
 
                                         for( let x= 0; x < inputs.length; x+=1 ){
@@ -159,7 +159,7 @@ export class Template{
                     setTimeout(()=>{
 
                         window.location.href = "/#host";
-                    })
+                    }, 1000)
 
 
                 })
