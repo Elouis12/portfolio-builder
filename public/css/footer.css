@@ -14,7 +14,7 @@ footer{
 
     /*left: 0;*/
     right: 0;
-    background-color: #111;
+    background-color: hsl(207, 19%, 7%);
     height: auto;
     width: 100%;
     font-family: Poppins;
@@ -55,6 +55,7 @@ footer{
     justify-content: center;
     align-items: center;
     margin: 1rem 0 3rem 0;
+    padding: 0px;
 
 }
 

@@ -1,14 +1,39 @@
-let likeButton = (e)=>{
+let thumbsUp = document.getElementById("thumbsUp")
+let thumbsDown = document.getElementById("thumbsDown")
+
+let thumbsUpCount = document.getElementById("thumbsUp-count")
+let thumbsDownCount = document.getElementById("thumbsDown-count")
+
+let likes = [];
+
+let setLikeButtons = async ()=>{
+
+    likes = await getLikes().then( data => data);
+
+
+    thumbsUpCount.innerText = parseInt(thumbsUpCount.innerText) + likes[0]
+    thumbsDownCount.innerText = parseInt(thumbsDownCount.innerText) + likes[1];
+
+    // get user stored like decision
+    if( localStorage.getItem("like") !== "none" ){
+
+        if( localStorage.getItem("like") === "up" ){
+
+            thumbsUp.click();
+
+        }else if( localStorage.getItem("like") === "down" ){
+
+            thumbsDown.click();
+        }
+    }
+}
+
+setLikeButtons();
+
+let likeButton = async (e)=>{
 
     // check which button
     let element = e.currentTarget;
-
-    let thumbsUp = document.getElementById("thumbsUp")
-    let thumbsDown = document.getElementById("thumbsDown")
-
-    let thumbsUpCount = document.getElementById("thumbsUp-count")
-    let thumbsDownCount = document.getElementById("thumbsDown-count")
-
 
     // check which button clicked
     if( element.classList.contains("fa-thumbs-up") ){
@@ -16,12 +41,18 @@ let likeButton = (e)=>{
         // check if colored
         if( element.classList.contains("thumbs-green")){
 
+            // user removed a like or dislike
+            localStorage.setItem("like", "none");
+
             element.classList.remove("thumbs-green");
 
             // or else it will be -1
             if( parseInt(thumbsUpCount.innerText) > 0 ){
 
-                thumbsUpCount.innerText = parseInt(thumbsUpCount.innerText) - 1
+                thumbsUpCount.innerText = parseInt(thumbsUpCount.innerText) - 1;
+
+                await updateLikes(parseInt(thumbsUpCount.innerText))
+
             }
 
 
@@ -32,12 +63,19 @@ let likeButton = (e)=>{
             element.classList.add("thumbs-green");
             thumbsDown.classList.remove("thumbs-red");
 
-            thumbsUpCount.innerText = parseInt(thumbsUpCount.innerText) + 1;
 
-            // remove 1 from thumbs down
-            if( parseInt(thumbsDownCount.innerText) > 0 ){
+                thumbsUpCount.innerText = parseInt(thumbsUpCount.innerText) + 1;
+
+                await updateLikes(parseInt(thumbsUpCount.innerText))
+
+
+            // remove 1 from thumbs down if it increased by 1
+            if( parseInt(thumbsDownCount.innerText) > likes[1] ){
 
                 thumbsDownCount.innerText = parseInt(thumbsDownCount.innerText) - 1
+
+                await updateDislikes(parseInt(thumbsDownCount.innerText))
+
             }
 
 
@@ -48,6 +86,9 @@ let likeButton = (e)=>{
         // check if colored
         if( element.classList.contains("thumbs-red")){
 
+            // user removed a like or dislike
+            localStorage.setItem("like", "none");
+
             element.classList.remove("thumbs-red");
 
 
@@ -55,6 +96,9 @@ let likeButton = (e)=>{
             if( parseInt(thumbsDownCount.innerText) > 0 ){
 
                 thumbsDownCount.innerText = parseInt(thumbsDownCount.innerText) - 1
+
+                await updateDislikes(parseInt(thumbsDownCount.innerText))
+
             }
 
 
@@ -67,10 +111,15 @@ let likeButton = (e)=>{
 
             thumbsDownCount.innerText = parseInt(thumbsDownCount.innerText) + 1
 
-            // remove 1 from thumbs up
-            if( parseInt(thumbsUpCount.innerText) > 0 ){
+            await updateDislikes(parseInt(thumbsDownCount.innerText))
+
+            // remove 1 from thumbs up if it increased by 1
+            if( parseInt(thumbsUpCount.innerText) > likes[0] ){
 
                 thumbsUpCount.innerText = parseInt(thumbsUpCount.innerText) - 1
+
+                await updateLikes(parseInt(thumbsUpCount.innerText))
+
             }
 
 
@@ -79,23 +128,7 @@ let likeButton = (e)=>{
 
 }
 
-let thumbsUp = document.getElementById("thumbsUp")
-let thumbsDown = document.getElementById("thumbsDown")
-
-
 thumbsUp.addEventListener("click", likeButton);
 thumbsDown.addEventListener("click", likeButton);
 
 
-// store user like decision
-if( localStorage.getItem("like") ){
-
-    if( localStorage.getItem("like") === "up" ){
-
-        thumbsUp.click();
-
-    }else if( localStorage.getItem("like") === "down" ){
-
-        thumbsDown.click();
-    }
-}

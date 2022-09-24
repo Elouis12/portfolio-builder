@@ -929,6 +929,13 @@ function addEventListenerToElements(){
             item.children[y].addEventListener("click", refreshIframe)
         }
     }
+
+    // WINDOW EVENT
+
+
+    window.addEventListener("load", removeFiles)
+    window.addEventListener("unload", removeFiles)
+    window.addEventListener("beforeunload", beforeUnload)
 }
 
 function addEventListenerAddButtons(){
@@ -965,3 +972,50 @@ addEventListenerAddButtons();
 
 // make sure the user has at least 1 contact
 document.getElementById('add-contact').click()
+
+function beforeUnload(e){
+
+    // alert("hey")
+    // e.preventDefault();
+    e.preventDefault();
+
+/*        let modalContainer = document.getElementById("modal-height");
+
+        let modalText = document.getElementById("modal-text");
+
+        modalText.innerHTML = "Are you sure you want to leave? <br> Leaving will remove all inputs!"
+
+        modalContainer.classList.remove("hide");
+
+        // add event listener to yes button so when user clicks
+
+        let yesButton = document.getElementById("yes-button");
+        let noButton = document.getElementById("no-button");
+
+        yesButton.addEventListener("click", async ()=>{
+
+
+        });
+
+        noButton.addEventListener("click", ()=>{
+
+            e.preventDefault();
+
+            // remove event from yes and no
+
+            // hide modal
+
+            modalContainer.classList.add("hide")
+
+        })*/
+    /* FIX ISSUE WHERE CLICKING ON CONTAINER STILL REMOVE THE ENTIRE MODAL */
+    /*    modalContainer.addEventListener("click", ()=>{
+
+            // remove event from yes and no
+
+            // hide modal
+
+            modalContainer.classList.add("hide")
+
+        })*/
+}

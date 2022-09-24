@@ -13,6 +13,8 @@ const fsExtra = require('fs-extra');
 
 const multer = require("multer");
 
+const mysql = require("mysql");
+
 const app = express();
 
 app.use( express.static( 'public'))
@@ -20,6 +22,20 @@ app.use( express.static( 'public'))
 app.use( cors() );
 
 app.use(express.json())
+app.use(express.urlencoded({ extended: false }));
+
+
+
+const db = mysql.createConnection( {
+
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
+} );
+
+
+
 
 // where we store, name of file, duplicate files, etc pretty much handle the logics
 const storeResume = multer.diskStorage(
@@ -317,6 +333,72 @@ app.get("/create-template", (req, resp)=>{
 })
 
 
+app.get('/get-likes', (req, resp)=>{
+
+    let sql =
+
+        `
+            SELECT likes, dislikes FROM likes
+        `
+
+    db.query( sql, (err, result) => {
+
+        if( err ){ // if there's an error
+            throw err;
+        }else{ // if there's no error send us the result AKA query we just made
+
+            resp.json(result);
+        }
+    } )
+
+})
+
+
+app.post('/update-likes', (req, resp)=>{
+
+
+    let like = req.body.newLike;
+
+    let sql =
+
+        `
+            UPDATE likes SET likes = ${like} WHERE id = 1
+        `
+
+    db.query( sql, (err, result) => {
+
+        if( err ){ // if there's an error
+            throw err;
+        }else{ // if there's no error send us the result AKA query we just made
+
+            resp.json(like);
+        }
+    } )
+
+})
+
+
+app.post('/update-dislikes', (req, resp)=>{
+
+    let dislike = req.body.newDislike;
+
+    let sql =
+
+        `
+            UPDATE likes SET likes = ${dislike} WHERE id = '1'
+        `
+
+    db.query( sql, (err, result) => {
+
+        if( err ){ // if there's an error
+            throw err;
+        }else{ // if there's no error send us the result AKA query we just made
+
+            resp.json(dislike);
+        }
+    } )
+
+})
 
 
 app.use("*", (req,resp)=>{
@@ -330,4 +412,8 @@ app.use("*", (req,resp)=>{
 app.listen(process.env.PORT, ()=>{
 
     console.log(`server running on port `, process.env.PORT )
+
+    db.connect();
+
+    console.log('connected to db')
 } )

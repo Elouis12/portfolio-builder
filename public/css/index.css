@@ -171,15 +171,16 @@ body{
     font-family: Poppins;
     /*border: none;*/
     margin: 2% 0%;
-    background: rgb(0, 114, 255);
+    background: hsl(142, 90%, 61%);
     color: #fff;
+
 }
 
 .button:hover {
 
-    background: #fff;
-    color: rgb(0, 114, 255);
-    border: 1px solid  rgb(0, 114, 255);
+    background:  #fff;
+    color: hsl(142, 90%, 61%);
+    border: 1px solid hsl(142, 90%, 61%);
 
 }
 

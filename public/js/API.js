@@ -175,6 +175,96 @@ async function removeFiles(){
     );
 
 
+    removeLocalStorage();
+}
+
+
+async function getLikes(){
+
+    let likes = [0,0];
+
+    await fetch(
+
+        '/get-likes',
+        {
+            method:'GET'
+        }
+    ).then(
+
+        resp => resp.json()
+    ).then(
+
+        (data) => {
+
+            // likes
+            likes[0] = parseInt(data[0].likes)
+
+            // dislikes
+            likes[1] = parseInt(data[0].dislikes)
+
+        }
+
+    ).catch( (e)=>{
+
+        console.log(e)
+    } )
+
+    return likes;
+}
+
+function updateDislikes(newDislike){
+
+    fetch(
+        '/update-dislikes',
+        {
+            headers: { // this made us not get an empty object
+                "Content-Type": "application/json"
+            },
+            method: 'POST',
+            body: JSON.stringify({newDislike:newDislike} )
+        }
+    ).then(
+
+        resp => resp.json()
+    ).then(
+
+        data => data
+
+    ).catch( (e)=>{
+
+        console.log(e)
+    } )
+
+}
+
+function updateLikes(newLike){
+
+    fetch(
+        '/update-likes',
+        {
+            headers: { // this made us not get an empty object
+                "Content-Type": "application/json"
+            },
+            method: 'POST',
+            body: JSON.stringify({newLike:newLike} )
+        }
+    ).then(
+
+        resp => resp.json()
+    ).then(
+
+        data => data
+
+    ).catch( (e)=>{
+
+        console.log(e)
+    } )
+
+}
+
+function removeLocalStorage(){
+
+
     localStorage.removeItem("portfolio")
     localStorage.removeItem("navigationBar")
     localStorage.removeItem("about")
@@ -188,5 +278,7 @@ async function removeFiles(){
     localStorage.removeItem("portfolioTitle");
     localStorage.removeItem("portfolioImage");
     localStorage.removeItem("sections");
-
+    localStorage.removeItem("htmlContent")
+    localStorage.removeItem("footerName")
+    localStorage.removeItem("section")
 }

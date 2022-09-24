@@ -120,23 +120,7 @@ export class Template{
 
 
                         // 4. clear local storage
-
-                        localStorage.removeItem("portfolio")
-                        localStorage.removeItem("navigationBar")
-                        localStorage.removeItem("about")
-                        localStorage.removeItem("experiences");
-                        localStorage.removeItem("skills");
-                        localStorage.removeItem("projects")
-                        localStorage.removeItem("contacts")
-                        localStorage.removeItem("resumeName")
-
-                        localStorage.removeItem("projectImages")
-                        localStorage.removeItem("portfolioTitle");
-                        localStorage.removeItem("portfolioImage");
-                        localStorage.removeItem("sections");
-                        localStorage.removeItem("htmlContent")
-                        localStorage.removeItem("footerName")
-                        localStorage.removeItem("section")
+                        removeLocalStorage();
 
                         // localStorage.removeItem("downloadTemplate");
 
