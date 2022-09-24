@@ -5,6 +5,7 @@
   <title id="title"></title>
   <link id="indexLink" rel="stylesheet" type="text/css" href="css/index.css">
   <link rel="stylesheet" type="text/css" href="css/card.css">
+  <link rel="stylesheet" type="text/css" href="css/footer.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -20,7 +21,7 @@
 
 
 <!-- NAVBAR -->
-<nav id="nav-container" class="nav-container">
+<nav id="nav-container" class="nav-container width-90">
 
   <!-- NAV LOGO -->
 
@@ -83,28 +84,28 @@
 
 
 <!-- ABOUT -->
-<section id="about" class="about-section">
+<section id="about" class="about-section width-90">
 
   <h1 class="section-title">
     ABOUT
   </h1>
 
-  <div class="about-section-container">
+  <div class="about-section-container width-50">
 
     <i class="fa-solid fa-user"></i>
 
     <div id="about-body" class="about-section-container-body">
 
-                    <span id="about-summary">
+      <p id="about-summary">
 
-                    </span>
+      </p>
 
       <span id="contact-me">
-                        <span>
-                            Feel free to contact me :)
-                        </span>
-                        <a id="say-hello" href="#contacts">say hello</a>
-                    </span>
+                <!--<span>
+                    Feel free to contact me :)
+                </span>-->
+                <a id="say-hello" href="#contacts">say hello</a>
+            </span>
 
     </div>
 
@@ -114,7 +115,7 @@
 
 
 <!-- EXPERIENCE -->
-<section id="experiences" class="experience">
+<section id="experiences" class="experience width-90">
 
   <h1 class="section-title">
     EXPERIENCE
@@ -128,7 +129,7 @@
 
 
 <!-- SKILLS -->
-<section id="skills" class="skills">
+<section id="skills" class="skills width-90">
 
   <h1 class="section-title">
     SKILLS
@@ -141,7 +142,7 @@
 
 
 <!-- PROJECTS -->
-<section id="projects">
+<section id="projects" class="width-90">
 
   <h1 class="section-title">
     PROJECTS
@@ -157,7 +158,7 @@
 
 <!-- RESUME -->
 
-<section id="resume">
+<section id="resume" class="width-90">
 
   <h1 class="section-title">
     RESUME
@@ -167,7 +168,7 @@
     <i class="fa-regular fa-file themeIcon"></i>
     <div class="section-info">
 
-      <embed id="resume-embed" width="575" height="500">
+      <embed id="resume-embed" width-90="575" height="500">
 
     </div>
 
@@ -182,26 +183,30 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contacts">
 
-  <h1 class="section-title">
-    CONTACT
-  </h1>
-  <div class="contact-section-container">
+<div class="footer-wrapper"></div>
+<footer id="contact">
+  <div class="footer-content">
+    <h3 class="footer-name"></h3>
+    <p>
 
-    <i class="fa-regular fa-id-card themeIcon"></i>
+    </p>
+    <ul class="socials">
 
-    <div id="contact-section-container-body" class="contact-section-container-body">
-
-    </div>
+    </ul>
 
   </div>
-</section>
+  <div class="footer-bottom">
+
+    <p>copyright &copy; <span id="year">2022. Designed by <span class="footer-name"></span></span></p>
+
+  </div>
+</footer>
 
 
 <!-- VIEW LARGER -->
 <section id="overlayElement" class="resume-view-container hide" onclick="closeOverlay()">
-  <embed id="view-resume-larger" height="700px" width="75%"/>
+  <embed id="view-resume-larger" height="700px" width-90="75%"/>
   <i class="fa-solid fa-circle-xmark" onclick="closeOverlay()"></i>
 </section>
 
