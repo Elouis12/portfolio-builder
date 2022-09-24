@@ -416,5 +416,6 @@ app.listen(process.env.PORT, ()=>{
 
     db.connect();
 
+
     console.log('connected to db')
 } )
