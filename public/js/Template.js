@@ -136,6 +136,7 @@ export class Template{
                         localStorage.removeItem("sections");
                         localStorage.removeItem("htmlContent")
                         localStorage.removeItem("footerName")
+                        localStorage.removeItem("section")
 
                         // localStorage.removeItem("downloadTemplate");
 
