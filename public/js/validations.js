@@ -9,7 +9,8 @@ function validateFields() {
         validateSkillsContainer() &
         validateProjectsContainer() &
         validateContactsContainer() &
-        validateResumeInput();
+        validateResumeInput() &
+        validateFooterInput();
 
 }
 
@@ -450,6 +451,32 @@ function validateResumeInput(){
     return validateResumeContainer;
 }
 
+function validateFooterInput(){
+
+
+    let footerName = document.getElementById("footer-name");
+
+    let validatedFooterName = true;
+
+    if( footerName.value.trim() === "" ){
+        // show error icon
+        footerName.parentElement.children[2].classList.remove("hideVisibility")
+
+        footerName.closest(".section-container").children[0].classList.add("red-border");
+
+        validatedFooterName = false;
+
+    } else {
+
+        // hide error icon
+        footerName.parentElement.children[2].classList.add("hideVisibility")
+
+        footerName.closest(".section-container").children[0].classList.remove("red-border");
+
+    }
+
+    return true;
+}
 
 const validateEmail = (email) => {
 

@@ -6,19 +6,32 @@
     darker blue hsl(207, 19%, 7%)
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 body{
 
 
-    font-family: sans-serif;
+    font-family: Poppins, sans-serif;
     background-color: hsl(207, 19%, 9%);
     box-sizing: border-box;
     padding: 0;
     color: #f5f5f7;
     position: relative;
-    width: 90%;
+    /*width: 90%;*/
     margin: 30px auto 0 auto;
 }
 
+.width-90{
+
+    width: 90%;
+    margin: auto;
+}
+
+.width-50{
+
+    width: 70%;
+    margin: auto;
+}
 .hide{
 
     display: none;
@@ -50,7 +63,7 @@ body{
 
 /* GENERAL */
 i{
-    font-size: 100px;
+    font-size: 50px;
 }
 
 #nav-drop-down{
@@ -208,6 +221,7 @@ i{
     align-items: center;
     border-radius: 10px;
     background-color: hsl(207, 19%, 7%);
+    padding: 10px;
 }
 
 .about-section-container  *{
@@ -222,12 +236,15 @@ i{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 400px;
+    /*width: 400px;*/
 }
 
 #about-summary{
+
     word-break: break-word;
-    line-height: 1.6;
+    height: auto;
+    /*width: 100%;*/
+    /*line-height: 1.6;*/
 }
 
 #about-body {
@@ -318,20 +335,31 @@ i{
 
 /* SKILLS */
 
+/*.skills-section-container{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
+
 .skills-category-container-body,
-.skills-category-container,
-#skills
+.skills-category-container
 {
 
-    width: 100%;
+    width: 60%;
 }
 
 .skills-category-container-body-skills{
 
-    width: 70%;
+    width: 50%;
 }
 
 /*--*/
+
+#skills{
+
+    padding: 10px;
+}
 
 .skills-category-container{
 
@@ -345,6 +373,7 @@ i{
 .skills-category-container-body{
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
@@ -375,15 +404,22 @@ i{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    width: 100%;
 }
 .skills-category-container-body-skills > div{
 
-    flex-basis: 25%;
+    flex-basis: 50%;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.skill-name{
+
+    word-break: break-word;
+    height: auto;
 }
 .skills-category-container-body-skills h3{
 
@@ -646,7 +682,18 @@ i{
 
 }
 
+@media (max-width: 650px) {
 
+    .skills-category-container-body-skills > div{
+
+        flex-basis: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
 
 @media (max-width: 800px) { /* hover links */
 

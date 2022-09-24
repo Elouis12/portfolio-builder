@@ -11,6 +11,7 @@ class CreateTemplate{
         this.#setProjects();
         this.#setResume();
         this.#setContact();
+        this.#setFooter();
 
 
         this.#removeUnusedSections();
@@ -223,7 +224,7 @@ class CreateTemplate{
                 
                     <div>
                         <i class="${skills[x].skills[y][0]} themeIcon"></i>
-                        <h3>${ skills[x].skills[y][1] }</h3>
+                        <h3 class="skill-name">${ skills[x].skills[y][1] }</h3>
                     </div>
 
                 `)
@@ -359,7 +360,7 @@ class CreateTemplate{
 
     #setContact(){
 
-        let contactBody = document.getElementsByClassName("contact-section-container-body");
+        let contactBody = document.getElementsByClassName("socials");
 
 
         let contacts = JSON.parse(localStorage.getItem("contacts"));
@@ -381,12 +382,32 @@ class CreateTemplate{
                 contactBody[0].insertAdjacentHTML("beforeend",
 
                     `
+                    <li title='${contacts[x].contact}'>
+                         <a  href="${href}">
+                            <i class='${contacts[x].icon}'></i>
+                         </a>
+                     </li>
+                    `
+/*
+                    `
                      <a title='${contacts[x].contact}' href="${href}"><i class='${contacts[x].icon}'></i></a>
-                  `
+                  `*/
                 )
             }
         }
 
+    }
+
+
+    #setFooter(){
+
+
+        let footerNameElements = document.getElementsByClassName("footer-name");
+
+        for( let x = 0; x < footerNameElements.length; x+=1 ){
+
+            footerNameElements[x].innerHTML = JSON.parse(localStorage.getItem("footerName"))
+        }
     }
 
 

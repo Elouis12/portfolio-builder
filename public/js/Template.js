@@ -11,6 +11,7 @@ export class Template{
 
     #_projectImages = [];
     #_portfolio;
+    #_footerName;
 
 
     constructor() {
@@ -134,6 +135,7 @@ export class Template{
                         localStorage.removeItem("portfolioImage");
                         localStorage.removeItem("sections");
                         localStorage.removeItem("htmlContent")
+                        localStorage.removeItem("footerName")
 
                         // localStorage.removeItem("downloadTemplate");
 
@@ -444,6 +446,16 @@ export class Template{
 
     }
 
+    #getFooter(){
+
+        let footerName = document.getElementById("footer-name");
+
+        this.#_footerName = footerName.value.trim();
+
+        localStorage.setItem( "footerName", JSON.stringify(this.#_footerName) );
+
+    }
+
     getFields(){
 
         this.#getPortfolio();
@@ -454,6 +466,7 @@ export class Template{
         this.#getProjects();
         // this.#getResume();
         this.#getContact();
+        this.#getFooter();
 
         this.#getSectionsFilled();
     }

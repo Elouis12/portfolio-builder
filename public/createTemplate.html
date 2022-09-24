@@ -56,14 +56,17 @@
         </h3>
 
         <div class="view-buttons">
-            <button class="view-new-tab-button button" onclick="window.open('/portfolio/index.html')">View In New Tab</button>
-            <button class="view-template-button button" onclick="window.open('/example/index.html')">View Example Template</button>
+            <button class="view-new-tab-button button" onclick="window.open('/portfolio/index.html')">View In New Tab
+            </button>
+            <button class="view-template-button button" onclick="window.open('/example/index.html')">View Example
+                Template
+            </button>
         </div>
 
-<!--        <h4 id="missing-section-text">
-            <i class="fa fa-exclamation-circle " aria-hidden="true"></i>
-            Some sections are not complete
-        </h4>-->
+        <!--        <h4 id="missing-section-text">
+                    <i class="fa fa-exclamation-circle " aria-hidden="true"></i>
+                    Some sections are not complete
+                </h4>-->
 
         <!--  FOR THE USER SELECTIONS  -->
         <div id="template-layout-container" class="container">
@@ -311,6 +314,29 @@
                             <div id="add-contact" class="add-section">
                                 <i class="fa-solid fa-circle-plus"></i>
                                 <span>Add Contact</span>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- FOOTER -->
+                    <section class="section-container">
+
+                        <div class="section-title" onclick="closeSection(this)">
+                          <span>
+                              <i class="fa-solid fa-shoe-prints"></i>
+                              <span>Footer</span>
+                          </span>
+                          <i class="fa-solid fa-angle-down"></i>
+                        </div>
+
+                        <div id="footer" class="middle-width hide">
+
+                            <div class="title-to-border">
+                                <span>Your Name</span>
+                                <input class="title-to-border-element inputs" id="footer-name" type="text">
+                                <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                             </div>
 
                         </div>
