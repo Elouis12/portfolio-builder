@@ -36,7 +36,7 @@ const db = mysql2.createPool/*mysql.createConnection*/( {
     database: process.env.DATABASE
 } );
 
-
+console.log(process.env.DATABASE)
 // console.log(process.env.DATABASE)
 
 
@@ -420,12 +420,11 @@ app.use("*", (req,resp)=>{
 })
 
 
-let port = process.env.PORT || 3000;
 
 
-app.listen(port, ()=>{
+app.listen(process.env.PORT, ()=>{
 
-    console.log(`server running on port `, port )
+    console.log(`server running on port `, process.env.PORT )
 
     console.log('connected to db @ ' + process.env.HOST )
 
