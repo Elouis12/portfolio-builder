@@ -420,11 +420,12 @@ app.use("*", (req,resp)=>{
 })
 
 
+let port = process.env.PORT || 3000;
 
 
-app.listen(process.env.PORT, ()=>{
+app.listen(port, ()=>{
 
-    console.log(`server running on port `, process.env.PORT )
+    console.log(`server running on port `, port )
 
     console.log('connected to db @ ' + process.env.HOST )
 
