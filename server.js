@@ -339,6 +339,8 @@ app.get("/create-template", (req, resp)=>{
 
 app.get('/get-likes', (req, resp)=>{
 
+    console.log("got likes")
+
     let sql =
 
         `
@@ -361,6 +363,7 @@ app.get('/get-likes', (req, resp)=>{
 app.post('/update-likes', (req, resp)=>{
 
 
+    console.log("updated likes")
     let like = req.body.newLike;
 
     let sql =
@@ -383,6 +386,8 @@ app.post('/update-likes', (req, resp)=>{
 
 
 app.post('/update-dislikes', (req, resp)=>{
+
+    console.log("updated dislikes")
 
     let dislike = req.body.newDislike;
 
