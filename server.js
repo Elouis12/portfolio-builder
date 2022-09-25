@@ -119,6 +119,7 @@ app.delete("/remove-image/:image", async (req, resp)=>{
 app.delete("/remove-files", async (req, resp)=>{
 
 
+
     // GIT/HEROKU DOES NOT TAKE EMPTY DIRECTORIES AS IN THE CASE WITH '/media'
     // SO WE CAN CHECK IF IT EXISTS AND IF NOT THEN CREATE IT
     try{
