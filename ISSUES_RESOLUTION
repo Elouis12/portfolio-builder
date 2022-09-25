@@ -1,11 +1,75 @@
 
-i was adding create() function to
 
-<button onclick="create()"> </button>
+1. MODULE SCOPE
 
-however, the js file CreateTemplate is a module and is only module scoped
 
-which means it thinks that create() is a "global" function when it was only module scoped
+    i was adding create() function to
 
-so it's trying to access a functions it thinks is global but is only scoped from the module
+    <button onclick="create()"> </button>
 
+    however, the js file CreateTemplate is a module and is only module scoped
+
+    which means it thinks that create() is a "global" function when it was only module scoped
+
+    so it's trying to access a functions it thinks is global but is only scoped from the module
+
+
+
+2. THE CONFIG FOR THE DB USED NOT UPDATING
+    OR GETTING ERROCONNECTION OR REFUSED CONNECTION ERROR
+
+
+    it was not connecting to the configs for thr
+    cleardb but for the local host
+
+
+    take this for example
+
+
+    #HOST = localhost
+    #USER = ernesto
+    #PASSWORD = 1234567
+    #DATABASE = myportfoly
+
+    HOST = us-cdbr-east-06.cleardb.net
+    USER = b4c690a417b791
+    PASSWORD = d2101a6a
+    DATABASE = heroku_22d027a4e69faed
+
+
+    it would not be updated to know to use
+    the config from CLEARDB
+
+    so to get it to work I had to do
+
+    console.log(process.env.DATABASE)
+
+    as a way to 'refresh it'
+
+    it's weird but for some reason that's what was happening
+
+
+
+
+    OKAY, I KNOW WHY, I THINK
+
+    EVERY CHANGE MADE TO THE .ENV REQUIRES THE SERVER TO BE RESTARTED
+    ( even with NodeMon? )
+
+
+3. CLEARDB CONNECTION CLOSING AFTER AROUND 1 MINUTE
+
+    REPLACE
+
+    var connection = mysql.createConnection({
+        // my configuration
+    })
+
+    with
+
+    var conn = mysql.createPool({
+        // my configuration
+    })
+
+    And removed the code var conn = connection.connect().
+    It worked like a charm!

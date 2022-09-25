@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 
-const db = mysql2.createPool( {
+const db = mysql2.createPool/*mysql.createConnection*/( {
 
     connectionLimit : 1,
     host: process.env.HOST,
@@ -37,6 +37,7 @@ const db = mysql2.createPool( {
 } );
 
 
+// console.log(process.env.DATABASE)
 
 
 // where we store, name of file, duplicate files, etc pretty much handle the logics
@@ -417,8 +418,6 @@ app.listen(process.env.PORT, ()=>{
 
     console.log(`server running on port `, process.env.PORT )
 
-    // db.connect();
+    console.log('connected to db @ ' + process.env.HOST )
 
-
-    // console.log('connected to db')
 } )
