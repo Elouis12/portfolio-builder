@@ -14,6 +14,7 @@ const fsExtra = require('fs-extra');
 const multer = require("multer");
 
 const mysql = require("mysql");
+const mysql2 = require("mysql2");
 
 const app = express();
 
@@ -26,7 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 
-const db = mysql.createPool( {
+const db = mysql2.createPool( {
 
     connectionLimit : 1,
     host: process.env.HOST,
