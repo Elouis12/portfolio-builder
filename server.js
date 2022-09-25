@@ -389,7 +389,7 @@ app.post('/update-dislikes', (req, resp)=>{
     let sql =
 
         `
-            UPDATE likes SET likes = ${dislike} WHERE id = 4
+            UPDATE likes SET dislikes = ${dislike} WHERE id = 4
         `
 
     db.query( sql, (err, result) => {
