@@ -30,16 +30,14 @@ app.use(express.urlencoded({ extended: false }));
 const db = mysql2.createPool/*mysql.createConnection*/( {
 
     connectionLimit : 1,
-/*    host: process.env.HOST,
+    host: process.env.HOST,
     user: process.env.USER,
     password: process.env.PASSWORD,
-    database: process.env.DATABASE*/
-
-    host: 'us-cdbr-east-06.cleardb.net',
-    user: 'b4c690a417b791',
-    password: 'd2101a6a',
-    database: 'heroku_22d027a4e69faed'
+    database: process.env.DATABASE
 } );
+
+
+// console.log(process.env.DATABASE)
 
 
 // where we store, name of file, duplicate files, etc pretty much handle the logics
@@ -341,10 +339,12 @@ app.get("/create-template", (req, resp)=>{
 
 app.get('/get-likes', (req, resp)=>{
 
+    console.log("got likes")
+
     let sql =
 
         `
-            SELECT likes, dislikes FROM likes;
+            SELECT likes, dislikes FROM likes
         `
 
     db.query( sql, (err, result) => {
@@ -422,10 +422,10 @@ app.use("*", (req,resp)=>{
 
 
 
-app.listen(3000, ()=>{
+app.listen(process.env.PORT, ()=>{
 
-    console.log(`server running on port `, 3000 )
+    console.log(`server running on port `, process.env.PORT )
 
-    // console.log('connected to db @ ' + process.env.HOST )
+    console.log('connected to db @ ' + process.env.HOST )
 
 } )
