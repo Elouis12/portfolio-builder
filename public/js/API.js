@@ -215,7 +215,7 @@ async function getLikes(){
 function updateDislikes(newDislike){
 
     fetch(
-        'https://myportfoly.herokuapp.com/update-dislikes',
+        '/update-dislikes',
         {
             headers: { // this made us not get an empty object
                 "Content-Type": "application/json"
