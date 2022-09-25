@@ -185,7 +185,7 @@ async function getLikes(){
 
     await fetch(
 
-        'https://geofactsapi.herokuapp.com/get-likes',
+        'https://myportfoly.herokuapp.com/get-likes',
         {
             method:'GET'
         }
@@ -215,7 +215,7 @@ async function getLikes(){
 function updateDislikes(newDislike){
 
     fetch(
-        'https://geofactsapi.herokuapp.com/update-dislikes',
+        'https://myportfoly.herokuapp.com/update-dislikes',
         {
             headers: { // this made us not get an empty object
                 "Content-Type": "application/json"
