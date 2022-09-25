@@ -410,7 +410,10 @@ app.post('/update-dislikes', (req, resp)=>{
 
 })
 
+app.post("/likes",(req, resp)=>{
 
+    resp.json({hey:"hey"})
+})
 app.use("*", (req,resp)=>{
 
     resp.redirect('/create-template');
