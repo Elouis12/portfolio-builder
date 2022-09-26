@@ -894,7 +894,6 @@ function sectionTypedIn(e){
     // make sure to always get the last or index 1 class value because that's where it will be saved
     let section =  element.closest('.section-container').getAttribute("class").split(" ")[1];
 
-
     localStorage.setItem("section", section);
 
 }
@@ -913,6 +912,12 @@ function addEventListenerToElements(){
         inputs[x].addEventListener("keyup", refreshIframe)
         inputs[x].addEventListener("keyup", sectionTypedIn)
     }
+
+    // RESUME
+
+    let resume = document.getElementById("resume-input");
+
+    resume.addEventListener("change", sectionTypedIn)
 
     // WHEN USER CLICKS ON DROP DOWN SELECTION
     let dropdown = document.getElementsByClassName("drop-down-options-div");
@@ -976,9 +981,8 @@ document.getElementById('add-contact').click()
 
 function beforeUnload(e){
 
-    removeFiles();
-    // alert("hey")
-    // e.preventDefault();
+    removeLocalStorage();
+
     e.preventDefault();
 
 /*        let modalContainer = document.getElementById("modal-height");

@@ -415,7 +415,22 @@ class CreateTemplate{
 
         let section =  localStorage.getItem("section");
 
-        window.location.href = `#${section}`;
+        // issue where when resume is uploaded it will scroll to where the footer was
+        // BEFORE THE RESUME IS ENTERED BECAUSE THE RESUME WILL PUSH THE FOOTER DOWN
+        if( section === "contacts"){
+
+            setTimeout(()=>{
+
+                window.scrollTo(0, document.body.scrollHeight);
+
+            }, 100)
+
+        }else{
+
+            window.location.href = `#${section}`;
+
+
+        }
     }
 
 
