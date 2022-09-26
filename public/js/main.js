@@ -894,7 +894,7 @@ function sectionTypedIn(e){
     // make sure to always get the last or index 1 class value because that's where it will be saved
     let section =  element.closest('.section-container').getAttribute("class").split(" ")[1];
 
-    alert(section)
+
     localStorage.setItem("section", section);
 
 }
