@@ -325,10 +325,12 @@ app.post('/html-content', async (req, resp) => {
 
 
 
-app.get("/create-template/*", (req, resp)=>{
+/*
+app.get("/create-template/", (req, resp)=>{
 
     resp.redirect('/create-template');
 })
+*/
 
 app.get("/create-template", (req, resp)=>{
 
@@ -416,7 +418,8 @@ app.post("/likes",(req, resp)=>{
 })
 app.use("*", (req,resp)=>{
 
-    resp.redirect('/create-template');
+    resp.redirect('/404.html');
+    // resp.sendFile( path.resolve( __dirname, './public/404.html') );
 })
 
 
