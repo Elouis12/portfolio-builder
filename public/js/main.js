@@ -976,6 +976,7 @@ document.getElementById('add-contact').click()
 
 function beforeUnload(e){
 
+    removeFiles();
     // alert("hey")
     // e.preventDefault();
     e.preventDefault();
