@@ -84,7 +84,6 @@ window.addEventListener("scroll", ()=>{
     let navbar = document.getElementById("nav-container");
     let dropdown = document.getElementById("nav-drop-down");
 
-    // alert(window.scrollY)
     if (window.scrollY > 10 ){
 
         navbar.classList.add('nav-container-scroll')
