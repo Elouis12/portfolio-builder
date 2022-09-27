@@ -417,20 +417,26 @@ class CreateTemplate{
 
         // issue where when resume is uploaded it will scroll to where the footer was
         // BEFORE THE RESUME IS ENTERED BECAUSE THE RESUME WILL PUSH THE FOOTER DOWN
-        if( section === "contacts"){
 
-            setTimeout(()=>{
+        if( section !== null ){
 
-                window.scrollTo(0, document.body.scrollHeight);
+            if( section === "contacts"){
 
-            }, 100)
+                setTimeout(()=>{
 
-        }else{
+                    window.scrollTo(0, document.body.scrollHeight);
 
-            window.location.href = `#${section}`;
+                }, 100)
 
+            }else{
+
+                window.location.href = `#${section}`;
+
+            }
 
         }
+
+
     }
 
 

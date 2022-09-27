@@ -160,6 +160,10 @@ i{
     font-size: 14px;
 }
 
+.nav-items:hover{
+
+    background-color: hsl(207, 19%, 9%);
+}
 
 .nav-container i {
 
@@ -267,14 +271,15 @@ i{
 
     color:hsl(142, 90%, 61%);
     text-decoration: none;
+    transition: all ease-in-out 300ms;
 }
 #say-hello:hover{
 
     color:hsl(142, 90%, 61%);
-    background-color: #f2f2f2;
+    background-color: hsl(207, 19%, 9%);
     /*padding: 3px;*/
-    border-radius: 3px;
-    width: max-content;
+    border-radius: 4px;
+    /*width: max-content;*/
     margin: auto;
 
 }
@@ -586,6 +591,7 @@ i{
 
         margin-bottom: 10px;
     }
+
     .nav-items-container{
 
         all: unset;

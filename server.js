@@ -326,15 +326,15 @@ app.post('/html-content', async (req, resp) => {
 
 
 /*
-app.get("/create-template/", (req, resp)=>{
+app.get("/create-portfolio/", (req, resp)=>{
 
-    resp.redirect('/create-template');
+    resp.redirect('/create-portfolio');
 })
 */
 
-app.get("/create-template", (req, resp)=>{
+app.get("/create-portfolio", (req, resp)=>{
 
-    resp.sendFile( path.resolve( __dirname, './public/createTemplate.html') );
+    resp.sendFile( path.resolve( __dirname, './public/CreatePortfolio.html') );
 
 })
 

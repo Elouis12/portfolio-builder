@@ -56,14 +56,14 @@ const darkMode = () => {
 
     darkModeTheme = !darkModeTheme;
 
-    localStorage.setItem("darkMode", darkModeTheme);
+    localStorage.setItem("jakeDarkMode", darkModeTheme);
 
 }
 
 
 const setTheme = () => {
 
-    let lightMode = localStorage.getItem("darkMode");
+    let lightMode = localStorage.getItem("jakeDarkMode");
 
     if( lightMode === "false" ){
 
