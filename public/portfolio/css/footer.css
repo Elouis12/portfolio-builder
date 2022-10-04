@@ -65,13 +65,15 @@ footer{
 
 }
 
-.socials a{
+.socials a,
+.credit a{
 
     text-decoration: none;
     color: #fff;
 }
 
-.socials a i{
+.socials a i,
+.credit a i{
 
     font-size: 1.1rem;
     transition: color .4s ease;
