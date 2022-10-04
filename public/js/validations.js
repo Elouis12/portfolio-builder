@@ -494,3 +494,14 @@ const validateUrl = (url) => {
         .match(
             /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/);
 };
+
+
+const validateHexColor = (color)=>{
+
+
+    return String(color)
+        .toLowerCase()
+        .match(
+            "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+        );
+}

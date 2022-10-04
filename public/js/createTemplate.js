@@ -101,7 +101,7 @@ class CreateTemplate{
 
         let experienceBody = `
             
-        <div class="experience-section-container-card">
+        <div class="experience-section-container-card secondary-color">
 
 
             <div class="experience-section-container-body">
@@ -150,7 +150,7 @@ class CreateTemplate{
                 let titleAndDate = newlyAddedBody[ newlyAddedBody.length - 1 ].children[1];
 
 
-                titleAndDate.insertAdjacentHTML("beforeend", `<h4>${experiences[x].jobTitle}</h4>`)
+                titleAndDate.insertAdjacentHTML("beforeend", `<h4 class="accent-color">${experiences[x].jobTitle}</h4>`)
                 titleAndDate.insertAdjacentHTML("beforeend", `<h4>${experiences[x].date}</h4>`)
 
                 // NAME AND LOCATION
@@ -178,7 +178,7 @@ class CreateTemplate{
         <div class="skills-category-container" >
 
             <!-- CATEGORIES AND SKILLS -->
-            <div class="skills-category-container-body">
+            <div class="skills-category-container-body secondary-color">
 
                 <div class="skills-category-container-title">
                     <i class="themeIcon"></i>

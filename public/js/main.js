@@ -1025,3 +1025,29 @@ function beforeUnload(e){
 
         })*/
 }
+
+
+let primaryColor = document.getElementById("primary-color");
+
+primaryColor.addEventListener("keyup", addTheme);
+primaryColor.addEventListener("keyup", refreshIframe);
+primaryColor.addEventListener("change", addTheme, refreshIframe);
+
+function addTheme(){
+
+
+    let primaryColor = document.getElementById("primary-color");
+    let secondaryColor = document.getElementById("secondary-color");
+    let accentColor = document.getElementById("accent-color");
+
+
+    window.localStorage.setItem("primaryColor", primaryColor.value);
+    window.localStorage.setItem("secondaryColor", secondaryColor.value);
+
+    window.localStorage.setItem("accentColor", accentColor.value);
+    // window.localStorage.setItem("primaryColor", primaryColor.value);
+    // window.localStorage.setItem("primaryColor", primaryColor.value);
+    // alert(primaryColor.value)
+    // document.body.style.backgroundColor = primaryColor.value;
+}
+

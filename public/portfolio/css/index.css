@@ -1,9 +1,9 @@
 /*
     white hsl(0, 0%, 100%);
-    blue hsl(207, 19%, 9%);
-    green hsl(142, 90%, 61%);
+    blue hsl(207, 19%, 9%); #13171B
+    green hsl(142, 90%, 61%); #42f584
 
-    darker blue hsl(207, 19%, 7%)
+    darker blue hsl(207, 19%, 7%) #101213
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');

@@ -86,14 +86,56 @@ window.addEventListener("scroll", ()=>{
 
     if (window.scrollY > 10 ){
 
-        navbar.classList.add('nav-container-scroll')
+        navbar.classList.add('nav-container-scroll');
         // dropdown.classList.remove("dark-mode-section-title")
+        document.getElementById("nav-container").style.backgroundColor = localStorage.getItem("secondaryColor");
+        document.getElementsByClassName("logo-container")[0].style.backgroundColor = localStorage.getItem("primaryColor");
 
     }else{
+
+        document.getElementById("nav-container").style.backgroundColor = "transparent";
+        document.getElementsByClassName("logo-container")[0].style.backgroundColor = localStorage.getItem("secondaryColor");
+
 
         navbar.classList.remove('nav-container-scroll')
         // dropdown.classList.add("dark-mode-section-title")
 
     }
 
-})
+});
+
+
+function addTheme(){
+
+    // elements that use primary color
+
+    let elementsPrimaryColor = document.getElementsByClassName("primary-color");
+
+    for( let x = 0; x < elementsPrimaryColor.length; x+=1 ){
+
+        elementsPrimaryColor[x].style.backgroundColor = localStorage.getItem("primaryColor");
+    }
+
+    // elements that use secondary color
+
+    let elementsSecondaryColor = document.getElementsByClassName("secondary-color");
+
+    for( let x = 0; x < elementsSecondaryColor.length; x+=1 ){
+
+        elementsSecondaryColor[x].style.backgroundColor = localStorage.getItem("secondaryColor");
+    }
+
+    // elements that use accent color
+
+    let elementsAccentColor = document.getElementsByClassName("accent-color");
+
+    for( let x = 0; x < elementsAccentColor.length; x+=1 ){
+
+        elementsAccentColor[x].style.color = localStorage.getItem("accentColor");
+    }
+
+
+
+}
+
+addTheme();
