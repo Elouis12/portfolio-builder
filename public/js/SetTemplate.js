@@ -87,13 +87,10 @@ class SetTemplate {
 
         let summary =  JSON.parse(localStorage.getItem("about"));
 
-        console.log(aboutMeIcon[0].children[0])
-
         if( summary ){
 
             aboutMeIcon[0].children[0].children[0].setAttribute("src", summary[0].aboutMeIcon);
             aboutMe.children[1].innerHTML = summary[0].aboutMeSummary;
-
 
         }
 
