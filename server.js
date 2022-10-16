@@ -218,7 +218,7 @@ app.delete("/remove-files", async (req, resp)=>{
             if(
                 file !== "resume.png"
                         &&
-                file !== "default-profile.png"
+                file !== "user-female-1.png"
                         &&
                 file !== "about-me.png"
                         &&
