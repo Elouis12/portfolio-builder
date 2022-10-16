@@ -42,9 +42,9 @@ const darkMode = () => {
 
     let nightTheme = document.getElementById("nightTheme");
 
-    nightTheme.getAttribute("src").includes("day") ?
-    nightTheme.setAttribute("src", "./images/icons/night.png") :
-    nightTheme.setAttribute("src", "./images/icons/day.png")
+    nightTheme.getAttribute("src").includes("night") ?
+    nightTheme.setAttribute("src", "./images/icons/day.png") :
+    nightTheme.setAttribute("src", "./images/icons/night.png")
 
     let logo = document.getElementById("logo");
     logo.style.color = "hsl(0, 0%, 100%)";

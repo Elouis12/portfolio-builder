@@ -257,6 +257,10 @@ i{
 
 }
 
+.logo-container img:hover{
+
+    cursor: pointer;
+}
 
 /* ABOUT  */
 
