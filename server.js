@@ -215,10 +215,15 @@ app.delete("/remove-files", async (req, resp)=>{
         // remove all files from /icons
         for( const file of iconFiles ){
 
-            if( file ){
+            if(
+                file !== "resume.png"
+                        &&
+                file !== "default-profile.png"
+
+
+            ){
 
                 fs.unlinkSync(`./public/portfolio/images/icons/${file}`);
-
 
             }
 
@@ -316,6 +321,8 @@ app.get('/template-zip-folder', async function(req, resp) {
                     file !== "default.jpeg"  // in case we ever want to just use jpeg for image
                             &&
                     file !== "default.gif"  // in case we ever want to just use gif for image
+                            &&
+                    file !== "icons"  // folders can't be unlinked
                 )
 
             ){ // remove all except the default image
@@ -336,7 +343,6 @@ app.get('/template-zip-folder', async function(req, resp) {
 
 
 app.post('/html-content', async (req, resp) => {
-
 
     // save content to html file
     await fs.writeFile(

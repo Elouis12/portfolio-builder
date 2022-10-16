@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/card.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
 
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -91,13 +92,20 @@
 
     <div class="about-section-container width-50">
 
-        <i class="fa-solid fa-user"></i>
+        <div class="about-section-container-icon-container icon-banner">
+            <img class="drop-down-image icon-image" src="./images/icons/default-profile.png" alt="profile logo">
+        </div>
 
         <div id="about-body" class="about-section-container-body">
 
             <p id="about-summary">
 
+                <span class="special">About me:</span>
+                <span class="about-text">
+
+                </span>
             </p>
+
 
             <span id="contact-me">
                 <!--<span>
@@ -155,6 +163,10 @@
 </section>
 
 
+
+
+
+
 <!-- RESUME -->
 
 <section id="resume" class="width-90">
@@ -164,7 +176,8 @@
     </h1>
     <div class="resume-section-container">
 
-        <i class="fa-regular fa-file themeIcon"></i>
+        <img class="drop-down-image icon-image" src="./images/icons/resume.png" alt="resume logo">
+
         <div class="section-info">
 
             <embed id="resume-embed" width-90="575" height="500">
@@ -197,7 +210,13 @@
     </div>
     <div class="footer-bottom">
 
-        <p>copyright &copy; <span id="year"></span>. Designed by <span class="footer-name"></span></span></p>
+        <p>copyright &copy; <span id="year"></span><span>. Designed and created by </span>
+            <span class="credit">
+                        <a href="https://github.com/elouis12">
+                            <i class="fa-brands fa-github "></i>
+                        </a>
+                    </span>
+        </p>
 
     </div>
 </footer>
@@ -205,16 +224,9 @@
 
 <!-- VIEW LARGER -->
 <section id="overlayElement" class="resume-view-container hide" onclick="closeOverlay()">
-    <embed id="view-resume-larger" height="700px" width-90="75%"/>
+    <embed id="view-resume-larger" height="700px" width="75%"/>
     <i class="fa-solid fa-circle-xmark" onclick="closeOverlay()"></i>
 </section>
-
-
-<footer class=" footer">
-    <div class="container">
-
-    </div>
-</footer>
 
 <script class="scripts" type="text/javascript" src="../js/API.js"></script>
 <script class="scripts" type="text/javascript" src="../js/SetTemplate.js"></script>
