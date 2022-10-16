@@ -423,12 +423,11 @@ class SetTemplate {
                     href = contacts[x].contact;
                 }
 
-
                 contactBody[0].insertAdjacentHTML("beforeend",
 
                     `
                     <li title='${contacts[x].contact}'>
-                         <a  href="${href}">
+                         <a  href="${href}" target="_blank" onclick="return false">
                             <img class="drop-down-image icon-image-medium" src='${contacts[x].icon}' alt="contact logo">
 
                          </a>
@@ -439,6 +438,22 @@ class SetTemplate {
                      <a title='${contacts[x].contact}' href="${href}"><i class='${contacts[x].icon}'></i></a>
                   `*/
                 )
+
+                let lastAdded = contactBody[0].children[x].children[0]
+
+
+                console.log(lastAdded)
+
+             if( this.#validateEmail(contacts[x].contact) || this.#validateUrl(contacts[x].contact)  ){
+
+                    lastAdded.removeAttribute("onclick")
+
+             }else{
+
+                    // add the onclick back
+                    lastAdded.setAttribute("onclick", `return false`)
+
+                }
             }
         }
 
