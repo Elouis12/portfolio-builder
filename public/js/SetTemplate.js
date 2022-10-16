@@ -210,7 +210,10 @@ class SetTemplate {
         let skillsContainer = document.getElementsByClassName("skills-section-container");
 
         if( skills ){
+
+
             for (let x = 0; x < skills.length; x += 1) {
+
 
                 // add card
                 skillsContainer[0].insertAdjacentHTML("beforeend", skillsBody)

@@ -70,10 +70,10 @@ function iconSelect(element){
 
     // make request to store in server and increment count in set
 
-    let imageFileNameArray = imageSRC.getAttribute("src").split("/");
+    // get file name and extension
+    let imageFileName = imageSRC.getAttribute("src").split("/");
 
-
-    storeIconImage(imageFileNameArray[ imageFileNameArray.length - 1 ]);
+    storeIconImage(imageFileName[ imageFileName.length - 1 ]);
 
 
 

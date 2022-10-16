@@ -274,7 +274,7 @@ export class GetTemplate {
 
             let experienceObject = {};
 
-            experienceObject.icon = experiences[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("src"); // store the class
+            experienceObject.icon = experiences[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("src").slice(1); // store the class
             experienceObject.jobTitle = experiences[x].children[1].children[1].children[0].children[1].value.trim();
             experienceObject.companyName = experiences[x].children[1].children[1].children[1].children[1].value.trim();
             experienceObject.location = experiences[x].children[1].children[1].children[2].children[1].value.trim();
@@ -308,17 +308,19 @@ export class GetTemplate {
             let categoryObject = {};
 
             categoryObject.categoryName = categories[x].children[1].children[1].children[1].value.trim();
-            categoryObject.categoryIcon = categories[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("src")
+            categoryObject.categoryIcon = categories[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("src").slice(1)
 
             let skillDiv = categories[x].children[1].children[2]; // id = "skill"
 
             let skillsArray = []; // to add skills
             for( let y = 0; y < skillDiv.children.length - 1; y+=1 ){ // - 1 so we don't get the add skill button
 
+
                 let skillAndIcon = [];
 
                 // each icon for that skill selected
-                let skillIcon = skillDiv.children[y].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("src");
+                let skillIcon = skillDiv.children[y].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("src").slice(1); // slice starting index 1 to remove extra . in ../images/icons
+
 
                 // each individual skill
                 let skill = skillDiv.children[y].children[1].children[1].children[1].value.trim();
@@ -438,7 +440,7 @@ export class GetTemplate {
 
             let contact = contacts[x].children[1].children[1].children[1].value.trim();
 
-            contactObject.icon = contacts[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("src")
+            contactObject.icon = contacts[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("src").slice(1);
 
             contactObject.contact = contact;
 
