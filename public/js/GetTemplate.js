@@ -1,4 +1,4 @@
-export class Template{
+export class GetTemplate {
 
     #_about; // elements to insert for about
     #_experiences; // elements to insert for experiences
@@ -14,6 +14,23 @@ export class Template{
     #_footerName;
 
 
+    #dateArray = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ]
+
+
+
     constructor() {
 
     }
@@ -21,7 +38,7 @@ export class Template{
 
     addEventsToListeners(){
 
-        // set eent on change to input file
+        // set event on change to input file
         this.#getResume();
 
         // WHEN THE USER CLICK AN INPUT
@@ -231,7 +248,9 @@ export class Template{
         const aboutMeIc = document.getElementById("about-me-drop-down").children[0].children[0].children[0];
         const aboutMeSummary = document.getElementById("about-me-summary");
 
-        aboutObject.aboutMeIcon = aboutMeIc.getAttribute("class");
+        aboutObject.aboutMeIcon = aboutMeIc.getAttribute("src");
+
+
         aboutObject.aboutMeSummary = aboutMeSummary.value.trim();
 
         aboutArray.push( aboutObject );
@@ -255,12 +274,17 @@ export class Template{
 
             let experienceObject = {};
 
-            experienceObject.icon = experiences[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("class"); // store the class
+            experienceObject.icon = experiences[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("src"); // store the class
             experienceObject.jobTitle = experiences[x].children[1].children[1].children[0].children[1].value.trim();
             experienceObject.companyName = experiences[x].children[1].children[1].children[1].children[1].value.trim();
             experienceObject.location = experiences[x].children[1].children[1].children[2].children[1].value.trim();
             experienceObject.summary = experiences[x].children[1].children[1].children[3].children[1].value.trim();
-            experienceObject.date = experiences[x].children[1].children[1].children[4].children[1].value.trim();
+
+            let date = experiences[x].children[1].children[1].children[4].children[1].value.trim();
+
+            let convertedDate = this.#convertDate(date);
+
+            experienceObject.date = convertedDate;
 
             experienceArray.push( experienceObject );
         }
@@ -284,7 +308,7 @@ export class Template{
             let categoryObject = {};
 
             categoryObject.categoryName = categories[x].children[1].children[1].children[1].value.trim();
-            categoryObject.categoryIcon = categories[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("class")
+            categoryObject.categoryIcon = categories[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("src")
 
             let skillDiv = categories[x].children[1].children[2]; // id = "skill"
 
@@ -294,7 +318,7 @@ export class Template{
                 let skillAndIcon = [];
 
                 // each icon for that skill selected
-                let skillIcon = skillDiv.children[y].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("class");
+                let skillIcon = skillDiv.children[y].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("src");
 
                 // each individual skill
                 let skill = skillDiv.children[y].children[1].children[1].children[1].value.trim();
@@ -482,11 +506,37 @@ export class Template{
     }
 
 
+    #convertDate(date){
+
+        if( date !== ""){
+
+            let splitDate = date.split("-")
+            let firstDate = splitDate[0];
+            let secondDate = splitDate[1];
+
+            let firstDateMonth = this.#dateArray[ parseInt(firstDate.split("/")[0]) - 1 ]; // ex. 10 -> october
+            let firstDateDay = firstDate.split("/")[1];
+            let firstDateYear = firstDate.split("/")[2];
+
+            let secondDateMonth = this.#dateArray[ parseInt(secondDate.split("/")[0]) - 1 ];
+            let secondDateDay = secondDate.split("/")[1];
+            let secondDateYear = secondDate.split("/")[2];
+
+
+            return `${firstDateMonth} ${firstDateDay} ${firstDateYear/*.slice(2)*/} - ${secondDateMonth} ${secondDateDay} ${secondDateYear/*.slice(2)*/}`
+
+        }
+
+        return "";
+
+    }
+
+
 }
 
 function main(){
 
-    let template = new Template();
+    let template = new GetTemplate();
 
     template.addEventsToListeners();
 

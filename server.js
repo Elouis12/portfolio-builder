@@ -1,7 +1,8 @@
 const express = require("express");
 
+const app = express();
 const dotenv = require("dotenv");
-dotenv.config();
+
 
 let cors = require('cors');
 
@@ -16,14 +17,14 @@ const multer = require("multer");
 const mysql = require("mysql");
 const mysql2 = require("mysql2");
 
-const app = express();
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }));
 
 app.use( express.static( 'public'))
 
-app.use( cors() );
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }));
+dotenv.config();
+app.use( cors() );
 
 
 
@@ -75,11 +76,15 @@ const storeProjectImages = multer.diskStorage(
 
 
 )
+
+
 const uploadResume = multer({storage : storeResume});//all info pertaining to the storage
 const uploadProjectImages = multer({storage : storeProjectImages});//all info pertaining to the storage
 
 
 
+
+/* .single(NAME) NAME is the name we gave it in the front end*/
 app.post("/upload-resume", uploadResume.single('resume'), (req, resp)=>{
 
 
@@ -97,6 +102,23 @@ app.post("/upload-project-images", uploadProjectImages.single('project-image'), 
 
 } )
 
+
+app.post('/store-icon-image', (req, resp)=>{
+
+
+    let imageSRC = req.body.imageSRC;
+
+    let srcImagePath = './public/images/icons/'+imageSRC;
+    let destImagePath = './public/portfolio/images/icons/'+imageSRC;
+
+    console.log(req.body)
+    console.log(srcImagePath)
+    console.log(destImagePath)
+    fs.copyFileSync( srcImagePath, destImagePath )
+
+    resp.status(200).send("icon image uploaded");
+
+})
 
 
 app.delete("/remove-image/:image", async (req, resp)=>{
@@ -157,12 +179,15 @@ app.delete("/remove-files", async (req, resp)=>{
         for( const file of imageFiles ){
 
 
+
             if(
                 file &&
                 (
                     file !== "default.jpeg"  // in case we ever want to just use jpeg for image
                           &&
                     file !== "default.gif"  // in case we ever want to just use gif for image
+                         &&
+                    file !== "icons"  // in case we ever want to just use gif for image
                 )
 
             ){
@@ -360,6 +385,8 @@ app.get('/get-likes', (req, resp)=>{
     } )
 
 })
+
+
 
 
 app.post('/update-likes', (req, resp)=>{

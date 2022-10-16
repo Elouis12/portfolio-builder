@@ -1,3 +1,4 @@
+
 let dropArea;
 let dragText;
 let button;
@@ -205,7 +206,7 @@ async function deleteFile(element){
 
 function refreshIframe(){
 
-  // no need to do template.getFields() because the local storage for icon is done in here and not in Template.js
+  // no need to do template.getFields() because the local storage for icon is done in here and not in GetTemplate.js
   document.getElementById('embed').src += '';
 
 }

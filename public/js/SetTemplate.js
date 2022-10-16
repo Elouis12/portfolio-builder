@@ -1,4 +1,4 @@
-class CreateTemplate{
+class SetTemplate {
 
     // when we load the actual html page it will set thee values to the portfolio html file
     constructor(){
@@ -86,11 +86,13 @@ class CreateTemplate{
 
         let summary =  JSON.parse(localStorage.getItem("about"));
 
+        console.log(aboutMeIcon[0].children[0])
 
         if( summary ){
 
-            aboutMeIcon[0].children[0].setAttribute("class", `${summary[0].aboutMeIcon} themeIcon`);
-            aboutMe.innerHTML = summary[0].aboutMeSummary;
+            aboutMeIcon[0].children[0].children[0].setAttribute("src", summary[0].aboutMeIcon);
+            aboutMe.children[1].innerHTML = summary[0].aboutMeSummary;
+
 
         }
 
@@ -106,7 +108,10 @@ class CreateTemplate{
 
             <div class="experience-section-container-body">
 
-                <i class="fa-solid fa-user themeIcon themeIcon"></i>
+                <div class="experience-section-container-body-icon icon-banner">
+                    <img class="themeIcon icon-image" src="" alt="skill-icon">
+                </div>
+
 
                 <div class="experience-section-container-body-title">
 
@@ -142,8 +147,8 @@ class CreateTemplate{
 // add relevant info to the HTML container
 
                 // ICON
-                let experienceIcon = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0];
-                experienceIcon.setAttribute("class", `${experiences[x].icon} themeIcon icon`)
+                let experienceIcon = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[0];
+                experienceIcon.setAttribute("src", `${experiences[x].icon}`)
 
 
                 // JOB TITLE AND DATE
@@ -180,12 +185,12 @@ class CreateTemplate{
             <!-- CATEGORIES AND SKILLS -->
             <div class="skills-category-container-body">
 
-                <div class="skills-category-container-title">
-                    <i class="themeIcon"></i>
+                <div class="skills-category-container-title icon-banner">
+                    <img class="themeIcon icon-image" src="" alt="skill-icon">
                     
                 </div>
 
-                <div class="skills-category-container-body-skills">
+                <div class="skills-category-container-body-skills p-margin">
 
                 </div>
 
@@ -214,7 +219,7 @@ class CreateTemplate{
                 categoryName.insertAdjacentHTML("beforeend", `<h3>${skills[x].categoryName}</h3>`)
 
                 let categoryIcon = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[0].children[0];
-                categoryIcon.setAttribute("class", `${skills[x].categoryIcon} themeIcon`)
+                categoryIcon.setAttribute("src", skills[x].categoryIcon)
 
                 // add individual skills to the language container
                 let languagesContainer =  newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[1];
@@ -224,7 +229,7 @@ class CreateTemplate{
                     languagesContainer.insertAdjacentHTML("beforeend", `
                 
                     <div>
-                        <i class="${skills[x].skills[y][0]} themeIcon"></i>
+                        <img class="themeIcon icon-image" src="${skills[x].skills[y][0]}">
                         <h3 class="skill-name">${ skills[x].skills[y][1] }</h3>
                     </div>
 
@@ -240,7 +245,7 @@ class CreateTemplate{
     #setProjects(){
 
 
-        let projectCard = `
+/*        let projectCard = `
                 <div class="project-section-container-card"
              style="
           background-image: url('../portfolio/images/default.gif');
@@ -255,6 +260,37 @@ class CreateTemplate{
                 </p>
                 <a class="button" href="https://github.com/Elouis12/where-on-earth-is-waldo">Learn More</a>
             </div>
+        </div>
+        
+        `  */      let projectCard = `
+        <div class="project-section-container-card project">
+
+            <div class="project-image">
+                <div class="image-cover"></div>
+            </div>
+
+
+            <h3 class="project-title"></h3>
+            
+<!--            <div class="project-tool-list">
+                <img src="./images/icons/css.bmp" alt="React.js logo">
+                <img src="./images/icons/mysql.bmp" alt="React.js logo">
+            </div>-->
+            
+            <p class="project-overview p-margin">
+                <span class="special">overview: </span>
+                <span class="project-over-view-text"></span>
+            </p>
+
+
+            <div class="project-links">
+                <a href="https://myportfoly.herokuapp.com" target="_blank">
+                    <i class="fas fa-link fa-3x" aria-hidden="true"></i>
+                </a>
+                
+<!--                <a href="https://github.com/RyanMcPherson7/six-degrees-of-spotify" target="_blank"><i class="fab fa-github fa-3x" aria-hidden="true"></i></a>-->
+            </div>
+
         </div>
         
         `
@@ -276,7 +312,7 @@ class CreateTemplate{
                 // grab card
                 let newlyAddedBody = document.getElementsByClassName("project-section-container-card");
 
-                let projectImage = newlyAddedBody[ newlyAddedBody.length - 1 ];
+                let lastCard = newlyAddedBody[ newlyAddedBody.length - 1 ];
 
 
                 // if user gave an image or not null or else it ill just keep the dealt
@@ -285,7 +321,7 @@ class CreateTemplate{
                     JSON.parse(localStorage.getItem("projectImages"))[x]
                 ){
 
-                    projectImage.setAttribute("style",
+                    lastCard.children[0].setAttribute("style",
 
                         `
                             background-image: url('./images/${ JSON.parse(localStorage.getItem("projectImages"))[x] }');
@@ -295,15 +331,15 @@ class CreateTemplate{
                 }
 
 
-                let projectTitle = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[0];
+                let projectTitle = newlyAddedBody[ newlyAddedBody.length - 1 ].children[1];
                 projectTitle.insertAdjacentHTML("beforeend", `${projects[x].projectTitle}`)
 
 
-                let projectSummary = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[1];
+                let projectSummary = newlyAddedBody[ newlyAddedBody.length - 1 ].children[3].children[1];
                 projectSummary.insertAdjacentHTML("beforeend", `${projects[x].projectSummary}`)
 
 
-                let projectLink = newlyAddedBody[ newlyAddedBody.length - 1 ].children[0].children[2];
+                let projectLink = newlyAddedBody[ newlyAddedBody.length - 1 ].children[4];
 
                 // if user gave no link hide the button
                 if( projects[x].projectLink === "" ){
@@ -312,7 +348,7 @@ class CreateTemplate{
 
                 }else{
 
-                    projectLink.setAttribute("href", `${projects[x].projectLink}`)
+                    projectLink.children[0].setAttribute("href", `${projects[x].projectLink}`)
 
                 }
 
@@ -495,7 +531,7 @@ class CreateTemplate{
 
 function main(){
 
-    let createTemplate = new CreateTemplate();
+    let createTemplate = new SetTemplate();
 }
 
 main();

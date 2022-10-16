@@ -4,9 +4,17 @@
     green hsl(142, 90%, 61%);
 
     darker blue hsl(207, 19%, 7%)
+
+    dark grey #22262c
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html{
+
+    scroll-behavior: smooth;
+
+}
 
 body{
 
@@ -63,8 +71,36 @@ body{
 }
 
 /* GENERAL */
+
+.special{
+
+    color: #5bfdba;
+}
+
+section/*:not(section[id="projects"])*/ *{
+
+    /*padding: 10px;*/
+}
+
+.icon-banner{
+
+    background-color:  #22262c;
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 10px 0px 10px 0px;
+}
+
 i{
     font-size: 50px;
+}
+
+.icon-image{
+
+    width: 4rem;
+    height: 4rem;
+    margin: 0 0.2rem;
 }
 
 #nav-drop-down{
@@ -89,7 +125,7 @@ i{
     left:  0/*calc( var( --padding ) * -1 )*/;
     bottom: -2px;
     width: 100%/*calc( 100% + var( --padding ) )*/;
-    background: hsl(142, 90%, 61%);
+    background: #5bfdba;
     margin: 0;
     line-height: 1.6;
 
@@ -210,7 +246,7 @@ i{
 
     font-size: 14px;
     cursor: pointer;
-    color: hsl(142, 90%, 61%);
+    color: #5bfdba;
 
 }
 
@@ -226,12 +262,20 @@ i{
     align-items: center;
     border-radius: 10px;
     background-color: hsl(207, 19%, 7%);
-    padding: 10px;
+
+
+
 }
 
+.about-section-container-icon-container img{
+
+
+    margin-left: 20px ;
+
+}
 .about-section-container  *{
 
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 
@@ -242,6 +286,7 @@ i{
     justify-content: center;
     align-items: center;
     /*width: 400px;*/
+    /*padding: 10px;*/
 }
 
 #about-summary{
@@ -257,6 +302,8 @@ i{
     text-align: center;
     display: flex;
     flex-direction: column;
+    padding: 20px;
+
 }
 
 
@@ -270,13 +317,14 @@ i{
 
 #say-hello{
 
-    color:hsl(142, 90%, 61%);
+    color:#5bfdba;
     text-decoration: none;
     transition: all ease-in-out 300ms;
+    padding: 7px;
 }
 #say-hello:hover{
 
-    color:hsl(142, 90%, 61%);
+    color:#5bfdba;
     background-color: hsl(207, 19%, 9%);
     /*padding: 3px;*/
     border-radius: 4px;
@@ -295,18 +343,19 @@ i{
 }
 .experience-section-container > *{
 
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 .experience-section-container-card{
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: hsl(207, 19%, 7%);
     border-radius: 10px;
-    margin-bottom: 20px;
+    width: 80%;
+    margin: auto auto 20px auto;
 
 }
 
@@ -320,7 +369,7 @@ i{
 
 .experience-section-container-body-title > h4:first-child{
 
-    color: hsl(142, 90%, 61%);
+    color: #5bfdba;
 
 }
 .experience-section-container-body{
@@ -330,7 +379,19 @@ i{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /*width: 400px;*/
+    width: 100%;
+}
+.experience-section-container-body > *{
+
     width: 400px;
+
+}
+.experience-section-container-body-icon{
+
+    width: 100%;
+    text-align: center;
+
 }
 .experience-section-container-body-summary{
 
@@ -357,14 +418,15 @@ i{
 
 .skills-category-container-body-skills{
 
-    width: 50%;
+    width: 70%;
+    padding: 20px;
 }
 
 /*--*/
 
 #skills{
 
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 .skills-category-container{
@@ -387,16 +449,17 @@ i{
     background-color: hsl(207, 19%, 7%);
 
     border-radius: 10px;
-    padding: 10px;
 
 }
 
 .skills-category-container-title{
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    /*flex-direction: column;*/
+    justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+
 }
 
 .skills-category-container-title h3, .skills-category-container-body-skills h3{
@@ -430,7 +493,7 @@ i{
 }
 .skills-category-container-body-skills h3{
 
-    color: hsl(142, 90%, 61%);
+    color: #5bfdba;
 
 }
 
@@ -441,7 +504,7 @@ i{
 
 .resume-section-container-actions i{
 
-    color: hsl(142, 90%, 61%);
+    color: #5bfdba;
 
 
 }
@@ -542,7 +605,7 @@ i{
 
 .contact-section-container-body i{
 
-    color: hsl(142, 90%, 61%);
+    color: #5bfdba;
 
 }
 
@@ -760,14 +823,14 @@ i{
 
     #dropdown-content  a:hover{
 
-        color: hsl(142, 90%, 61%);
+        color: #5bfdba;
         cursor: pointer;
 
     }
 
     #dropdown-content > a:hover::selection{
 
-        color: hsl(142, 90%, 61%);
+        color: #5bfdba;
     }
 
     .logo-container > div{

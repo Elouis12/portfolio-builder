@@ -85,7 +85,12 @@ body{
 
 }
 
+.drop-down-select-div > span{
 
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+}
 .section-title, .drop-down-select-div{
 
     padding: 5px;
@@ -132,8 +137,9 @@ body{
     left: 10px;
     padding: 0 5px;
     /*background-color: transparent;*/
-    background: linear-gradient(to bottom, transparent 50%, #f5f5f7 0%);
-
+    /*background: linear-gradient(to bottom, transparent 50%, #f5f5f7 0%);*/
+    background: #f5f5f7;
+    border-radius: 3px;
     color: #aaa;
 
 }
@@ -664,4 +670,14 @@ input[id="flatpickr"]{
 #missing-section-text{
 
     color: #ff4c4c;
+}
+
+
+/**/
+
+.drop-down-image{
+
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0.2rem;
 }

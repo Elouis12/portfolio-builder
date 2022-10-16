@@ -1,13 +1,13 @@
-import {Template} from "./Template.js";
+import {GetTemplate} from "./GetTemplate.js";
 
-let template = new Template();
+let template = new GetTemplate();
 
 /*
 
     1. find out why deleteButton in category has [ length - 1 ] and the others don't
 */
 
-function newExperience(){
+function newExperience() {
 
     const experienceNumber = document.getElementsByClassName("experiences-container").length;
 
@@ -16,7 +16,7 @@ function newExperience(){
     const experience = `
     
                             <div class="section-title" onclick="closeSection(this)">
-                                <span>Experience ${ experienceNumber + 1 }</span>
+                                <span>Experience ${experienceNumber + 1}</span>
                                 <i class="fa-solid fa-angle-up"></i>
                             </div>
 
@@ -29,21 +29,26 @@ function newExperience(){
                                     <div class="drop-down">
                                         <div class="drop-down-select-div" onclick="closeSection(this)">
                                           <span>
-                                              <i class="fa-solid fa-briefcase"></i>
+                                            <img class="drop-down-image" src="../images/icons/css.png" alt="React.js logo">
+   
                                               <span>Icons</span>
                                           </span>
                                             <i class="fa-solid fa-angle-down"></i>
                                         </div>
                                         <div class="drop-down-options-div hideVisibility">
                                             <div onclick="iconSelect(this)">
-                                                <i class="fa-solid fa-briefcase"></i>
+                                                <img class="drop-down-image" src="../images/icons/programmer.png" alt="programmer logo">
                                             </div>
                                             <div onclick="iconSelect(this)">
-                                                <i class="fa-regular fa-person-digging"></i>
+                                                <img class="drop-down-image" src="../images/icons/keyboard.png" alt="keyboard logo">
                                             </div>
                                             <div onclick="iconSelect(this)">
-                                                <i class="fa-solid fa-computer"></i>
+                                                <img class="drop-down-image" src="../images/icons/window.png" alt="window logo">
                                             </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/server.png" alt="server logo">
+                                            </div>
+                                       
 
                                         </div>
                                     </div>
@@ -76,7 +81,7 @@ function newExperience(){
                                     </div>
                                     <div class="title-to-border experience-input">                                    
                                             <span>Date</span>
-                                            <input id="flatpickr" value="">
+                                            <input id="flatpickr" value="" class="title-to-border-element">
                                             <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>                                            
                                     </div>
                                 
@@ -110,6 +115,9 @@ function newExperience(){
 
     $('input[id="flatpickr"]').daterangepicker();
 
+    let datePicker = document.getElementById("flatpickr");
+    datePicker.value = "";
+
     addEventListenerToElements();
 
     // add "delete" event to delete button
@@ -119,7 +127,7 @@ function newExperience(){
     deleteButton.addEventListener("click", deleteSection)
 }
 
-function newCategory(){
+function newCategory() {
 
     const categoryNumber = document.getElementsByClassName("category-container").length;
     const skillNumber = document.getElementsByClassName("skills-container").length;
@@ -130,7 +138,7 @@ function newCategory(){
     
                                 <!-- SKILLS DROPDOWN -->
                             <div class="section-title" onclick="closeSection(this)">
-                                <span>Category ${ categoryNumber + 1 }</span>
+                                <span>Category ${categoryNumber + 1}</span>
                                 <i class="fa-solid fa-angle-up"></i>
                             </div>
 
@@ -144,19 +152,20 @@ function newCategory(){
                                     <div class="drop-down">
                                         <div class="drop-down-select-div" onclick="closeSection(this)">
                                           <span>
-                                          <i class="fa-solid fa-language"></i>
+                                                <img class="drop-down-image" src="../images/icons/programming.png" alt="flutter logo">
                                               <span>Icons</span>
-                                          </span> <i class="fa-solid fa-angle-down"></i>
+                                          </span> 
+                                          <i class="fa-solid fa-angle-down"></i>
                                         </div>
                                         <div class="drop-down-options-div hideVisibility">
                                             <div onclick="iconSelect(this)">
-                                                <i class="fa-solid fa-language"></i>
+                                                <img class="drop-down-image" src="../images/icons/programming.png" alt="flutter logo">
                                             </div>
                                             <div onclick="iconSelect(this)">
-                                                <i class="fa-solid fa-money-bill"></i>
+                                                <img class="drop-down-image" src="../images/icons/framework.png" alt="flutter logo">
                                             </div>
                                             <div onclick="iconSelect(this)">
-                                                <i class="fa-solid fa-microchip"></i>
+                                                <img class="drop-down-image" src="../images/icons/toolbox.png" alt="flutter logo">
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +187,7 @@ function newCategory(){
 
                                         <!-- SKILLS DROPDOWN -->
                                         <div class="section-title" onclick="closeSection(this)">
-                                            <span>Skill ${ skillNumber + 1 }</span>
+                                            <span>Skill ${skillNumber + 1}</span>
                                             <i class="fa-solid fa-angle-down"></i>
                                         </div>
 
@@ -190,60 +199,61 @@ function newCategory(){
                                                 <div class="drop-down">
                                                     <div class="drop-down-select-div" onclick="closeSection(this)">
                                                       <span>
-                                                          <i class="fa-brands fa-html5"></i>
+                                                <img class="drop-down-image" src="../images/icons/flag.png" alt="flutter logo">
                                                         <span>Icons</span>
                                                     </span>
                                                         <i class="fa-solid fa-angle-down"></i>
                                                     </div>
                                                     <div class="drop-down-options-div hideVisibility">
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-html5" title="HTML"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-solid fa-database" title="database"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-solid fa-server" title="server"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-java" title="Java"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-js" title="JavaScript"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-node-js" title="NodeJs"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-python" title="Python"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-git" title="Git"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-solid fa-microchip-ai" title="AI"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-solid fa-desktop" title="Computer"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-php" title="PHP"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-css3" title="CSS"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-react" title="React"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-android" title="Android"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-solid fa-mobile-screen" title="Mobile"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-swift" title="Swift"></i>
-                                                        </div>
+                                                                                                       
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/flag.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/bootstrap.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/browser.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/c-.png" alt="c++ logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/c-sharp.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/react.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/git.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/github.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/heroku.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/java.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/js.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/nodejs.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/postman.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/python.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/linux.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/mongoose.png" alt="flutter logo">
+                                            </div>
 
                                                     </div>
                                                 </div>
@@ -308,18 +318,18 @@ function newCategory(){
     // add "add"event add button
     let categoryContainer = document.getElementsByClassName("category-container");
 
-    let skillAddButton = categoryContainer[ categoryContainer.length - 1 ].children[1].children[2].lastElementChild;
+    let skillAddButton = categoryContainer[categoryContainer.length - 1].children[1].children[2].lastElementChild;
 
     skillAddButton.addEventListener("click", newSkill)
 
-    let skillDeleteButton = categoryContainer[ categoryContainer.length - 1 ].children[1].children[2].children[0].children[1].lastElementChild;
+    let skillDeleteButton = categoryContainer[categoryContainer.length - 1].children[1].children[2].children[0].children[1].lastElementChild;
 
 
     // dont add a delete button for the first skill category
-    if( skillNumber + 1 === 1 ){
+    if (skillNumber + 1 === 1) {
 
         skillDeleteButton.remove();
-    }else{
+    } else {
 
         // add "delete" event to delete button
         skillDeleteButton.addEventListener("click", deleteSection)
@@ -328,10 +338,9 @@ function newCategory(){
     }
 
 
-
     // add "delete" event to delete button
 
-    let deleteButton = categoryContainer[ categoryContainer.length - 1 ].children[1].lastElementChild;
+    let deleteButton = categoryContainer[categoryContainer.length - 1].children[1].lastElementChild;
 
     deleteButton.addEventListener("click", deleteSection)
     deleteButton.addEventListener("click", refreshIframe)
@@ -340,9 +349,9 @@ function newCategory(){
 }
 
 
-function newSkill(element){
+function newSkill(element) {
 
-    const skillNumber = element.currentTarget.parentElement.children.length-1; // so we don't get the 'add skill' element that's at the end
+    const skillNumber = element.currentTarget.parentElement.children.length - 1; // so we don't get the 'add skill' element that's at the end
 
     const skillDiv = document.createElement("DIV");
 
@@ -351,7 +360,7 @@ function newSkill(element){
 
                                       <!-- SKILLS DROPDOWN -->
                                       <div class="section-title" onclick="closeSection(this)">
-                                          <span>Skill ${ skillNumber + 1 }</span>
+                                          <span>Skill ${skillNumber + 1}</span>
                                           <i class="fa-solid fa-angle-up"></i>
                                       </div>
 
@@ -362,60 +371,62 @@ function newSkill(element){
                                                 <!--dropdown-->
                                                 <div class="drop-down">
                                                     <div class="drop-down-select-div" onclick="closeSection(this)">
-                                          <span>
-                                                      <i class="fa-brands fa-html5"></i>
-                                              <span>Icons</span>
-                                          </span> <i class="fa-solid fa-angle-down"></i>
+                                                 <span>
+                                                <img class="drop-down-image" src="../images/icons/flag.png" alt="flutter logo">
+                                                    <span>Icons</span>
+                                                </span> 
+                                          <i class="fa-solid fa-angle-down"></i>
                                                     </div>
                                                     <div class="drop-down-options-div hideVisibility">
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-html5" title="HTML"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-solid fa-database" title="database"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-solid fa-server" title="server"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-java" title="Java"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-js" title="JavaScript"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-node-js" title="NodeJs"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-python" title="Python"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-git" title="Git"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-solid fa-microchip-ai" title="AI"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-solid fa-desktop" title="Computer"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-php" title="PHP"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-css3" title="CSS"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-react" title="React"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-android" title="Android"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-solid fa-mobile-screen" title="Mobile"></i>
-                                                        </div>
-                                                        <div onclick="iconSelect(this)">
-                                                            <i class="fa-brands fa-swift" title="Swift"></i>
-                                                        </div>
+                                                                                                       
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/flag.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/bootstrap.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/browser.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/c-.png" alt="c++ logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/c-sharp.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/react.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/git.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/github.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/heroku.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/java.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/js.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/nodejs.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/postman.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/python.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/linux.png" alt="flutter logo">
+                                            </div>
+                                            <div onclick="iconSelect(this)">
+                                                <img class="drop-down-image" src="../images/icons/mongoose.png" alt="flutter logo">
+                                            </div>
 
                                                     </div>
                                                 </div>
@@ -442,14 +453,14 @@ function newSkill(element){
 
     skillDiv.innerHTML = skill;
 
-    skillDiv.setAttribute("class", "skill-container tree-border" );
+    skillDiv.setAttribute("class", "skill-container tree-border");
 
 
     // let skillSection = document.getElementById("skill");
     let skillSection = element.currentTarget.parentElement;
 
     // we created an HTML element because INSERT BEFORE takes an element
-    skillSection.insertBefore (skillDiv, skillSection.lastElementChild);
+    skillSection.insertBefore(skillDiv, skillSection.lastElementChild);
 
 
     // document.getElementById(`Experience ${ skillNumber + 1 }`).click();
@@ -459,7 +470,7 @@ function newSkill(element){
     addEventListenerToElements();
 
 
-        // add "delete" event to delete button
+    // add "delete" event to delete button
 
     let skillDeleteButton = skillDiv.children[1].lastElementChild;
 
@@ -471,7 +482,7 @@ function newSkill(element){
 
 
 let projectImagesArray = []; // to store all the images
-function newProject(element){
+function newProject(element) {
 
     const projectNumber = document.getElementsByClassName("project-container").length;
 
@@ -480,7 +491,7 @@ function newProject(element){
     const project = `
                             <!-- SKILLS DROPDOWN -->
                             <div class="section-title" onclick="closeSection(this)">
-                                <span>Project ${ projectNumber + 1 }</span>
+                                <span>Project ${projectNumber + 1}</span>
                                 <i class="fa-solid fa-angle-up"></i>
                             </div>
 
@@ -538,7 +549,7 @@ function newProject(element){
     let projectSection = element.currentTarget.parentElement;
 
     // we created an HTML element because INSERT BEFORE takes an element
-    projectSection.insertBefore (projectContainer, projectSection.lastElementChild);
+    projectSection.insertBefore(projectContainer, projectSection.lastElementChild);
 
 
     let deleteButton = projectContainer.children[1].lastElementChild;
@@ -555,27 +566,27 @@ function newProject(element){
     let image;
     // add the event listener for the last/newly inserted project container section
     // w do project - 1 because the newly added html will have that element be the last
-/*        projectImageInputFile[ projectImageInputFile.length - 1 ].addEventListener("change", async (element)=>{
+    /*        projectImageInputFile[ projectImageInputFile.length - 1 ].addEventListener("change", async (element)=>{
 
-            image = projectImageInputFile[ projectImageInputFile.length - 1 ].files[0];
+                image = projectImageInputFile[ projectImageInputFile.length - 1 ].files[0];
 
-            // to know which index to save the file to
-            // ex. index 0 is for project 1
+                // to know which index to save the file to
+                // ex. index 0 is for project 1
 
-            let index = parseInt( element.currentTarget.parentElement.parentElement.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] ) - 1
+                let index = parseInt( element.currentTarget.parentElement.parentElement.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] ) - 1
 
-            projectImagesArray[ index ] = image.name;
+                projectImagesArray[ index ] = image.name;
 
-            // store it in local storage so we can save the name
-            localStorage.setItem("projectImages", JSON.stringify(projectImagesArray))
+                // store it in local storage so we can save the name
+                localStorage.setItem("projectImages", JSON.stringify(projectImagesArray))
 
-            // store on server
-            await sendProjectImages(image);
+                // store on server
+                await sendProjectImages(image);
 
-            // refresh to show the image
-            refreshIframe();
+                // refresh to show the image
+                refreshIframe();
 
-        });// listens for when user adds pdf file*/
+            });// listens for when user adds pdf file*/
 
 
     addEventListenerToElements();
@@ -587,15 +598,13 @@ function newProject(element){
 }
 
 
-
-
-function newContact(element){
+function newContact(element) {
 
     // so we know the user created a section
 
-    if( !localStorage.getItem("contactCreated" ) ){
+    if (!localStorage.getItem("contactCreated")) {
 
-        localStorage.setItem("contactCreated", JSON.stringify(true) );
+        localStorage.setItem("contactCreated", JSON.stringify(true));
 
     }
 
@@ -606,7 +615,7 @@ function newContact(element){
 
     const contact = `
                             <div class="section-title" onclick="closeSection(this)">
-                                <span>Contact ${ contactNumber + 1 }</span>
+                                <span>Contact ${contactNumber + 1}</span>
                                 <i class="fa-solid fa-angle-up"></i>
                             </div>
 
@@ -692,7 +701,7 @@ function newContact(element){
     let contactSection = element.currentTarget.parentElement;
 
     // we created an HTML element because INSERT BEFORE takes an element
-    contactSection.insertBefore (contactDiv, contactSection.lastElementChild);
+    contactSection.insertBefore(contactDiv, contactSection.lastElementChild);
 
 
     // document.getElementById(`Experience ${ projectNumber + 1 }`).click();
@@ -707,10 +716,10 @@ function newContact(element){
     let deleteButton = contactDiv.children[1].lastElementChild;
 
     // makes sure there's only 1 contact by default
-    if( document.getElementsByClassName("contacts-container").length === 1 ){
+    if (document.getElementsByClassName("contacts-container").length === 1) {
 
         deleteButton.remove();
-    }else {
+    } else {
 
         deleteButton.addEventListener("click", deleteSection)
         deleteButton.addEventListener("click", refreshIframe)
@@ -738,10 +747,10 @@ async function deleteSection(element) {
     let yesButton = document.getElementById("yes-button");
     let noButton = document.getElementById("no-button");
 
-    yesButton.addEventListener("click", async ()=>{
+    yesButton.addEventListener("click", async () => {
 
-        const lengthOfContainers = currentElement.parentElement.parentElement.parentElement.children.length-1;     // n-1 because item n is the "add button" and we want all the "containers"
-        const numberAt = parseInt( currentElement.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] );
+        const lengthOfContainers = currentElement.parentElement.parentElement.parentElement.children.length - 1;     // n-1 because item n is the "add button" and we want all the "containers"
+        const numberAt = parseInt(currentElement.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1]);
 
 
 // IF SKILLS IS LESS THAN 1 ADD 1 BECAUSE USER SHOULD HAVE AT MIN 1 SKILL
@@ -749,10 +758,10 @@ async function deleteSection(element) {
         let skillInfo = currentElement.parentElement;
         let skillsContainer = currentElement.parentElement.parentElement.parentElement;
 
-        if(
+        if (
             skillInfo.getAttribute("class") === "skill-info" &&
             skillsContainer.children.length <= 2 // if more than 4 then we've added a skill diff
-        ){
+        ) {
 
             return; // do nothing
         }
@@ -762,13 +771,13 @@ async function deleteSection(element) {
 
 // UPDATE PROJECT IMAGES ARRAY
 
-        if( currentElement.parentElement.parentElement.getAttribute("class") === "project-container" ){
+        if (currentElement.parentElement.parentElement.getAttribute("class") === "project-container") {
 
             // find the project number
-            let index =  parseInt( currentElement.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1] ) - 1;
+            let index = parseInt(currentElement.parentElement.parentElement.children[0].children[0].innerHTML.split(" ")[1]) - 1;
 
             // if the image exists and is not undefined then remove it from server
-            if( projectImagesArray[index] ){
+            if (projectImagesArray[index]) {
 
                 await removeImage(projectImagesArray[index]);
 
@@ -778,13 +787,13 @@ async function deleteSection(element) {
             projectImagesArray[index] = null;
 
             // filter out the null images and return new array
-            projectImagesArray = projectImagesArray.filter( ( images )=>{
+            projectImagesArray = projectImagesArray.filter((images) => {
 
                 return images != null
-            } )
+            })
 
             // save it to local storage
-            localStorage.setItem("projectImages", JSON.stringify(projectImagesArray) );
+            localStorage.setItem("projectImages", JSON.stringify(projectImagesArray));
 
 
         }
@@ -792,7 +801,7 @@ async function deleteSection(element) {
 // UPDATE NUMBERS
 
         // go all the way to n-1 because item n is the "add button" and we want all the "containers" before it
-        for ( let x = numberAt; x < lengthOfContainers; x+=1  ){
+        for (let x = numberAt; x < lengthOfContainers; x += 1) {
 
             let currentContainer = currentElement.parentElement.parentElement.parentElement;
 
@@ -818,7 +827,7 @@ async function deleteSection(element) {
 
     });
 
-    noButton.addEventListener("click", ()=>{
+    noButton.addEventListener("click", () => {
 
         // remove event from yes and no
 
@@ -828,23 +837,20 @@ async function deleteSection(element) {
 
     })
     /* FIX ISSUE WHERE CLICKING ON CONTAINER STILL REMOVE THE ENTIRE MODAL */
-/*    modalContainer.addEventListener("click", ()=>{
+    /*    modalContainer.addEventListener("click", ()=>{
 
-        // remove event from yes and no
+            // remove event from yes and no
 
-        // hide modal
+            // hide modal
 
-        modalContainer.classList.add("hide")
+            modalContainer.classList.add("hide")
 
-    })*/
+        })*/
 
 }
 
 
-
-
-
-function refreshIframe(){
+function refreshIframe() {
 
 
     template.getFields();
@@ -852,16 +858,16 @@ function refreshIframe(){
 
 }
 
-function removeRedBorderFromUnfilledSection(){
+function removeRedBorderFromUnfilledSection() {
 
     let addButtons = document.getElementsByClassName("add-section");
 
-    for( let x = 0; x < addButtons.length; x+=1 ){
+    for (let x = 0; x < addButtons.length; x += 1) {
 
         let sectionContainers = addButtons[x].closest(".section-container");
 
         // 2 because of the current container we're going to delete and the add button otherwise it would be 1
-        if( sectionContainers.children[1].children.length === 2 && sectionContainers.children[0].classList.contains('red-border')  ){ // has section title AND add button only then we didn't add to the section
+        if (sectionContainers.children[1].children.length === 2 && sectionContainers.children[0].classList.contains('red-border')) { // has section title AND add button only then we didn't add to the section
 
             sectionContainers.children[0].classList.remove('red-border')
         }
@@ -871,7 +877,7 @@ function removeRedBorderFromUnfilledSection(){
 
 /*  color picker  */
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('.color-picker').spectrum({
         type: "component"
     });
@@ -887,30 +893,32 @@ let colorBoxes = document.getElementsByClassName("sp-colorize");
 });*/
 
 
-function sectionTypedIn(e){
+function sectionTypedIn(e) {
 
     let element = e.currentTarget;
 
     // make sure to always get the last or index 1 class value because that's where it will be saved
-    let section =  element.closest('.section-container').getAttribute("class").split(" ")[1];
+    let section = element.closest('.section-container').getAttribute("class").split(" ")[1];
 
     localStorage.setItem("section", section);
 
 }
-function addEventListenerToElements(){
+
+function addEventListenerToElements() {
 
     // WHEN THE USER CLICK AN INPUT
     let inputs = document.getElementsByClassName("title-to-border-element");
 
-    for( let x = 0; x < inputs.length; x+=1 ){
+    for (let x = 0; x < inputs.length; x += 1) {
 
         // already added
-        if( inputs[x].getAttribute("keyup") ){
+        if (inputs[x].getAttribute("keyup")) {
 
             continue;
         }
         inputs[x].addEventListener("keyup", refreshIframe)
         inputs[x].addEventListener("keyup", sectionTypedIn)
+        // inputs[x].addEventListener("change", sectionTypedIn)
     }
 
     // RESUME
@@ -922,17 +930,17 @@ function addEventListenerToElements(){
     // WHEN USER CLICKS ON DROP DOWN SELECTION
     let dropdown = document.getElementsByClassName("drop-down-options-div");
 
-    for( let x = 0; x < dropdown.length; x+=1 ){
+    for (let x = 0; x < dropdown.length; x += 1) {
 
         let item = dropdown[x];
-        for( let y = 0; y < item.children.length; y+=1  ){
+        for (let y = 0; y < item.children.length; y += 1) {
 
             // already added
             /*if( item.children[y].getAttribute("c") ){
 
                 continue;
             }*/
-            item.children[y].addEventListener("click", refreshIframe)
+            item.children[y].addEventListener("click", refreshIframe);
         }
     }
 
@@ -944,7 +952,7 @@ function addEventListenerToElements(){
     window.addEventListener("beforeunload", beforeUnload)
 }
 
-function addEventListenerAddButtons(){
+function addEventListenerAddButtons() {
 
     // experience
     let experienceAddButton = document.getElementById("experiences").children[0];
@@ -979,41 +987,41 @@ addEventListenerAddButtons();
 // make sure the user has at least 1 contact
 document.getElementById('add-contact').click()
 
-function beforeUnload(e){
+function beforeUnload(e) {
 
     removeLocalStorage();
 
     e.preventDefault();
 
-/*        let modalContainer = document.getElementById("modal-height");
+    /*        let modalContainer = document.getElementById("modal-height");
 
-        let modalText = document.getElementById("modal-text");
+            let modalText = document.getElementById("modal-text");
 
-        modalText.innerHTML = "Are you sure you want to leave? <br> Leaving will remove all inputs!"
+            modalText.innerHTML = "Are you sure you want to leave? <br> Leaving will remove all inputs!"
 
-        modalContainer.classList.remove("hide");
+            modalContainer.classList.remove("hide");
 
-        // add event listener to yes button so when user clicks
+            // add event listener to yes button so when user clicks
 
-        let yesButton = document.getElementById("yes-button");
-        let noButton = document.getElementById("no-button");
+            let yesButton = document.getElementById("yes-button");
+            let noButton = document.getElementById("no-button");
 
-        yesButton.addEventListener("click", async ()=>{
+            yesButton.addEventListener("click", async ()=>{
 
 
-        });
+            });
 
-        noButton.addEventListener("click", ()=>{
+            noButton.addEventListener("click", ()=>{
 
-            e.preventDefault();
+                e.preventDefault();
 
-            // remove event from yes and no
+                // remove event from yes and no
 
-            // hide modal
+                // hide modal
 
-            modalContainer.classList.add("hide")
+                modalContainer.classList.add("hide")
 
-        })*/
+            })*/
     /* FIX ISSUE WHERE CLICKING ON CONTAINER STILL REMOVE THE ENTIRE MODAL */
     /*    modalContainer.addEventListener("click", ()=>{
 

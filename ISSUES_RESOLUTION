@@ -7,7 +7,7 @@
 
     <button onclick="create()"> </button>
 
-    however, the js file CreateTemplate is a module and is only module scoped
+    however, the js file SetTemplate is a module and is only module scoped
 
     which means it thinks that create() is a "global" function when it was only module scoped
 
@@ -73,3 +73,23 @@
 
     And removed the code var conn = connection.connect().
     It worked like a charm!
+
+
+4. updating icons
+
+
+    MAIN JS
+
+    1. change the i to img in the dropdown selections
+
+    2. change the i to img in the drop down main
+
+
+    SET CLASS
+
+    change the I to img and give src=""
+    change ste attribute to src instead of class
+
+    GET CLASS
+
+    change get attributes to src and not class

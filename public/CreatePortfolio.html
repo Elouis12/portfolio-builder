@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Customize Template</title>
+    <title>Customize GetTemplate</title>
 
 
     <!-- CSS -->
@@ -32,7 +32,7 @@
     <script type="text/javascript" src="./js/validations.js"></script>
     <script type="text/javascript" src="./js/dropdown.js"></script>
     <script type="module" src="./js/main.js"></script>
-    <script type=module src="./js/Template.js"></script>
+    <script type=module src="js/GetTemplate.js"></script>
     <script type="text/javascript" src="./js/API.js"></script>
     <script type="text/javascript" src="./js/draganddrop.js"></script>
 
@@ -68,7 +68,7 @@
             <button class="view-new-tab-button button" onclick="window.open('/portfolio/index.html')">View In New Tab
             </button>
             <button class="view-template-button button" onclick="window.open('/example/index.html')">View Example
-                Template
+                GetTemplate
             </button>
         </div>
 
@@ -171,16 +171,17 @@
                                 <div id="about-me-drop-down" class="drop-down">
                                     <div class="drop-down-select-div" onclick="closeSection(this)">
                                           <span>
-                                              <i class="fa-solid fa-user"></i>
+                                            <img class="drop-down-image" src="./images/icons/user-female-1.png" alt="profile logo">
                                               <span>Icons</span>
-                                          </span> <i class="fa-solid fa-angle-down"></i>
+                                          </span>
+                                        <i class="fa-solid fa-angle-down"></i>
                                     </div>
                                     <div class="drop-down-options-div hideVisibility">
                                         <div onclick="iconSelect(this)">
-                                            <i class="fa-solid fa-user"></i>
+                                            <img class="drop-down-image" src="./images/icons/user-female-1.png" alt="user female 1 logo">
                                         </div>
                                         <div onclick="iconSelect(this)">
-                                            <i class="fa-solid fa-person"></i>
+                                            <img class="drop-down-image" src="./images/icons/user-male-1.png" alt="user male 1 logo">
                                         </div>
                                         <div onclick="iconSelect(this)">
                                             <i class="fa-solid fa-address-card"></i>

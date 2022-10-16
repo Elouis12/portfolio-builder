@@ -51,14 +51,23 @@ function closeSection(element){
 function iconSelect(element){
 
 
-    let icon = element.children[0];
+    let imageSRC = element.children[0];
 
         element.parentElement.parentElement.children[0].children[0].children[0].setAttribute(
-            "class",
+            "src",
             `${
-                icon.getAttribute("class").slice(0, icon.getAttribute("class").length )
+                imageSRC.getAttribute("src")
             }`
         )
+
+
+    // make request to store in server and increment count in set
+
+    // let file = new FileSys
+
+    let imageFileNameArray = imageSRC.getAttribute("src").split("/");
+
+    storeIconImage(imageFileNameArray[ imageFileNameArray.length - 1 ]);
 
 
 

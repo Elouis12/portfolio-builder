@@ -262,6 +262,35 @@ function updateLikes(newLike){
 
 }
 
+
+async function storeIconImage(imageSRC){
+
+
+    // alert(imageSRC)
+
+    await fetch(
+
+        `/store-icon-image`,
+        {
+                        headers: { // this made us not get the file
+                            "Content-Type": "application/json"
+                        },
+            method: 'POST',
+            body: JSON.stringify({imageSRC:imageSRC})
+        }
+    ).then(
+
+        resp => resp.json()
+
+    ).then(
+
+        data => {
+            console.log(data) }
+    ).catch(
+        (e)=> e
+    );
+}
+
 function removeLocalStorage(){
 
 

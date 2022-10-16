@@ -93,7 +93,7 @@ THINGS I WILL NEED TO KNOW
 DATA STRUCTURES
 
     class -
-        Template :
+        GetTemplate :
 
             ~ functions :
                 * set html - everytime a user adds into the field, it updates
