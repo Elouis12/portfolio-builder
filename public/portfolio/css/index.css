@@ -103,6 +103,13 @@ i{
     margin: 0 0.1rem;
 }
 
+.icon-image-small{
+
+    width: 1rem;
+    height: 1rem;
+    margin: 0 0.05rem;
+}
+
 #nav-drop-down{
 
     display: none;
