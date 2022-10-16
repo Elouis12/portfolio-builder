@@ -301,6 +301,7 @@ i{
 
     word-break: break-word;
     height: auto;
+    width: 50%;
     /*width: 100%;*/
     /*line-height: 1.6;*/
 }
@@ -373,6 +374,13 @@ i{
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+
+}
+
+.experience-section-container-body-title > *{
+
+    margin-right: 10px;
+
 
 }
 
