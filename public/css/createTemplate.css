@@ -681,3 +681,11 @@ input[id="flatpickr"]{
     height: 2rem;
     margin: 0 0.2rem;
 }
+
+
+.contact-type{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

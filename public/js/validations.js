@@ -362,35 +362,34 @@ function validateContactsContainer(){
 
     for( let x = 0; x < contactsContainer.length; x+=1 ){
 
-        let contactExclamationMark = contactsContainer[x].children[1].children[2].children[2];
-        let value = contactsContainer[x].children[1].children[2].children[1].value.trim();
+        let contactExclamationMark = contactsContainer[x].children[1].children[1].children[2];
+        let value = contactsContainer[x].children[1].children[1].children[1].value.trim();
 
-        let iconSelection = contactsContainer[x].children[1].children[1].children[0].children[0].children[0].children[0].getAttribute("class").split(" ")[1];
 
         if(
-            (
-                iconSelection === "fa-envelope" && value !== "" && !validateEmail(value)
-            )
-                ||
-            (
-                iconSelection === "fa-link" && value !== "" && !validateUrl(value)
-            )
-                ||
+
             value === ""
+                ||
+            !validateEmail(value)
+                &&
+            !validateUrl(value)
 
         ){
 
             validateMainContainer = false;
             validContactsContainer = false;
 
+
             contactExclamationMark.classList.remove('hideVisibility');
 
         }else{
+
 
             contactExclamationMark.classList.add('hideVisibility');
         }
 
 
+        // show red-border for current contact container
         if( !validContactsContainer ){
 
             // 2.
@@ -406,6 +405,8 @@ function validateContactsContainer(){
 
         }
     }
+
+    // show red border for main container
 
     if( contactsContainer.length >= 1  ){
 

@@ -23,7 +23,7 @@
     /*background-color: lightgreen;*/
 
     width: 70%;
-    /*min-height: 640px;*/
+    /*min-height: 400px;*/
     background-color: #22262c;
 
     margin: auto auto 2rem;
@@ -71,6 +71,11 @@
     border-top-left-radius: 10px;
 }*/
 
+
+.project-over-view-text{
+
+    word-wrap: break-word;
+}
 .p-margin{
 
     font-size: 1rem;

@@ -60,14 +60,22 @@ function iconSelect(element){
             }`
         )
 
+        element.parentElement.parentElement.children[0].children[0].children[0].setAttribute(
+            "class",
+            `${
+                imageSRC.getAttribute("class")
+            }`
+        )
+
 
     // make request to store in server and increment count in set
 
-    // let file = new FileSys
-
     let imageFileNameArray = imageSRC.getAttribute("src").split("/");
 
+
     storeIconImage(imageFileNameArray[ imageFileNameArray.length - 1 ]);
+
+
 
 
 

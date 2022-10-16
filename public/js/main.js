@@ -29,7 +29,7 @@ function newExperience() {
                                     <div class="drop-down">
                                         <div class="drop-down-select-div" onclick="closeSection(this)">
                                           <span>
-                                            <img class="drop-down-image" src="../images/icons/css.png" alt="React.js logo">
+                                                <img class="drop-down-image" src="../images/icons/programmer.png" alt="programmer logo">
    
                                               <span>Icons</span>
                                           </span>
@@ -627,23 +627,37 @@ function newContact(element) {
                                     <div class="drop-down">
                                         <div class="drop-down-select-div" onclick="closeSection(this)">
                                           <span>
-                                            <i class="fa-brands fa-linkedin"></i>
+                                                                                                                                      <img class="drop-down-image" src="../images/icons/linkedin.png" alt="URL logo">
+
+<!--                                            <i class="fa-brands fa-linkedin"></i>-->
                                               <span>Icons</span>
                                           </span>
                                             <i class="fa-solid fa-angle-down"></i>
                                         </div>
                                         <div class="drop-down-options-div hideVisibility">
                                             <div  onclick="iconSelect(this)">
-                                                <i class="fa-brands fa-linkedin"></i>
+                                                                                            <img class="drop-down-image" src="../images/icons/linkedin.png" alt="URL logo">
+
+<!--                                                <i class="fa-brands fa-linkedin"></i>-->
                                             </div>
                                             <div  onclick="iconSelect(this)">
-                                                <i class="fa-brands fa-github"></i>
+                                                                                            <img class="drop-down-image" src="../images/icons/github.png" alt="URL logo">
+
+<!--                                                <i class="fa-brands fa-github"></i>-->
                                             </div>
+<!--                                            <div  onclick="iconSelect(this)">-->
+<!--                                                <i class="fa-solid fa-phone"></i>-->
+<!--                                            </div>-->
                                             <div  onclick="iconSelect(this)">
-                                                <i class="fa-solid fa-phone"></i>
+                                                                                            <img class="drop-down-image" src="../images/icons/email.png" alt="URL logo">
+
+<!--                                                <i class="fa-solid fa-envelope"></i>-->
                                             </div>
+                                                                                        
                                             <div  onclick="iconSelect(this)">
-                                                <i class="fa-solid fa-envelope"></i>
+                                                                                            <img class="drop-down-image" src="../images/icons/link.png" alt="url logo">
+
+<!--                                                <i class="fa-solid fa-envelope"></i>-->
                                             </div>
 
                                         </div>
@@ -653,34 +667,41 @@ function newContact(element) {
                                 </div>
 
                                 <!-- SELECTIONS -->
-                                <div class="section-icon-selector">
-                                    <!--dropdown-->
+<!--                                <div class="section-icon-selector">
+                                    &lt;!&ndash;dropdown&ndash;&gt;
                                     <div class="drop-down">
                                         <div class="drop-down-select-div" onclick="closeSection(this)">
                                           <span>
-                                              <i class="fa-solid fa-envelope"></i>
+                                          
+                                              <img class="drop-down-image email-selection" src="../images/icons/email.png" alt="email logo">
+
+&lt;!&ndash;                                              <i class="fa-solid fa-envelope"></i>&ndash;&gt;
                                               <span>Contact Type</span>
                                           </span>
                                             <i class="fa-solid fa-angle-down"></i>
                                         </div>
                                         <div class="drop-down-options-div hideVisibility">
                                             <div class="contact-type"  onclick="iconSelect(this)">
-                                                <i class="fa-solid fa-envelope"></i>
+                                               <img class="drop-down-image email-selection" src="../images/icons/email.png" alt="email logo">
+
+&lt;!&ndash;                                                <i class="fa-solid fa-envelope"></i>&ndash;&gt;
                                                 <span>Email</span>
                                             </div>
-                                            <div onclick="iconSelect(this)">
-                                                <i class="fa-solid fa-link"></i>
+                                            <div class="contact-type" onclick="iconSelect(this)">
+                                                <img class="drop-down-image url-selection" src="../images/icons/link.png" alt="url logo">
+
+&lt;!&ndash;                                                <i class="fa-solid fa-link"></i>&ndash;&gt;
                                                 <span>Url</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <!--allow custom icon selection-->
+                                    &lt;!&ndash;allow custom icon selection&ndash;&gt;
 
-                                </div>
+                                </div>-->
 
                                 <div class="title-to-border experience-input">
                                     <span>Contact</span>
-                                    <input type="text" class="title-to-border-element" placeholder="https:// OR @domain.com"/>
+                                    <input type="text" class="title-to-border-element" placeholder="https:// OR @domain.com OR 111-111"/>
                                     <i class="fa fa-exclamation-circle hideVisibility" aria-hidden="true"></i>
                                 </div>
 

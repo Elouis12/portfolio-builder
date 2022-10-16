@@ -168,11 +168,13 @@ app.delete("/remove-files", async (req, resp)=>{
     // remove files
     let imageDir = path.join(__dirname, `/public/portfolio/images`);
     let mediaDir = path.join(__dirname, `/public/portfolio/media`); // without backslash
+    let iconDir = path.join(__dirname, `/public/portfolio/images/icons`); // without backslash
 
     try{
 
         const imageFiles = await fs.readdirSync(imageDir);
         const mediaFiles = await fs.readdirSync(mediaDir);
+        const iconFiles = await fs.readdirSync(iconDir);
 
 
         // remove files from image folder
@@ -206,6 +208,18 @@ app.delete("/remove-files", async (req, resp)=>{
                 fs.unlinkSync(`./public/portfolio/media/${file}`);
 
                 console.log('removing resume')
+            }
+
+        }
+
+        // remove all files from /icons
+        for( const file of iconFiles ){
+
+            if( file ){
+
+                fs.unlinkSync(`./public/portfolio/images/icons/${file}`);
+
+
             }
 
         }

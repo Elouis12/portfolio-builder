@@ -436,13 +436,25 @@ export class GetTemplate {
 
             let contactObject = {};
 
-            let contact = contacts[x].children[1].children[2].children[1].value.trim();
+            let contact = contacts[x].children[1].children[1].children[1].value.trim();
 
-            contactObject.icon = contacts[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("class")
+            contactObject.icon = contacts[x].children[1].children[0].children[0].children[0].children[0].children[0].getAttribute("src")
 
             contactObject.contact = contact;
 
-            contactObject.contactType = contacts[x].children[1].children[1].children[0].children[0].children[0].children[0].getAttribute("class");
+            // get contact type
+
+            let contactType = "";
+            if( validateUrl(contact) ){
+
+                contactType = "url"
+
+            }else if( validateEmail(contact) ){
+
+                contactType = "email"
+            }
+
+            contactObject.contactType = contactType;
 
             contactArray.push( contactObject );
         }

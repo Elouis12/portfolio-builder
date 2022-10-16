@@ -245,24 +245,8 @@ class SetTemplate {
     #setProjects(){
 
 
-/*        let projectCard = `
-                <div class="project-section-container-card"
-             style="
-          background-image: url('../portfolio/images/default.gif');
-          background-size: cover;"
-        >
-            <div class="project-section-container-card-content">
-                <h2 class="project-section-container-card-content-title">
 
-                </h2>
-                <p class="project-section-container-card-content-body">
-
-                </p>
-                <a class="button" href="https://github.com/Elouis12/where-on-earth-is-waldo">Learn More</a>
-            </div>
-        </div>
-        
-        `  */      let projectCard = `
+    let projectCard = `
         <div class="project-section-container-card project">
 
             <div class="project-image">
@@ -284,7 +268,7 @@ class SetTemplate {
 
 
             <div class="project-links">
-                <a href="https://myportfoly.herokuapp.com" target="_blank">
+                <a href="#" target="_blank" onclick="return false">
                     <i class="fas fa-link fa-3x" aria-hidden="true"></i>
                 </a>
                 
@@ -335,20 +319,38 @@ class SetTemplate {
                 projectTitle.insertAdjacentHTML("beforeend", `${projects[x].projectTitle}`)
 
 
-                let projectSummary = newlyAddedBody[ newlyAddedBody.length - 1 ].children[3].children[1];
+                /*
+                    when uncommenting project-tools-list then children[2] becomes children[3]
+                */
+                let projectSummary = newlyAddedBody[ newlyAddedBody.length - 1 ].children[2].children[1];
                 projectSummary.insertAdjacentHTML("beforeend", `${projects[x].projectSummary}`)
 
 
-                let projectLink = newlyAddedBody[ newlyAddedBody.length - 1 ].children[4];
+                /*
+                    when uncommenting project-tools-list then children[4] becomes children[3]
+                */
+
+                let projectLink = newlyAddedBody[ newlyAddedBody.length - 1 ].children[3];
 
                 // if user gave no link hide the button
+
+
                 if( projects[x].projectLink === "" ){
 
                     projectLink.classList.add("hideVisibility")
 
-                }else{
+                    // only if valid do we we attach the http url to it or else it will
+                    // take user to mysite.com/typed-link
+                }else if( this.#validateUrl(projects[x].projectLink)  ){
 
                     projectLink.children[0].setAttribute("href", `${projects[x].projectLink}`)
+
+                    projectLink.children[0].removeAttribute("onclick")
+
+                }else{
+
+                    // add the onclick back
+                    projectLink.children[0].setAttribute("onclick", `return false`)
 
                 }
 
@@ -408,20 +410,23 @@ class SetTemplate {
 
                 let href;
 
-                if( contacts[x].contactType === "fa-solid fa-envelope" ){
+                if( contacts[x].contactType === "email" ){
 
                     href = `mailto:${contacts[x].contact}`
+
                 }else{
 
                     href = contacts[x].contact;
                 }
+
 
                 contactBody[0].insertAdjacentHTML("beforeend",
 
                     `
                     <li title='${contacts[x].contact}'>
                          <a  href="${href}">
-                            <i class='${contacts[x].icon}'></i>
+                            <img class="drop-down-image icon-image-contacts" src='${contacts[x].icon}' alt="contact logo">
+
                          </a>
                      </li>
                     `
@@ -525,6 +530,24 @@ class SetTemplate {
         }
 
     }
+
+    #validateEmail(email){
+
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    }
+
+    #validateUrl(url){
+
+        return String(url)
+            .toLowerCase()
+            .match(
+                /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/);
+    }
+
 }
 
 
