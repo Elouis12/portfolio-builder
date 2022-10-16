@@ -426,7 +426,7 @@ class SetTemplate {
                     `
                     <li title='${contacts[x].contact}'>
                          <a  href="${href}">
-                            <img class="drop-down-image icon-image-contacts" src='${contacts[x].icon}' alt="contact logo">
+                            <img class="drop-down-image icon-image-medium" src='${contacts[x].icon}' alt="contact logo">
 
                          </a>
                      </li>

@@ -42,9 +42,9 @@ const darkMode = () => {
 
     let nightTheme = document.getElementById("nightTheme");
 
-    nightTheme.getAttribute("class").includes("fa-cloud-moon") ?
-    nightTheme.setAttribute("class", "fa-solid fa-cloud-sun") :
-    nightTheme.setAttribute("class", "fa-solid fa-cloud-moon")
+    nightTheme.getAttribute("src").includes("day") ?
+    nightTheme.setAttribute("src", "./images/icons/night.png") :
+    nightTheme.setAttribute("src", "./images/icons/day.png")
 
     let logo = document.getElementById("logo");
     logo.style.color = "hsl(0, 0%, 100%)";

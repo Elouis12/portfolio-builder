@@ -237,6 +237,10 @@ app.delete("/remove-files", async (req, resp)=>{
                 file !== "projects.png"
                         &&
                 file !== "skills.png"
+                        &&
+                file !== "day.png"
+                        &&
+                file !== "night.png"
 
 
             ){
