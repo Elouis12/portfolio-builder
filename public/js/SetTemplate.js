@@ -122,6 +122,9 @@ class SetTemplate {
                 </div>
                 <p  class="experience-section-container-body-summary">
 
+                    <span class="special">description: </span>
+                    <span class="project-over-view-text"></span>
+               
                 </p>
 
             </div>
@@ -167,7 +170,7 @@ class SetTemplate {
 
 
                 // JOB SUMMARY
-                let jobSummary = newlyAddedBody[ newlyAddedBody.length - 1 ].children[3];
+                let jobSummary = newlyAddedBody[ newlyAddedBody.length - 1 ].children[3].children[1];
                 jobSummary.innerText = experiences[x].summary;
             }
         }
