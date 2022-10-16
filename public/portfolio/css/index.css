@@ -293,6 +293,7 @@ i{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 50%;
     /*width: 400px;*/
     /*padding: 10px;*/
 }
@@ -301,8 +302,7 @@ i{
 
     word-break: break-word;
     height: auto;
-    width: 50%;
-    /*width: 100%;*/
+    width: 100%;
     /*line-height: 1.6;*/
 }
 
