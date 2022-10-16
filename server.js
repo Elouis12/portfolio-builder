@@ -219,6 +219,24 @@ app.delete("/remove-files", async (req, resp)=>{
                 file !== "resume.png"
                         &&
                 file !== "default-profile.png"
+                        &&
+                file !== "about-me.png"
+                        &&
+                file !== "contacts.png"
+                        &&
+                file !== "experience.png"
+                        &&
+                file !== "footer.png"
+                        &&
+                file !== "navigation.png"
+                        &&
+                file !== "portfolio.png"
+                        &&
+                file !== "navigation.png"
+                        &&
+                file !== "projects.png"
+                        &&
+                file !== "skills.png"
 
 
             ){
