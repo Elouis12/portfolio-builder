@@ -266,7 +266,7 @@ function updateLikes(newLike){
 async function storeIconImage(imageSRC){
 
 
-    alert(imageSRC)
+    // alert(imageSRC)
 
     await fetch(
 
